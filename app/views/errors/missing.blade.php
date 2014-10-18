@@ -2,12 +2,12 @@
 
 @section('header')
 
-<title>Show</title>
+<title>404</title>
 
 @stop
 
 @section('content')
 
-    <h1>User Show</h1>
+    <h1>404 Page Not Found</h1>
     
 @stop
