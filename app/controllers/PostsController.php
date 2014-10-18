@@ -2,13 +2,6 @@
 
 class PostsController extends \BaseController {
     
-    // public function __construct()
-    // {
-    //     parent::__construct();
-
-    //     $this->beforeFilter('auth', array('except' => array('index', 'show')));
-    // }
-    
     /**
      * Display a listing of posts
      *
@@ -148,7 +141,7 @@ class PostsController extends \BaseController {
         
         Session::flash('successMessage', 'Post deleted!');
         
-        return Redirect::action('PostController@index');
+        return Redirect::action('PostsController@index');
     }
 
 }
