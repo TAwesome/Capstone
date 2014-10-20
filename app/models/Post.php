@@ -1,6 +1,11 @@
 <?php
 
 class Post extends BaseModel {
+    
+    public static $rules = array(
+        'content' => 'required|max:200'
+    );
+    
      public function users()
     {
         return $this->belongsTo('User');
