@@ -13,5 +13,9 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('landingpage');
 });
+
+Route::resource('posts', 'PostsController');
+
+Route::resource('users', 'UsersController');

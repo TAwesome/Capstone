@@ -2,6 +2,15 @@
 
 class UsersController extends \BaseController {
 
+
+	
+	public function __construct()
+    {
+        // require csrf token for all post, delete, and put actions
+        $this->beforeFilter('csrf', array('on' => array('post', 'delete', 'put')));
+    }
+	
+	
 	/**
 	 * Display a listing of users
 	 *
@@ -9,6 +18,8 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
+		//This will need to be only viewable to 
+		//the admins
 		$users = User::all();
 
 		return View::make('users.index', compact('users'));
@@ -21,6 +32,8 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
+		//This may be the same as the landing page
+		//depending on how we set things up
 		return View::make('users.create');
 	}
 
@@ -51,7 +64,12 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$user = User::findOrFail($id);
+		$user = User::find($id);
+		
+		if (!$user) {
+            Log::info('User encountered 404 error', Input::all());
+            App::abort(404);
+        }
 
 		return View::make('users.show', compact('user'));
 	}
@@ -77,7 +95,7 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$user = User::findOrFail($id);
+		$user = User::find($id);
 
 		$validator = Validator::make($data = Input::all(), User::$rules);
 
@@ -100,8 +118,18 @@ class UsersController extends \BaseController {
 	public function destroy($id)
 	{
 		User::destroy($id);
-
-		return Redirect::route('users.index');
+		
+		if(!$user) {
+            App::abort(404);
+        }
+        
+        
+        Log::info("$user->first_name $user->last_name has been deleted");
+        
+        Session::flash('successMessage', 'User deleted!');
+        
+        return Redirect::action('UsersController@index');
+        
 	}
 
 }

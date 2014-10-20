@@ -1,1 +1,16 @@
-/vagrant/sites/capstone.dev/app/views/posts/edit.blade.php
+@extends('layouts.master')
+
+
+@section('header')
+    <title>Edit Blade</title>
+@stop
+    
+@section('content')
+
+
+@stop
+
+
+@section('bottom-script')
+
+@stop
