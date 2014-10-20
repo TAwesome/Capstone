@@ -5,9 +5,14 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends BaseModel implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
+	
+	public function posts()
+    {
+        return $this->hasMany('Post');
+    }
 
 	/**
 	 * The database table used by the model.
