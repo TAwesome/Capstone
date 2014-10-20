@@ -9,6 +9,16 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
 	
+	public static $rules = array(
+        'email'            => 'required|max:200|email|unique', 
+        'password'         => 'required|max:255|min:6',
+        'first_name'       => 'required|max:255',
+        'last_name'        => 'required|max:255',
+        'gender'           => 'required|in:M,F',
+        'date_of_birth'    => 'required|date',
+        'native_language'  => 'required|in:English,Spanish,French'
+    );
+	
 	public function posts()
     {
         return $this->hasMany('Post');
