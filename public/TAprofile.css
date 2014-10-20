@@ -1,0 +1,56 @@
+#dropdown-nav {
+	left: 700px;
+}
+body {
+	text-align: center;
+	text-shadow: 2px 2px 2px #FFFFFF;
+	background-image: url('/img/jumbotron.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#about {
+	color: #fff;
+	background-color: #1F88F1;
+	border-color: #357ebd;
+}
+#about-style {
+	width: 100px;
+	position: absolute;
+	right: 80px;
+	bottom: 10px;
+}
+.img-thumbnail {
+	width: 250px;
+	position: absolute;
+	left: 30px;
+}
+.img-thumbnail img {
+	max-width: 100%;
+}
+.container .jumbotron {
+	border-radius: 6px;
+	background-repeat: no-repeat;
+	background-position: center;
+    background-image: url('/img/FancyfbBG.jpg');
+    padding-bottom: 130px;
+
+}
+.jumbotron {
+	position: relative;
+}
+p {
+	text-shadow: 2px 2px 2px #FFFFFF;
+}
+.posts-container {
+	border: 1px solid black;
+
+
+
+}
+
+
+
+
+
+
