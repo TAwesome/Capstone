@@ -2,9 +2,14 @@
 
 class Post extends BaseModel {
     
-     public function users()
+    public function users()
     {
         return $this->belongsTo('User');
+    }
+    
+    public function languages()
+    {
+        return $this->belongsTo('Language');
     }
 	// Add your validation rules here
 	public static $rules = array(
