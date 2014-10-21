@@ -5,4 +5,9 @@ class Language extends BaseModel {
     {
         return $this->hasMany('Post');
     }
+    public function users()
+    {
+        return $this->belongsToMany('User');
+    }
+
 }
