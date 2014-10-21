@@ -5,4 +5,8 @@ class Comment extends BaseModel {
     {
         return $this->belongsTo('User');
     }
+    public function posts()
+    {
+        return $this->belongsTo('Post');
+    }
 }
