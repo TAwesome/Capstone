@@ -22,13 +22,13 @@ class PostsController extends \BaseController {
         
         // $search = Input::get('search');
 
-  //       $query = Post::with('user');
+        // $query = Post::with('user');
         
-  //       $query->where('tag', 'like', "%$search%");
+        // $query->where('tag', 'like', "%$search%");
         
-  //       $query->orWhere('content', 'like', "%$search%");
+        // $query->orWhere('content', 'like', "%$search%");
 
-  //       $posts = $query->orderBy('id', 'DESC')->paginate(5);
+        // $posts = $query->orderBy('id', 'DESC')->paginate(5);
         
         $post = Post::with('id');
         $posts = $post->orderBy('id', 'DESC')->paginate(5);
@@ -106,6 +106,10 @@ class PostsController extends \BaseController {
 
     protected function savePost(Post $post)
     {
+        
+        //Leave this commented out until Jacob finishes working on
+        //validation and rules in model
+        
         $validator = Validator::make($data = Input::all(), Post::$rules);
 
         if ($validator->fails()) {
@@ -116,7 +120,7 @@ class PostsController extends \BaseController {
             $post->content = Input::get('content');
             
             //Uncomment this once user_id is created
-            //$post->user_id = Auth::id();
+            $post->user_id = Auth::id();
         }
         
         $post->save();

@@ -18,20 +18,20 @@
           <!-- Basic Imput Sign in stuff -->
           <h2 style="width: 300px">Sign up!</h2>
 
-          <form class="form-horizontal" role="form">
+          <form method="POST" action="{{ action('UsersController@store') }}" class="form-horizontal" role="form">
 
             <p>
               <div class="form-group" id="fnln">
                 <div class="col-sm-offset-2 col-sm-8" style="margin-left: 100px;">
                   <label class="sr-only" for="exampleInputFirstName2">First Name</label>
-                  <input type="text" class="form-control" id="exampleInputFirstName2" placeholder="First Name">
+                  <input type="text" class="form-control" id="exampleInputFirstName2" name="first_name" placeholder="First Name">
                 </div>
               </div>
 
               <div class="form-group" id="fnln">
                 <div class="col-sm-offset-2 col-sm-8" style="margin-left: 100px;">
                   <label class="sr-only" for="exampleInputLast Name2">LastName</label>
-                  <input type="text" class="form-control" id="exampleInputLastName2" placeholder="Last Name">
+                  <input type="text" class="form-control" id="exampleInputLastName2" name="last_name" placeholder="Last Name">
                 </div>
               </div>
             </p>
@@ -39,14 +39,14 @@
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-8" style="margin-left: 100px;">
                 <label class="sr-only" for="exampleInputEmail2">Email</label>
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email">
               </div>
             </div>
 
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-8" style="margin-left: 100px;">
                 <label class="sr-only" for="exampleInputPassword2">Password</label>
-                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password">
               </div>
             </div>
 
@@ -56,7 +56,7 @@
             <div class="dropdown">
               <h4 style="width: 265px">Birthday</h4>
                 <div class="col-md-2" style="padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 100px;">
-                  <select class="form-control" id="bday-year" name="bday-year">
+                  <select class="form-control" id="bday-year" name="b_year">
                       <option selected>Year</option>
                       <option>2010</option>
                       <option>2009</option>
@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="col-md-2" style="padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 10px;">
-                  <select class="form-control" id="bday-month" name="bday-month">
+                  <select class="form-control" id="bday-month" name="b_month">
                       <option selected>Month</option>
                       <option>01</option>
                       <option>02</option>
@@ -141,7 +141,7 @@
                 </div>
 
                 <div class="col-md-2" style="padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 10px;">
-                  <select class="form-control" id="bday-day" name="bday-day">
+                  <select class="form-control" id="bday-day" name="b_date">
                       <option selected>Day</option>
                       <option>01</option>
                       <option>02</option>
@@ -187,10 +187,10 @@
               <h4>Gender</h4>
                 <div id="radio">
                   <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Female
+                    <input type="radio" name="gender" id="inlineRadio1" value="F"> Female
                   </label>
                   <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Male
+                    <input type="radio" name="gender" id="inlineRadio2" value="M"> Male
                   </label>
                 </div>
             </div>

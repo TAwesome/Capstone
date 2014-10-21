@@ -1,125 +1,159 @@
 <?php
 
+use Carbon\Carbon;
+
 class UsersController extends \BaseController {
 
 
-	
-	public function __construct()
+    
+    // public function __construct()
+ //    {
+ //        // require csrf token for all post, delete, and put actions
+ //        $this->beforeFilter('csrf', array('on' => array('post', 'delete', 'put')));
+ //    }
+    
+    
+    /**
+     * Display a listing of users
+     *
+     * @return Response
+     */
+    public function index()
     {
-        // require csrf token for all post, delete, and put actions
-        $this->beforeFilter('csrf', array('on' => array('post', 'delete', 'put')));
+        //This will need to be only viewable to 
+        //the admins
+        $users = User::all();
+
+        return View::make('users.index', compact('users'));
     }
-	
-	
-	/**
-	 * Display a listing of users
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//This will need to be only viewable to 
-		//the admins
-		$users = User::all();
 
-		return View::make('users.index', compact('users'));
-	}
+    /**
+     * Show the form for creating a new user
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        //This may be the same as the landing page
+        //depending on how we set things up
+        return View::make('users.create');
+    }
 
-	/**
-	 * Show the form for creating a new user
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//This may be the same as the landing page
-		//depending on how we set things up
-		return View::make('users.create');
-	}
+    /**
+     * Store a newly created user in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        
+        //Leave this commented out until Jacob finishes working on
+        //validation and rules in model
+        
+        $validator = Validator::make($data = Input::all(), User::$rules);
 
-	/**
-	 * Store a newly created user in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		$validator = Validator::make($data = Input::all(), User::$rules);
+        if ($validator->fails())
+        {
+         return Redirect::back()->withErrors($validator)->withInput();
+        }
+        
+        $user = new User();
+        
+        return $this->saveUser($user);
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
+    }
 
-		User::create($data);
-
-		return Redirect::route('users.index');
-	}
-
-	/**
-	 * Display the specified user.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$user = User::find($id);
-		
-		if (!$user) {
+    /**
+     * Display the specified user.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $user = User::find($id);
+        
+        if (!$user) {
             Log::info('User encountered 404 error', Input::all());
             App::abort(404);
         }
 
-		return View::make('users.show', compact('user'));
-	}
+        return View::make('users.show', compact('user'));
+    }
 
-	/**
-	 * Show the form for editing the specified user.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$user = User::find($id);
+    /**
+     * Show the form for editing the specified user.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $user = User::find($id);
 
-		return View::make('users.edit', compact('user'));
-	}
+        return View::make('users.edit', compact('user'));
+    }
 
-	/**
-	 * Update the specified user in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		$user = User::find($id);
+    /**
+     * Update the specified user in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        $user = User::find($id);
 
-		$validator = Validator::make($data = Input::all(), User::$rules);
+        //Leave this commented out until Jacob finishes working on
+        //validation and rules in model 
 
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
+        $validator = Validator::make($data = Input::all(), User::$rules);
 
-		$user->update($data);
+        if ($validator->fails())
+        {
+         return Redirect::back()->withErrors($validator)->withInput();
+        }
 
-		return Redirect::route('users.index');
-	}
+        return $this->saveUser($data);
 
-	/**
-	 * Remove the specified user from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		User::destroy($id);
-		
-		if(!$user) {
+    }
+    
+    public function saveUser($user)
+    {
+        $user->email = Input::get('email');
+        $user->password = Input::get('password');
+        $user->first_name = Input::get('first_name');
+        $user->last_name = Input::get('last_name');
+        $user->gender = Input::get('gender');
+        
+        //concatonate the three dropdowns 
+        
+        $user->date_of_birth = Carbon::create(Input::get('b_year'), Input::get('b_month'), Input::get('b_date'));
+        
+        $user->date_of_birth->format('Y-m-d');
+        
+        $user->save();
+            
+        $id = $user->id;
+        
+        Session::flash('successMessage','Post was saved!');
+        
+        return Redirect::action('UsersController@show', $id);
+        
+    }
+
+
+    /**
+     * Remove the specified user from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        User::destroy($id);
+        
+        if(!$user) {
             App::abort(404);
         }
         
@@ -130,6 +164,6 @@ class UsersController extends \BaseController {
         
         return Redirect::action('UsersController@index');
         
-	}
+    }
 
 }
