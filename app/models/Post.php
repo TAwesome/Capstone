@@ -11,6 +11,11 @@ class Post extends BaseModel {
     {
         return $this->belongsTo('Language');
     }
+    
+    public function comments()
+    {
+        return $this->hasMany('Comment');
+    }
 	// Add your validation rules here
 	public static $rules = array(
         'content' => 'required|max:200'

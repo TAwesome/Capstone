@@ -23,6 +23,16 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     {
         return $this->hasMany('Post');
     }
+    
+    public function comments()
+    {
+        return $this->hasMany('Comment');
+    }
+    
+    public function languages()
+    {
+        return $this->belongsToMany('Language');
+    }
 
 	/**
 	 * The database table used by the model.
