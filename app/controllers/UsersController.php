@@ -54,12 +54,13 @@ class UsersController extends \BaseController {
 
         if ($validator->fails())
         {
-         return Redirect::back()->withErrors($validator)->withInput();
+            return Redirect::back()->withErrors($validator)->withInput();
         }
+        
         
         $user = new User();
         
-        return $this->saveUser($user);
+        $this->saveUser($user);
 
     }
 
@@ -120,11 +121,13 @@ class UsersController extends \BaseController {
     
     public function saveUser($user)
     {
+        
         $user->email = Input::get('email');
         $user->password = Input::get('password');
         $user->first_name = Input::get('first_name');
         $user->last_name = Input::get('last_name');
         $user->gender = Input::get('gender');
+        //$user->native_language = 'English';
         
         //concatonate the three dropdowns 
         
@@ -136,9 +139,7 @@ class UsersController extends \BaseController {
             
         $id = $user->id;
         
-        Session::flash('successMessage','Post was saved!');
-        
-        return Redirect::action('UsersController@show', $id);
+        return Redirect::action('UsersController@show', array(22));
         
     }
 

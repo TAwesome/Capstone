@@ -49,7 +49,7 @@ class HomeController extends BaseController {
         //Logout the user
         //Redirect somewhere nice
         Auth::logout();
-        return Redirect::action('UsersController@index');
+        return Redirect::action('HomeController@showWelcome');
         
     }
 
