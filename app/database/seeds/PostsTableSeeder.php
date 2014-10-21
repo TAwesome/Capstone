@@ -9,14 +9,14 @@ class PostsTableSeeder extends Seeder {
 	{
         DB::table('posts')->delete();
 		$faker = Faker::create();
-        $user = User::first();
-        $language = Language::first();
 
 		foreach(range(1, 10) as $index)
 		{
+            $language = Language::orderByRaw("RAND()")->first();
+            $user = User::orderByRaw("RAND()")->first();
 			Post::create([
-                'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-                'user_id' => $user->id,
+                'content'     => $faker->realText($maxNbChars = 200, $indexSize = 2),
+                'user_id'     => $user->id,
                 'language_id' => $language->id
 			]);
 		}
