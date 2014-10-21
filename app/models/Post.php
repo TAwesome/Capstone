@@ -2,6 +2,10 @@
 
 class Post extends BaseModel {
     
+	public static $rules = array(
+        'content' => 'required|max:200'
+    );
+    
     public function users()
     {
         return $this->belongsTo('User');
@@ -16,10 +20,7 @@ class Post extends BaseModel {
     {
         return $this->hasMany('Comment');
     }
-	// Add your validation rules here
-	public static $rules = array(
-        'content' => 'required|max:200'
-    );
+    // Add your validation rules here
 
 	// Don't forget to fill this array
 
