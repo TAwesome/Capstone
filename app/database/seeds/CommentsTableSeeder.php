@@ -13,9 +13,11 @@ class CommentsTableSeeder extends Seeder {
         foreach(range(1, 10) as $index)
         {
             $user = User::orderByRaw("RAND()")->first();
+            $post = Post::orderByRaw("RAND()")->first();
 			Comment::create([
                 'content' => $faker->realText($maxNbChars = 200, $indexSize = 2),
-                'user_id' => $user->id
+                'user_id' => $user->id,
+                'post_id' => $post->id
 			]);
 		}
 	}
