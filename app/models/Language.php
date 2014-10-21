@@ -1,7 +1,17 @@
 <?php
 
 class Language extends BaseModel {
-	public function posts()
+	
+    public static $rules = array(
+        'language' => 'required|max:200|unique'
+    );
+    
+    public function setLanguageAttribute($value)
+    {
+        $this->attributes['language'] = strtolower($value);
+    }
+    
+    public function posts()
     {
         return $this->hasMany('Post');
     }
