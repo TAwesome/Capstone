@@ -81,8 +81,7 @@
             </li> -->
           </ul>
 
-          
-          <form method="POST" class="form-inline" role="form" >
+          {{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'form-inline', 'role' => 'form')) }}
             <div class="sign-in" style="margin-left: 670px; width: 500px; margin-top: 7px;">
               <div class="form-group">
                 <div class="input-group">
@@ -94,9 +93,9 @@
                 <label class="sr-only" for="exampleInputPassword2">Password</label>
                 <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
               </div>
-              <button type="submit" class="btn btn-default">Sign in</button>
+              {{Form::submit('Log In')}}
             </div>
-          </form>
+          {{ Form::close() }}
 
         </div><!--/.nav-collapse -->
       </div>

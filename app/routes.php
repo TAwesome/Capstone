@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
+Route::post('/login', 'HomeController@doLogin');
+
 Route::resource('posts', 'PostsController');
 
 Route::resource('users', 'UsersController');

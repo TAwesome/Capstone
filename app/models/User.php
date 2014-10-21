@@ -10,7 +10,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	use UserTrait, RemindableTrait;
 	
 	public static $rules = array(
-        'email'            => 'required|max:200|email|unique', 
+        'email'            => 'required|max:200|email|unique:users', 
         'password'         => 'required|max:255|min:6',
         'first_name'       => 'required|max:255',
         'last_name'        => 'required|max:255',
