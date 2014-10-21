@@ -3,7 +3,7 @@
 class Language extends BaseModel {
 	
     public static $rules = array(
-        'language' => 'required|max:200|unique'
+        'language' => 'required|max:200|unique:languages'
     );
     
     public function setLanguageAttribute($value)
