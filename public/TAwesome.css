@@ -8,17 +8,20 @@ body {
 	background-position: center;
 }
 .jumbotron {
-	background-color: #91E6FF;
-	padding: 30px;
-	margin-bottom: 30px;
 	float: left;
+	position: relative;
+	margin-bottom: 30px;
 	margin: 20px;
     width: 500px;
+	padding: 30px;
+	padding-bottom: 160px;
+}
+.content {
+	position: absolute;
 }
 
 .container .jumbotron {
-border-radius: 6px;
-background-color: #91E6FF;
+	border-radius: 6px;
 }
 
 #about {
@@ -26,37 +29,61 @@ background-color: #91E6FF;
 	background-color: #1F88F1;
 	border-color: #357ebd;
 }
-h4 {
-	width: 265px
+#welcome-jumbo {
+	background-color: inherit;
 }
-#container {
-	float: right;
-    margin: 50px;
+#sign-up_container {
+/*	border: 1px solid black;*/
+	margin-left: 600px;
+	position: relative;
+    margin-top: 100px;
     width: 500px;
 }
+.labels {
+	position: relative;
+	width: 295px;
+}
+#sign-up {
+	position: relative;
+	top: 10px;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	margin-left: 100px;
+}
 #radio {
+	position: relative;
+	top: 10px;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
 	margin-left: 13px; 
 	width: 310px
 }
-/*#bday-year {
-	padding-left: 0px; 
-	width: 101px; 
-	padding-right: 0px; 
-	margin-left: 50px;
-}
-#bday-month {
-	padding-left: 0px; 
-	width: 101px; 
-	padding-right: 0px; 
-	margin-left: 10px;
-}
-#bday-day {
-	
-	
-	
-	
-}*/
 
+#year {
+	position: relative;
+	top: 10px;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 100px;
+}
+
+#month-day {
+	position: relative;
+	top: 10px;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 10px;
+}
+#sign-up_btn {
+	position: relative;
+	right: 80px;
+	margin-left: 100px;
+	width: 334px;
+}
 
 
 
