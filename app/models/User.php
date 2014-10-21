@@ -16,7 +16,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
         'last_name'        => 'required|max:255',
         'gender'           => 'required|in:M,F',
         'date_of_birth'    => 'required|date',
-        'native_language'  => 'required|in:English,Spanish,French'
+        'native_language'  => 'required|exists:languages,language'
     );
 	
 	public function posts()
