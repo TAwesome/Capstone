@@ -35,7 +35,7 @@ class HomeController extends BaseController {
         
         if ($valid) {
             
-            return Redirect::intended('posts');
+            return Redirect::intended('landingpage');
         }
         
         else {
@@ -49,7 +49,7 @@ class HomeController extends BaseController {
         //Logout the user
         //Redirect somewhere nice
         Auth::logout();
-        return Redirect::action('PostController@index');
+        return Redirect::action('UsersController@index');
         
     }
 
