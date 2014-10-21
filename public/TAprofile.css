@@ -42,15 +42,24 @@ body {
 p {
 	text-shadow: 2px 2px 2px #FFFFFF;
 }
-.posts-container {
-	border: 1px solid black;
-
-
-
+.guidebar {
+/*	border: 1px solid black;*/
+	float: left;
+	position: relative;
+	margin-bottom: 30px;
+	margin: 20px;
+    width: 500px;
+	padding: 30px;
+	padding-bottom: 160px;
 }
-
-
-
-
+.posts-container {
+/*	border: 1px solid black;*/
+	float: right;
+	position: relative;
+	margin-left: 0px;
+	margin-top: 42px;
+	padding-top: 10px;
+	padding-bottom: 300px;
+}
 
 
