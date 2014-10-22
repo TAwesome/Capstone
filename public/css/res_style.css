@@ -1,0 +1,106 @@
+
+body{
+    color: #1652CC;
+    font-family: monospace, sans-serif;
+    background-image: url(/img/hand_me_down.jpg);
+}
+
+h1{
+    text-align: center;
+    background-color: white; 
+}
+
+h1 small{
+    color:#B3C5CF;
+}
+
+.btn-default:active, .btn-default.active {
+    background-color: #005788;
+    border-color: #9295D2;
+    color: white;
+}
+
+.btn-default:hover{
+    color: white;
+    background-color: #B3C5CF;
+    border-color: #adadad;
+}
+
+.fa-github-alt:before {
+    content: "\f113";
+    color: #005788;
+}
+
+.fa-twitter-square:before {
+    content: "\f081";
+    color: #005788;
+}
+
+.fa-envelope-o:before {
+    content: "\f003";
+    color: #005788;
+}
+
+#work{
+    float: left;
+    color: #0A2A8F;
+    margin-left: 4%;
+    width: 330px;
+    height: 330px;
+}
+
+#edu{
+    float: left;
+    color: #0A2A8F;
+    margin-left: 4%;
+    width: 330px;
+    height: 330px;
+}
+
+#contact{
+    width: 171px;
+    margin: auto;
+    font-weight: bold;
+    color:#005788;
+}
+
+#skillz {
+    float: left;
+    color:#0A2A8F;
+    margin-left: 4%;
+    width: 330px;
+    height: 330px;
+}
+
+h3{
+    font-weight: bolder;
+    color: #0A2A8F;
+}
+
+li{
+    font-weight: bolder;
+    font-size: 1.25em;
+    color: #0A2A8F;
+}
+
+.wes{
+    float: left;
+    margin: auto;
+    padding: inherit;
+    color:black;
+    width: 310px;
+    height: 325px;
+}
+.containerPort {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 4%;
+}
+
+.col-md-5 {
+    width: 41.66666667%;
+    margin-bottom: 3%;
+}
+
