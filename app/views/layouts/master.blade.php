@@ -58,7 +58,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">MyLanguage</a>
+          <a class="navbar-brand" href="{{ action('HomeController@showWelcome') }}">MyLanguage</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -81,21 +81,21 @@
             </li> -->
           </ul>
 
-          <form class="form-inline" role="form">
+          {{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'form-inline', 'role' => 'form')) }}
             <div class="sign-in" style="margin-left: 670px; width: 500px; margin-top: 7px;">
               <div class="form-group">
                 <div class="input-group">
                   <div class="input-group-addon">@</div>
-                  <input class="form-control" type="email" placeholder="Enter email">
+                  <input class="form-control" name="email" type="email" placeholder="Enter email">
                 </div>
               </div>
               <div class="form-group">
                 <label class="sr-only" for="exampleInputPassword2">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
               </div>
-              <button type="submit" class="btn btn-default">Sign in</button>
+              {{Form::submit('Log In')}}
             </div>
-          </form>
+          {{ Form::close() }}
 
         </div><!--/.nav-collapse -->
       </div>

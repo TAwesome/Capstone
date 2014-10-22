@@ -9,5 +9,9 @@
 @section('content')
 
     <h1>User Show</h1>
+    <h1>User Show</h1>
+    <h1>User Show</h1>
+    
+    
     
 @stop

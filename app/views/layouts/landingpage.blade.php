@@ -1,9 +1,12 @@
 @extends('layouts.master')
 
+@section('header')
+<title>MyLanguage</title>
+@stop
+
 
 @section('content')
-
-    <div class="container theme-showcase" role="main">
+  <div class="container theme-showcase" role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron" style="padding-bottom: 160px;">
@@ -15,13 +18,9 @@
       <!-- *****Sign up***** -->
       <div id="container">
         <div class="sign-up">
-          <!-- Basic Imput Sign in stuff -->
+          <!-- Basic Input Sign in stuff -->
           <h2 style="width: 300px">Sign up!</h2>
-          
-          @foreach($errors->all() as $error)
-            {{ $error }}
-          @endforeach
-          
+
           <form method="POST" action="{{ action('UsersController@store') }}" class="form-horizontal" role="form">
 
             <p>
