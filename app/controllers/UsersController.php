@@ -60,8 +60,8 @@ class UsersController extends \BaseController {
         
         $user = new User();
         
-        $this->saveUser($user);
-
+        return $this->saveUser($user);
+        
     }
 
     /**
