@@ -139,7 +139,7 @@ class UsersController extends \BaseController {
             
         $id = $user->id;
         
-        return Redirect::action('UsersController@show', array(22));
+        return Redirect::action('UsersController@show', array($id));
         
     }
 
