@@ -35,6 +35,16 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
         return $this->belongsToMany('Post', 'likes', 'post_id', 'user_id')->withTimestamps();    
     }
     
+    public function follow()
+    {
+        return $this->belongsToMany('User', 'followings', 'follower_id', 'followed_id')->withTimestamps();    
+    }
+    
+    public function followers()
+    {
+        return $this->belongsToMany('User', 'followings', 'followed_id', 'follower_id')->withTimestamps();    
+    }
+    
     public function languages()
     {
         return $this->belongsToMany('Language');
