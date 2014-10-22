@@ -11,6 +11,11 @@ class Post extends BaseModel {
         return $this->belongsTo('User');
     }
     
+    public function likes()
+    {
+        return $this->belongsToMany('User', 'likes', 'user_id', 'post_id')->withTimestamps();    
+    }
+    
     public function languages()
     {
         return $this->belongsTo('Language');

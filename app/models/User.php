@@ -15,7 +15,6 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
         'first_name'       => 'required|max:255',
         'last_name'        => 'required|max:255',
         'gender'           => 'required|in:M,F',
-        //'native_language'  => 'required|exists:languages,language',
         'b_year' => 'required',
         'b_month' => 'required',
         'b_date' => 'required'
@@ -29,6 +28,11 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     public function comments()
     {
         return $this->hasMany('Comment');
+    }
+    
+    public function likes()
+    {
+        return $this->belongsToMany('Post', 'likes', 'post_id', 'user_id')->withTimestamps();    
     }
     
     public function languages()
