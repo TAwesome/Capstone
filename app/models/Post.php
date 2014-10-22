@@ -6,6 +6,11 @@ class Post extends BaseModel {
         'content' => 'required|max:200'
     );
     
+    public function tags()
+    {
+        return $this->belongsToMany('Tag');
+    }
+    
     public function users()
     {
         return $this->belongsTo('User');
