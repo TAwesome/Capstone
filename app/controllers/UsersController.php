@@ -8,7 +8,7 @@ class UsersController extends \BaseController {
     
     public function __construct()
     {
-        $this->beforeFilter('auth.basic', array('except' => array('index', 'show')));
+        $this->beforeFilter('auth', array('except' => array('index', 'show', 'store')));
     }
     
     
@@ -59,8 +59,11 @@ class UsersController extends \BaseController {
         
         $user = new User();
         
-        return $this->saveUser($user);
+        $response = $this->saveUser($user);
         
+        Auth::login($user);
+        
+        return $response;
     }
 
     /**
@@ -118,7 +121,7 @@ class UsersController extends \BaseController {
 
     }
     
-    public function saveUser($user)
+    public function saveUser(&$user)
     {
         
         $user->email = Input::get('email');
