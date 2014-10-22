@@ -6,11 +6,10 @@ class UsersController extends \BaseController {
 
 
     
-    // public function __construct()
- //    {
- //        // require csrf token for all post, delete, and put actions
- //        $this->beforeFilter('csrf', array('on' => array('post', 'delete', 'put')));
- //    }
+    public function __construct()
+    {
+        $this->beforeFilter('auth.basic', array('except' => array('index', 'show')));
+    }
     
     
     /**

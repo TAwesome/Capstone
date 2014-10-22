@@ -32,10 +32,10 @@ class HomeController extends BaseController {
         ];
         
         $valid = Auth::attempt($credentials);
-        // Auth::user()->id
+        
         if ($valid) {
-            
-            return Redirect::intended('landingpage');
+            $id = Auth::user()->id;
+            return Redirect::action('UsersController@show', array($id));
         }
         
         else {
