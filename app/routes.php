@@ -19,6 +19,10 @@ Route::get('/logout', 'HomeController@doLogout');
 
 // Route::get('/about', 'HomeController@showAbout');
 
+Route::get('/', 'HomeController@showJill');
+Route::get('/', 'HomeController@showJacob');
+Route::get('/', 'HomeController@showRissa');
+
 Route::resource('posts', 'PostsController');
 
 Route::resource('users', 'UsersController');

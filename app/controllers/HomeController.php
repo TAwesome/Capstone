@@ -25,6 +25,20 @@ class HomeController extends BaseController {
         return View::make('index');
     }
     
+     public function showJill()
+    {
+        return View::make('TAbout_jill');
+    }
+    
+     public function showJacob()
+    {
+        return View::make('TAbout_jacob');
+    }
+    
+     public function showRissa()
+    {
+        return View::make('TAbout_rissa');
+    }
     
     // public function showAbout()
     // {
