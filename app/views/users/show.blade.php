@@ -106,7 +106,7 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
        <div class="jumbotron">
           <div class="content">
-            <h1> Welcome {{$user->first_name}} {{ $user->last_name }}!</h1>
+            <h1> Welcome {{$user->first_name}}!</h1>
             <p>This is a place where you can place your favorite quote/song title/bio.</p>
             <img src="/img/toy-story-alien2.jpg" alt="Toy Story Alien" class="img-thumbnail">
             <p id="about-style"><a href="#" id="about"class="btn btn-primary btn-lg" role="button">Cover photo! &raquo;</a></p>

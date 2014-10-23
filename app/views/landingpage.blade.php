@@ -26,14 +26,14 @@
 
             <p>
               <div class="form-group" id="fnln">
-                <div class="col-sm-offset-2 col-sm-8" style="margin-left: 100px;">
+                <div class="col-xs-offset-2 col-xs-8" style="margin-left: 100px;">
                   <label class="sr-only" for="exampleInputFirstName2">First Name</label>
                   <input type="text" class="form-control" id="exampleInputFirstName2" name="first_name" placeholder="First Name">
                 </div>
               </div>
 
               <div class="form-group" id="fnln">
-                <div class="col-sm-offset-2 col-sm-8" style="margin-left: 100px;">
+                <div class="col-xs-offset-2 col-xs-8" style="margin-left: 100px;">
                   <label class="sr-only" for="exampleInputLast Name2">LastName</label>
                   <input type="text" class="form-control" id="exampleInputLastName2" name="last_name" placeholder="Last Name">
                 </div>
@@ -41,14 +41,14 @@
             </p>
             
             <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-8" style="margin-left: 100px;">
+              <div class="col-xs-offset-2 col-xs-8" style="margin-left: 100px;">
                 <label class="sr-only" for="exampleInputEmail2">Email</label>
                 <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email">
               </div>
             </div>
 
             <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-8" style="margin-left: 100px;">
+              <div class="col-xs-offset-2 col-xs-8" style="margin-left: 100px;">
                 <label class="sr-only" for="exampleInputPassword2">Password</label>
                 <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password">
               </div>
@@ -59,7 +59,7 @@
             <!-- *****Birthday Dropdown***** -->
             <div class="dropdown">
               <h4 style="width: 265px">Birthday</h4>
-                <div class="col-md-2" style="padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 100px;">
+                <div class="col-xs-2" style="padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 100px;">
                   <select class="form-control" id="bday-year" name="b_year">
                       <option selected>Year</option>
                       <option>2010</option>
@@ -126,7 +126,7 @@
                   </select>
                 </div>
 
-                <div class="col-md-2" style="padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 10px;">
+                <div class="col-xs-2" style="padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 10px;">
                   <select class="form-control" id="bday-month" name="b_month">
                       <option selected>Month</option>
                       <option>01</option>
@@ -144,7 +144,7 @@
                   </select>
                 </div>
 
-                <div class="col-md-2" style="padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 10px;">
+                <div class="col-xs-2" style="padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 10px;">
                   <select class="form-control" id="bday-day" name="b_date">
                       <option selected>Day</option>
                       <option>01</option>
@@ -203,7 +203,7 @@
 
 
             <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-6" style="margin-left: 35px;">
+              <div class="col-xs-offset-2 col-xs-6" style="margin-left: 35px;">
                 <label class="sr-only" for="exampleInputSignUp2">Sign Up</label>
                 <button type="submit" class="btn btn-lg btn-success">Sign Up</button>
               </div>
