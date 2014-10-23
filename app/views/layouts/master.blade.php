@@ -73,8 +73,11 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-<!--             <li><a href="#">Profile</a></li> -->
-<!--             <li><a href="#">Messages <span class="badge">3</span></a></li> -->
+            @if (Auth::check())
+            <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
+            @endif
+<!--        
+     <li><a href="#">Messages <span class="badge">3</span></a></li> -->
             <li><a href="#about">About</a></li>
             <li><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
             <!-- <li class="dropdown-nav">

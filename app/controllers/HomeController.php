@@ -22,7 +22,7 @@ class HomeController extends BaseController {
     
     public function showContact()
     {
-        return View::make('TAcontactus');
+        return View::make('index');
     }
     
     

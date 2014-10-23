@@ -22,7 +22,7 @@ class UsersController extends \BaseController {
         //This will need to be only viewable to 
         //the admins
 
-        return View::make('users.index', compact('users'));
+        return View::make('users.index');
     }
 
     /**
