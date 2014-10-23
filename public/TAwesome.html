@@ -120,14 +120,14 @@
 
           <p>
             <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-8" id="sign-up">
+              <div class="col-xs-offset-2 col-xs-8" id="sign-up">
                 <label class="sr-only" for="exampleInputFirstName2">First Name</label>
                 <input type="text" class="form-control" id="exampleInputFirstName2" placeholder="First Name">
               </div>
             </div>
 
             <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-8" id="sign-up">
+              <div class="col-xs-offset-2 col-xs-8" id="sign-up">
                 <label class="sr-only" for="exampleInputLast Name2">LastName</label>
                 <input type="text" class="form-control" id="exampleInputLastName2" placeholder="Last Name">
               </div>
@@ -135,14 +135,14 @@
           </p>
           
           <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-8" id="sign-up">
+            <div class="col-xs-offset-2 col-xs-8" id="sign-up">
               <label class="sr-only" for="exampleInputEmail2">Email</label>
               <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
             </div>
           </div>
 
           <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-8" id="sign-up">
+            <div class="col-xs-offset-2 col-xs-8" id="sign-up">
               <label class="sr-only" for="exampleInputPassword2">Password</label>
               <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
             </div>
@@ -153,7 +153,7 @@
           <!-- *****Birthday Dropdown***** -->
           <div class="dropdown">
             <h4 class="labels">Birthday</h4>
-              <div class="col-md-2" id="year">
+              <div class="col-xs-2" id="year">
                 <select class="form-control" id="bday-year" name="bday-year">
                     <option selected>Year</option>
                     <option>2010</option>
@@ -220,7 +220,7 @@
                 </select>
               </div>
 
-              <div class="col-md-2" id="month-day">
+              <div class="col-xs-2" id="month-day">
                 <select class="form-control" id="bday-month" name="bday-month">
                     <option selected>Month</option>
                     <option>01</option>
@@ -238,7 +238,7 @@
                 </select>
               </div>
 
-              <div class="col-md-2" id="month-day">
+              <div class="col-xs-2" id="month-day">
                 <select class="form-control" id="bday-day" name="bday-day">
                     <option selected>Day</option>
                     <option>01</option>
@@ -275,7 +275,7 @@
                 </select>
               </div>
 
-<!--               <div class="col-md-2" id="bday-day">
+<!--               <div class="col-xs-2" id="bday-day">
                 <select class="form-control" id="bday-day" name="bday-day">
                     <option selected>Language</option>
                     <option>English</option>
@@ -306,7 +306,7 @@
 
 
           <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-6">
+            <div class="col-xs-offset-2 col-xs-6">
               <label class="sr-only" for="exampleInputSignUp2">Sign Up</label>
               <button type="submit" class="btn btn-lg btn-success" id="sign-up_btn">Sign Up</button>
             </div>
