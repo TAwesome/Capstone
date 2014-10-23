@@ -20,6 +20,18 @@ class HomeController extends BaseController {
         return View::make('landingpage');
     }
     
+    public function showContact()
+    {
+        return View::make('TAcontactus');
+    }
+    
+    
+    // public function showAbout()
+    // {
+    //     return View::make('');
+    // }
+    
+    
     public function doLogin()
     {
         //Attempt to login the user
