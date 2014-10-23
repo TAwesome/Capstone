@@ -17,6 +17,8 @@ Route::post('/login', 'HomeController@doLogin');
 
 Route::get('/logout', 'HomeController@doLogout');
 
+Route::get('/profile', 'TAprofile');
+
 Route::resource('posts', 'PostsController');
 
 Route::resource('users', 'UsersController');
