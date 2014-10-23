@@ -93,7 +93,7 @@
                     
         @if (Auth::check())
         
-            <li>{{ link_to_action('HomeController@doLogout', 'Logout') }} </li>
+            <li>{{ link_to_action('HomeController@doLogout', 'Logout', array('class' => 'btn btn-default')) }} </li>
                     
         @else 
           {{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'form-inline', 'role' => 'form')) }}
