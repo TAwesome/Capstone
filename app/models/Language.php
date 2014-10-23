@@ -1,6 +1,10 @@
 <?php
 
 class Language extends BaseModel {
+    
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 	
     public static $rules = array(
         'language' => 'required|max:200|unique:languages'

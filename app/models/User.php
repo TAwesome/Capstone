@@ -8,6 +8,10 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class User extends BaseModel implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
+    
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 	
 	public static $rules = array(
         'email'            => 'required|max:200|email|unique:users', 
@@ -15,7 +19,6 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
         'first_name'       => 'required|max:255',
         'last_name'        => 'required|max:255',
         'gender'           => 'required|in:M,F',
-        //'native_language'  => 'required|exists:languages,language',
         'b_year' => 'required',
         'b_month' => 'required',
         'b_date' => 'required'
@@ -29,6 +32,21 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     public function comments()
     {
         return $this->hasMany('Comment');
+    }
+    
+    public function likes()
+    {
+        return $this->belongsToMany('Post', 'likes', 'post_id', 'user_id')->withTimestamps();    
+    }
+    
+    public function follow()
+    {
+        return $this->belongsToMany('User', 'followings', 'follower_id', 'followed_id')->withTimestamps();    
+    }
+    
+    public function followers()
+    {
+        return $this->belongsToMany('User', 'followings', 'followed_id', 'follower_id')->withTimestamps();    
     }
     
     public function languages()
