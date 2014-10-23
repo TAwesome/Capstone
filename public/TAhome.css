@@ -1,3 +1,19 @@
 #dropdown-nav {
 	left: 500px;
 }
+.guidebar {
+	float: left;
+	position: relative;
+	margin-bottom: 30px;
+	margin: 50px;
+    width: 500px;
+}
+.posts-container {
+/*	border: 1px solid black;*/
+	float: right;
+	position: relative;
+	margin-left: 0px;
+	margin-top: 42px;
+	padding-top: 10px;
+	padding-bottom: 300px;
+}
