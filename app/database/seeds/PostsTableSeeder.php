@@ -12,8 +12,12 @@ class PostsTableSeeder extends Seeder {
 
 		foreach(range(1, 10) as $index)
 		{
+            $language = Language::orderByRaw("RAND()")->first();
+            $user = User::orderByRaw("RAND()")->first();
 			Post::create([
-                'content' => $faker->realText($maxNbChars = 200, $indexSize = 2)
+                'content'     => $faker->realText($maxNbChars = 200, $indexSize = 2),
+                'user_id'     => $user->id,
+                'language_id' => $language->id
 			]);
 		}
 	}

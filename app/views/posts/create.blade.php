@@ -1,1 +1,17 @@
-/vagrant/sites/capstone.dev/app/views/posts/create.blade.php
+@extends('layouts.master')
+
+
+@section('header')
+    <title>Create Blade</title>
+@stop
+    
+@section('content')
+
+
+
+@stop
+
+
+@section('bottom-script')
+
+@stop
