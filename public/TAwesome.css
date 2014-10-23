@@ -1,6 +1,3 @@
-#dropdown-nav {
-	left: 700px;
-}
 body {
 	text-align: center;
 	background-image: url('/img/jumbotron.jpg');
@@ -33,7 +30,7 @@ body {
 	background-color: inherit;
 }
 #sign-up_container {
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	margin-left: 600px;
 	position: relative;
     margin-top: 100px;
