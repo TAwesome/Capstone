@@ -12,4 +12,9 @@ class BaseModel extends Eloquent {
     {
         $this->attributes['email'] = strtolower($value);
     }
+    
+    public function setTagAttribute($value)
+    {
+        $this->attributes['tag'] = strtolower($value);
+    }
 }
