@@ -18,6 +18,13 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
+
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/font_awesome/css/font-awesome.min.css">
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
@@ -35,13 +42,16 @@
     <!-- Bootstrap theme -->
     <link href="../../dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="theme.css" rel="stylesheet">
-
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
+    <style>
+    
+      body {
+        margin-top: 70px;
+      }
+      
+    </style>
     @yield('header')
  
   </head>
@@ -80,7 +90,12 @@
               </ul>
             </li> -->
           </ul>
-
+                    
+        @if (Auth::check())
+        
+            <li>{{ link_to_action('HomeController@doLogout', 'Logout', array('class' => 'btn btn-default')) }} </li>
+                    
+        @else 
           {{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'form-inline', 'role' => 'form')) }}
             <div class="sign-in" style="margin-left: 670px; width: 500px; margin-top: 7px;">
               <div class="form-group">
@@ -96,6 +111,7 @@
               {{Form::submit('Log In')}}
             </div>
           {{ Form::close() }}
+        @endif
 
         </div><!--/.nav-collapse -->
       </div>
