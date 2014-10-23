@@ -2,6 +2,10 @@
 
 class Post extends BaseModel {
     
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
+    
 	public static $rules = array(
         'content' => 'required|max:200'
     );

@@ -16,6 +16,7 @@ class CreateCommentsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('content', 100);
+			$table->softDeletes();
 			$table->timestamps();
 		});
 	}

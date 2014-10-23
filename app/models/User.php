@@ -8,6 +8,10 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class User extends BaseModel implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
+    
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 	
 	public static $rules = array(
         'email'            => 'required|max:200|email|unique:users', 
