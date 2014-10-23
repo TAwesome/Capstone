@@ -7,10 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/TAprofile.css">
+    <link rel="stylesheet" type="text/css" href="/TAcontactus.css">
 
     <!-- Custom styles for this template -->
-    <!-- <link href="cover.css" rel="stylesheet"> -->
+    <link href="cover.css" rel="stylesheet">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,8 +42,11 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet"> -->
+
     <title>Cover Template for Bootstrap</title>
- 
+
   </head>
 
   <body role="document">
@@ -63,10 +66,10 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
-            <li class="active"><a href="#">Profile</a></li>
+            <li><a href="#">Profile</a></li>
             <li><a href="#">Messages <span class="badge">3</span></a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact Us</a></li>
+            <li class="active"><a href="#contact">Contact Us</a></li>
             <li class="dropdown-nav">
               <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -81,57 +84,49 @@
             </li>
           </ul>
 
-<!--           <form class="form-inline" role="form">
-            <div class="sign-in" style="margin-left: 670px; width: 500px; margin-top: 7px;">
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-addon">@</div>
-                  <input class="form-control" type="email" placeholder="Enter email">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="exampleInputPassword2">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-              </div>
-              <button type="submit" class="btn btn-default">Sign in</button>
-            </div>
-          </form> -->
-
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-    <div class="container theme-showcase" role="main">
 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-       <div class="jumbotron">
-          <div class="content">
-            <h1>Rissa Waters</h1>
-            <p>This is a place where you can place your favorite quote/song title/bio.</p>
-            <img src="/img/toy-story-alien2.jpg" alt="Toy Story Alien" class="img-thumbnail">
-            <p id="about-style"><a href="#" id="about"class="btn btn-primary btn-lg" role="button">Cover photo! &raquo;</a></p>
-          </div>
-       </div>
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
 
-      <!-- User Posting ability -->
-      <div class="guidebar list-group col-sm-3">
-        <a href="#" class="list-group-item active">Cras justo odio</a>
-        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-        <a href="#" class="list-group-item">Morbi leo risus</a>
-        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-        <a href="#" class="list-group-item">Vestibulum at eros</a>
-      </div>
+    <div class="container marketing">
 
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="img/Jillian.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>Jillian Donovan</h2>
+          <p><a href="https://github.com/Jbns89" role="button">Github</a></p>
+          <p><a href="https://www.linkedin.com/pub/jill-donovan/a3/8a6/a1a/" role="button">Linkedin</a></p>
+          <p><a href="https://twitter.com/JDonovan89" role="button">Twitter</a></p>
+          <p><a href="jbns89@gmail.com" role="button">Email</a></p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="img/Jacob.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>Jacob Ernst</h2>
+          <p><a href="https://github.com/Jacob-Ernst" role="button">Github</a></p>
+          <p><a href="https://www.linkedin.com/pub/jacob-ernst/a3/3aa/497" role="button">Linkedin</a></p>
+          <p><a href="https://twitter.com/ernst_je" role="button">Twitter</a></p>
+          <p><a href="jacob.f.ernst@gmail.com" role="button">Email</a></p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="img/Rissa.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>Rissa Waters</h2>
+          <p><a href="https://github.com/rissa3896" role="button">Github</a></p>
+          <p><a href="https://www.linkedin.com/pub/marissa-waters/a3/8a9/2a9" role="button">Linkedin</a></p>
+          <p><a href="https://twitter.com/rissawaters3896" role="button">Twitter</a></p>
+          <p><a href="rissa@rissawaters.com" role="button">Email</a></p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
 
-      <div class="posts-container col-sm-8">
-         <div>
-            <input type="text" class="form-control" placeholder="Try a new Language!">
-        </div>
-      </div>
-
-    </div>
-
-
+    </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
