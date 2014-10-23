@@ -6,11 +6,10 @@ class UsersController extends \BaseController {
 
 
     
-    // public function __construct()
- //    {
- //        // require csrf token for all post, delete, and put actions
- //        $this->beforeFilter('csrf', array('on' => array('post', 'delete', 'put')));
- //    }
+    public function __construct()
+    {
+        $this->beforeFilter('auth', array('except' => array('index', 'show', 'store')));
+    }
     
     
     /**
@@ -60,8 +59,11 @@ class UsersController extends \BaseController {
         
         $user = new User();
         
-        return $this->saveUser($user);
+        $response = $this->saveUser($user);
         
+        Auth::login($user);
+        
+        return $response;
     }
 
     /**
@@ -119,7 +121,7 @@ class UsersController extends \BaseController {
 
     }
     
-    public function saveUser($user)
+    public function saveUser(&$user)
     {
         
         $user->email = Input::get('email');

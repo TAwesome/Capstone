@@ -1,0 +1,44 @@
+.navbar-default
+{
+    background-color: white;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus 
+{
+    color: #FDF8F8;
+    background-color: #B3C5CF;
+}
+
+.navbar-default .navbar-nav>li>a 
+{
+    color: #005788;
+    font-family: monospace;
+    font-size: large;
+    font-weight: 800;
+}
+
+.navbar-brand-centered 
+{
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 160px;
+    text-align: center;
+        
+}
+
+.navbar>.container .navbar-brand-centered, 
+.navbar>.container-fluid .navbar-brand-centered>a:hover 
+{
+    margin-left: -80px;
+    background-color: #B3C5CF;
+    color: #FDF8F8;
+}
+
+.navbar-default .navbar-brand 
+{
+    color: #1212F1;
+    font-family: serif;
+    font-size: xx-large;
+    font-weight: bolder;
+}
