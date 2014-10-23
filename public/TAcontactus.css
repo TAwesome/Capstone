@@ -1,0 +1,14 @@
+#dropdown-nav {
+	left: 500px;
+}
+body {
+	text-align: center;
+	text-shadow: 2px 2px 2px #FFFFFF;
+	background-image: url('/img/jumbotron.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.row {
+	margin-top: 150px;
+	margin-bottom: 150px;
+}

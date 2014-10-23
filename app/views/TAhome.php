@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/TAprofile.css">
 
     <!-- Custom styles for this template -->
-    <!-- <link href="cover.css" rel="stylesheet"> -->
+    <link href="cover.css" rel="stylesheet">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,8 +62,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
-            <li class="active"><a href="#">Profile</a></li>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Profile</a></li>
             <li><a href="#">Messages <span class="badge">3</span></a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact Us</a></li>
@@ -101,35 +101,7 @@
       </div>
     </div>
 
-    <div class="container theme-showcase" role="main">
 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-       <div class="jumbotron">
-          <div class="content">
-            <h1>Rissa Waters</h1>
-            <p>This is a place where you can place your favorite quote/song title/bio.</p>
-            <img src="/img/toy-story-alien2.jpg" alt="Toy Story Alien" class="img-thumbnail">
-            <p id="about-style"><a href="#" id="about"class="btn btn-primary btn-lg" role="button">Cover photo! &raquo;</a></p>
-          </div>
-       </div>
-
-      <!-- User Posting ability -->
-      <div class="guidebar list-group col-sm-3">
-        <a href="#" class="list-group-item active">Cras justo odio</a>
-        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-        <a href="#" class="list-group-item">Morbi leo risus</a>
-        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-        <a href="#" class="list-group-item">Vestibulum at eros</a>
-      </div>
-
-
-      <div class="posts-container col-sm-8">
-         <div>
-            <input type="text" class="form-control" placeholder="Try a new Language!">
-        </div>
-      </div>
-
-    </div>
 
 
 
