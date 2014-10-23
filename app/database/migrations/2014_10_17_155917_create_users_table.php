@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration {
 		    $table->enum('gender', array('M', 'F'));
 		    $table->date('date_of_birth');
 		    $table->enum('native_language', array('English', 'Spanish', 'French'));
+		    $table->softDeletes();
 		    $table->rememberToken();
 			$table->timestamps();
 		});
