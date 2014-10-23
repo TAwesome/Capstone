@@ -38,9 +38,9 @@
     <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
-    <link href="../../dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -76,7 +76,7 @@
 <!--             <li><a href="#">Profile</a></li> -->
 <!--             <li><a href="#">Messages <span class="badge">3</span></a></li> -->
             <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
             <!-- <li class="dropdown-nav">
               <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
