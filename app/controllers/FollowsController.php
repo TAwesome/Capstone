@@ -2,12 +2,14 @@
 
 class FollowsController extends BaseController
 {
+    //Need to redirect guests if they navigate to the 
+    //following or followers page.
     public function follow($id)
     {
         $follower = User::find(Auth::id());
         $followed = User::find($id);
         $follower->follow()->save($followed);
-        return View::make('hello');
+        return;
     }
 // Route::get('/follow/{user1}/{user2}', function($user1, $user2)
 // {
@@ -22,7 +24,7 @@ class FollowsController extends BaseController
         $follower = User::find(Auth::id());
         $followed = User::find($id);
         $follower->follow()->detach($followed->id);
-        return View::make('hello');
+        return;
     }
 
 // Route::get('/unfollow/{user1}/{user2}', function($user1, $user2)
