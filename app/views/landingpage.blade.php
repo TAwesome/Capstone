@@ -57,36 +57,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand active" href="#">MyLanguage</a>
+          <a class="navbar-brand active" href="{{ action('HomeController@showWelcome') }}">MyLanguage</a>
         </div> 
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
             @if (Auth::check())
-            <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
+                <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
+                <li><a href="#">Messages <span class="badge">3</span></a></li>
             @endif
-<!--             <li><a href="#">Profile</a></li> -->
-<!--             <li><a href="#">Messages <span class="badge">3</span></a></li> -->
             <li><a href="#about">About</a></li>
             <li><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
-            <!-- <li class="dropdown-nav">
-              <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li> -->
           </ul>
 
-          @if (Auth::check())
-        
-            <li>{{ link_to_action('HomeController@doLogout', 'Logout', array('class' => 'btn btn-default')) }} </li>
-                    
+        @if (Auth::check())
+            <li><button>{{ link_to_action('HomeController@doLogout', 'Logout', array('class' => 'btn btn-default')) }} </button></li>
         @else 
           {{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'form-inline', 'role' => 'form')) }}
             <div class="sign-in" style="margin-left: 670px; width: 500px; margin-top: 7px;">
