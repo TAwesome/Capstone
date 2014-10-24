@@ -61,15 +61,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">MyLanguage</a>
+          <a class="navbar-brand" href="{{ action('HomeController@showWelcome') }}">MyLanguage</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
+            @if (Auth::check())
+            <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
+            @endif
             <li><a href="#">Messages <span class="badge">3</span></a></li>
             <li><a href="#about">About</a></li>
-            <li class="active"><a href="#contact">Contact Us</a></li>
+            <li class="active"><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
             <li><a href="#">Logout</a></li>
             <li class="dropdown-nav">
               <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
