@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/following', 'FollowsController@following');
 
-Route::get('/followers', 'FollowsController@followers');
+Route::get('/follow/{id}', 'FollowsController@follow');
+
+Route::get('/unfollow/{id}', 'FollowsController@unfollow');
+
+Route::get('/following/me', 'FollowsController@followers');
+
+Route::get('/following', 'FollowsController@following');
 
 Route::get('/', 'HomeController@showWelcome');
 
