@@ -24,7 +24,7 @@ class FollowsController extends BaseController
         $follower = User::find(Auth::id());
         $followed = User::find($id);
         $follower->follow()->detach($followed->id);
-        return;
+        return Redirect::back();
     }
 
 // Route::get('/unfollow/{user1}/{user2}', function($user1, $user2)
