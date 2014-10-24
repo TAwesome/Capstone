@@ -103,30 +103,47 @@
 
     <div class="container theme-showcase" role="main">
 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-       <div class="jumbotron">
-          <div class="content">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="content">
             <h1> Welcome {{$user->first_name}}!</h1>
-            <p>This is a place where you can place your favorite quote/song title/bio.</p>
+            <p class="tagline">This is a place where you can place your favorite quote/song title/bio.</p>
             <img src="/img/toy-story-alien2.jpg" alt="Toy Story Alien" class="img-thumbnail">
             <p id="about-style"><a href="#" id="about"class="btn btn-primary btn-lg" role="button">Cover photo! &raquo;</a></p>
-          </div>
-       </div>
+        </div>
+    </div>
 
-      <!-- User Posting ability -->
-      <div class="guidebar list-group col-xs-3">
+    <!-- User Posting ability -->
+    <div class="guidebar list-group col-xs-3">
         <a href="#" class="list-group-item active">View Posts</a>
         <a href="#" class="list-group-item">English</a>
         <a href="#" class="list-group-item">Spanish</a>
         <a href="#" class="list-group-item">French</a>
-      </div>
+    </div>
 
-
-      <div class="posts-container col-xs-8">
-         <div>
-            <input type="text" class="form-control" placeholder="Try a new Language!">
+    {{ Form::open(array('action' => 'PostsController@store', 'class' => 'form-inline', 'role' => 'form')) }}
+        <div class="posts-container col-xs-8">
+            <div class="input-group input-group-lg">
+                
+                {{ Form::label('newpost', 'New Post') }}
+                {{ Form::textarea('content', array('class' => 'span12', 'placeholder' => 'New Post Here', 'rows' => '3'))}}
+                {{ Form::submit('Post') }}
+                
+            </div>
         </div>
-      </div>
+    {{ Form::close() }}
+        
+        <!-- @forelse($posts as $post)
+        <div class="blogs">
+            <p class="info"> {{{ $post->content }}} </p>
+            <p class="info"> by: {{{ $user->first_name }}} {{{ $user->last_name }}} </p>
+
+        </div>
+        @empty
+        <p>No Blogs</p>
+        @endforelse -->
+        
+    
 
     </div>
 
