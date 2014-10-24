@@ -49,6 +49,25 @@ class PostsController extends \BaseController {
         return View::make('posts.create');
     }
 
+    protected function savePost($post)
+    {
+        
+        $validator = Validator::make($data = Input::all(), Post::$rules);
+
+        if ($validator->fails()) {
+            Log::info('No empty posts', Input::all());
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else {
+            $post->content = Input::get('content');
+            $post->user_id = Auth::id();
+        }
+        
+        $post->save();
+        $id = $post->id;
+        return Redirect::action('PostsController@show', $id);
+    }
+    
     /**
      * Store a newly created post in storage.
      *
@@ -69,12 +88,15 @@ class PostsController extends \BaseController {
     public function show($id)
     {
         $post = Post::find($id);
+        
+        $user = User::findOrFail($post->user_id);
+        
         if (!$post) {
             Log::info('User encountered 404 error', Input::all());
             App::abort(404);
         }
         
-        return View::make('posts.show', compact('post'));
+        return View::make('users.show', compact('post', 'user'));
     }
 
     /**
@@ -103,25 +125,6 @@ class PostsController extends \BaseController {
         $post = Post::find($id);
 
         return $this->savePost($post);
-    }
-
-    protected function savePost(Post $post)
-    {
-        
-        $validator = Validator::make($data = Input::all(), Post::$rules);
-
-        if ($validator->fails()) {
-            Log::info('User did not fill out all fields of form', Input::all());
-            return Redirect::back()->withErrors($validator)->withInput();
-        }
-        else {
-            $post->content = Input::get('content');
-            $post->user_id = Auth::id();
-        }
-        
-        $post->save();
-        $id = $post->id;
-        return Redirect::action('UsersController@show', $id);
     }
     
     /**

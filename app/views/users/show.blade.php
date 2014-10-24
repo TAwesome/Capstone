@@ -67,18 +67,6 @@
             <li><a href="#">Messages <span class="badge">3</span></a></li>
             <li><a href="#about">About</a></li>
             <li><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
-            <li class="dropdown-nav">
-              <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
           </ul>
 
 <!--           <form class="form-inline" role="form">
@@ -123,16 +111,30 @@
 
   {{ Form::open(array('action' => 'PostsController@store', 'class' => 'form-inline', 'role' => 'form')) }}
   <div class="posts-container col-xs-8">
+    <h1>Write A New Post</h1>
      <div>
-        <input type="text" class="form-control" name="content" placeholder="Write a new post">
+        {{ Form::textarea('content', null , array('class' => 'span12 form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
     </div>
+    {{Form::submit('Post', array('class' => 'span12 form-control', 'rows' => '5'))}}
   </div>
-      {{Form::submit('Log In')}}
+      
     {{ Form::close() }}
 
     </div>
+    
 
-
+    <div class="container">
+    @forelse($user->posts as $post)
+    
+        <div class="posts">
+            <p> {{ $post->content }} </p>
+        </div>
+    @empty
+        <div class="posts">
+            <p>You haven't Written any posts yet...</p>
+        </div>
+    @endforelse
+</div>
 
 
     <!-- Bootstrap core JavaScript

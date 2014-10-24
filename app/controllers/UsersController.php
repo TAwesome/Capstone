@@ -73,13 +73,13 @@ class UsersController extends \BaseController {
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::with('posts')->find($id);
         
         if (!$user) {
             Log::info('User encountered 404 error', Input::all());
             App::abort(404);
         }
-
+        
         return View::make('users.show', compact('user'));
     }
 
