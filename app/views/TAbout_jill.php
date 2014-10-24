@@ -61,15 +61,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">MyLanguage</a>
+          <a class="navbar-brand" href="{{ action('HomeController@showWelcome') }}">MyLanguage</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
+            @if (Auth::check())
+            <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
+            @endif
             <li><a href="#">Messages <span class="badge">3</span></a></li>
             <li><a href="#about">About</a></li>
-            <li class="active"><a href="#contact">Contact Us</a></li>
+            <li class="active"><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
             <li><a href="#">Logout</a></li>
             <li class="dropdown-nav">
               <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
@@ -98,13 +100,12 @@
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
-        
+
         <div class="col-xs-offset-3 col-xs-6">
-          <img class="img-circle" src="img/Rissa.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Rissa Waters</h2>
-          <p>Applicake halvah sesame snaps muffin. Gummies powder donut caramels biscuit tart topping. Donut sesame snaps tiramisu. Cotton candy cotton candy gummi bears sesame snaps sweet roll biscuit. Gummies candy carrot cake sweet roll. Dessert cake bear claw croissant. Apple pie sesame snaps sweet roll bonbon liquorice lemon drops chocolate cake chocolate tiramisu. Applicake sweet roll tiramisu. Gummi bears caramels chocolate chocolate bar jelly-o lollipop danish muffin chupa chups. Powder bear claw pastry applicake jelly unerdwear.com powder gingerbread. Caramels jelly soufflé bear claw oat cake. Sweet roll lemon drops candy topping sesame snaps lemon drops cupcake. Cheesecake bonbon brownie chupa chups brownie dragée. Chocolate sweet roll fruitcake danish. Cotton candy liquorice sesame snaps dessert jelly-o cupcake chocolate jelly caramels. Jelly beans sesame snaps candy pudding candy marzipan brownie tiramisu dragée. Applicake cupcake carrot cake jelly-o pudding chupa chups pudding apple pie. Fruitcake bonbon unerdwear.com cotton candy icing ice cream. Jujubes candy canes brownie chocolate pudding marshmallow gingerbread chocolate cake. Tart liquorice tootsie roll cupcake chocolate cake muffin tootsie roll lemon drops. Caramels powder gummies. Gummi bears sweet sweet roll carrot cake liquorice tiramisu ice cream applicake. Bonbon cupcake brownie. Chupa chups carrot cake jelly-o sweet roll gummies.
+          <img class="img-circle" src="img/Jillian.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>Jillian Donovan</h2>
+          <p>Cat ipsum dolor sit amet, chase mice. Poop on grasses scamper behind the couch, so leave hair everywhere jump off balcony, onto stranger's head. Pooping rainbow while flying in a toasted bread costume in space. Shake treat bag sleep in the bathroom sink, and chase ball of string missing until dinner time. Missing until dinner time leave hair everywhere rub face on everything. Intently stare at the same spot. Peer out window, chatter at birds, lure them to mouth all of a sudden cat goes crazy, for stretch, or swat at dog find something else more interesting, and cat snacks, or meow all night having their mate disturbing sleeping humans. Loves cheeseburgers hunt by meowing loudly at 5am next to human slave food dispenser vommit food and eat it again burrow under covers, so throwup on your pillow, for stretch. Stretch destroy couch rub face on everything, bathe private parts with tongue then lick owner's face play time, for give attitude, and chase ball of string. Loves cheeseburgers hack up furballs and stick butt in face, so plan steps for world domination who's the baby, so present belly, scratch hand when stroked, intrigued by the shower. Run in circles has closed eyes but still sees you. Chew foot stick butt in face hate dog. 
           </p>
-          
         </div><!-- /.col-lg-4 -->
 
       </div><!-- /.row -->

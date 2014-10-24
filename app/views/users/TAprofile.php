@@ -7,10 +7,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/TAcontactus.css">
+    <link rel="stylesheet" type="text/css" href="/TAprofile.css">
 
     <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
+    <!-- <link href="cover.css" rel="stylesheet"> -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,11 +42,8 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-    <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet"> -->
-
     <title>Cover Template for Bootstrap</title>
-
+ 
   </head>
 
   <body role="document">
@@ -66,10 +63,10 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
+            <li class="active"><a href="#">Profile</a></li>
             <li><a href="#">Messages <span class="badge">3</span></a></li>
             <li><a href="#about">About</a></li>
-            <li class="active"><a href="#contact">Contact Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
             <li><a href="#">Logout</a></li>
             <li class="dropdown-nav">
               <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
@@ -85,29 +82,57 @@
             </li>
           </ul>
 
+<!--           <form class="form-inline" role="form">
+            <div class="sign-in" style="margin-left: 670px; width: 500px; margin-top: 7px;">
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-addon">@</div>
+                  <input class="form-control" type="email" placeholder="Enter email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="exampleInputPassword2">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-default">Sign in</button>
+            </div>
+          </form> -->
+
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
+    <div class="container theme-showcase" role="main">
 
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+       <div class="jumbotron">
+          <div class="content">
+            <h1>Rissa Waters</h1>
+            <p>This is a place where you can place your favorite quote/song title/bio.</p>
+            <img src="/img/toy-story-alien2.jpg" alt="Toy Story Alien" class="img-thumbnail">
+            <p id="about-style"><a href="#" id="about"class="btn btn-primary btn-lg" role="button">Cover photo! &raquo;</a></p>
+          </div>
+       </div>
 
-    <div class="container marketing">
+      <!-- User Posting ability -->
+      <div class="guidebar list-group col-sm-3">
+        <a href="#" class="list-group-item active">Cras justo odio</a>
+        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+        <a href="#" class="list-group-item">Morbi leo risus</a>
+        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+        <a href="#" class="list-group-item">Vestibulum at eros</a>
+      </div>
 
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
 
-        <div class="col-xs-offset-3 col-xs-6">
-          <img class="img-circle" src="img/Jacob.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Jacob Ernst</h2>
-          <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead. Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.
-          </p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-xs-4">
+      <div class="posts-container col-sm-8">
+         <div>
+            <input type="text" class="form-control" placeholder="Try a new Language!">
+        </div>
+      </div>
 
-    </div><!-- /.container -->
+    </div>
+
+
 
 
     <!-- Bootstrap core JavaScript
