@@ -56,10 +56,8 @@ class PostsController extends \BaseController {
      */
     public function store()
     {
-        //look up post::create
-        Post::create($data);
-
-        return Redirect::route('posts.show');
+        $post = new Post();
+        return $this->savePost($post);
     }
 
     /**
@@ -110,9 +108,6 @@ class PostsController extends \BaseController {
     protected function savePost(Post $post)
     {
         
-        //Leave this commented out until Jacob finishes working on
-        //validation and rules in model
-        
         $validator = Validator::make($data = Input::all(), Post::$rules);
 
         if ($validator->fails()) {
@@ -121,20 +116,12 @@ class PostsController extends \BaseController {
         }
         else {
             $post->content = Input::get('content');
-            
-            //Uncomment this once user_id is created
             $post->user_id = Auth::id();
         }
         
         $post->save();
-            
         $id = $post->id;
-        
-        Session::flash('successMessage','Post was saved!');
-        //You can also use Input::get('title', 'Default Value');
-        //So if nothing is typed in then a default value is set
-        
-        return Redirect::action('PostController@show', $id);
+        return Redirect::action('UsersController@show', $id);
     }
     
     /**
