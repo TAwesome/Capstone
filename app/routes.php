@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/following', 'FollowsController@following');
+
+Route::get('/followers', 'FollowsController@followers');
+
 Route::get('/', 'HomeController@showWelcome');
 
 Route::post('/login', 'HomeController@doLogin');
