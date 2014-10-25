@@ -43,6 +43,27 @@
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
     <title>{{ $user->first_name }}</title>
+    
+    <style>
+    
+    .posts-container {
+        padding-bottom: 10px;
+    }
+    
+    button, input, optgroup, select, textarea {
+        margin-top: 5px;
+    }
+    
+    .guidebar {
+        margin-left: 35px;
+    }
+    
+    .posts {
+        width: 1210px;
+    }
+
+    
+    </style>
  
   </head>
 
@@ -126,12 +147,12 @@
     <div class="container">
     @forelse($user->posts as $post)
     
-        <div class="posts">
-            <p> {{ $post->content }} </p>
+        <div>
+            <p class="posts"> {{ $post->content }} </p>
         </div>
     @empty
-        <div class="posts">
-            <p>You haven't Written any posts yet...</p>
+        <div>
+            <p class="posts">You haven't Written any posts yet...</p>
         </div>
     @endforelse
 </div>
