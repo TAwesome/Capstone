@@ -143,6 +143,20 @@ class UsersController extends \BaseController {
         return Redirect::action('UsersController@show', array($id));
         
     }
+    
+    public function uploadFile ()
+    {
+        if (Input::hasFile('image')) {
+            $file = Input::file('image');
+            $orig_name = $file->getClientOriginalName() . str_random(6);
+            $dest_path = public_path() . '/img/';
+            $upload = $file->move($dest_path, $orig_name);
+            $user->post->img_path = '/img/' . $orig_name;
+            $user->save();
+            $id = $user->id;
+            return Redirect::action('UsersController@show', array($id));
+        }
+    }
 
 
     /**
