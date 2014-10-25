@@ -59,8 +59,39 @@
     }
     
     .posts {
-        width: 1210px;
+        width: 500px;
+        margin-left: auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-right: auto;
+        background-color: rgba(19, 130, 199, 0.2); 
+        border-radius: 6px;
+        
     }
+    
+    .postings {
+        width: 1200px;
+        margin-left: 125px;
+    }
+    
+    .likes {
+        margin-bottom: 0;
+        font-size: 12px;
+        border: 1px solid rgba(0, 41, 252, 0.35);
+        border-radius: 100px;
+        margin: 5px;
+        background-color: rgba(240, 248, 255, 0);
+    }
+
+    .comments {
+        margin-bottom: 0;
+        font-size: 12px;
+        border: 1px solid rgba(0, 41, 252, 0.35);
+        border-radius: 100px;
+        margin: 5px;
+        background-color: rgba(240, 248, 255, 0);
+    }
+
 
     
     </style>
@@ -112,15 +143,18 @@
 
     <div class="container theme-showcase" role="main">
 
+
   <!-- Main jumbotron for a primary marketing message or call to action -->
    <div class="jumbotron">
       <div class="content">
         <h1> Welcome {{$user->first_name}}!</h1>
         <p>This is a place where you can place your favorite quote/song title/bio.</p>
         <img src="/img/toy-story-alien2.jpg" alt="Toy Story Alien" class="img-thumbnail">
-        <p id="about-style"><a href="#" id="about"class="btn btn-primary btn-lg" role="button">Cover photo! &raquo;</a></p>
+        <p id="about-style"><a href=# id="about"class="btn btn-primary btn-lg" role="button">Cover photo! &raquo;</a></p>
       </div>
    </div>
+
+
 
   <!-- User Posting ability -->
   <div class="guidebar list-group col-xs-3">
@@ -144,11 +178,18 @@
     </div>
     
 
-    <div class="container">
+    <div>
     @forelse($user->posts as $post)
     
-        <div>
-            <p class="posts"> {{ $post->content }} </p>
+        <div class="postings">
+            <p class="posts"> {{ $post->content }} 
+            <br>
+              <button type="button" class="btn btn-group-xs likes">Like</button>
+              <button type="button" class="btn btn-group-xs comments">Comment</button>
+            
+            
+            </p>
+            
         </div>
     @empty
         <div>
