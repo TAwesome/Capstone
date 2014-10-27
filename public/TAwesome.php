@@ -41,7 +41,7 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-    <title>Cover Template for Bootstrap</title>
+    <title>Welcome</title>
  
   </head>
 
@@ -103,31 +103,31 @@
     <div class="container theme-showcase" role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div class="jumbotron" id="welcome-jumbo">
-          <div class="content">
-            <h1>Welcome!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <div class="jumbotron-landing" id="welcome-jumbo">
+          <div class="content-landing">
+            <h1 id="h1-landing">Welcome!</h1>
+            <p id="p-landing">This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
             <p><a href="#" id="about"class="btn btn-primary btn-lg" role="button">About us &raquo;</a></p>
           </div>
         </div>
 
       <!-- *****Sign up***** -->
-      <div id="sign-up_container">
+      <div id="sign-up_container-landing">
         <!-- Basic Imput Sign in stuff -->
-        <h2 class="labels">Sign up!</h2>
+        <h2 class="labels-landing">Sign up!</h2>
 
         <form class="form-horizontal" role="form">
 
           <p>
             <div class="form-group">
-              <div class="col-xs-offset-2 col-xs-8" id="sign-up">
+              <div class="col-xs-offset-2 col-xs-8" id="sign-up-landing">
                 <label class="sr-only" for="exampleInputFirstName2">First Name</label>
                 <input type="text" class="form-control" id="exampleInputFirstName2" placeholder="First Name">
               </div>
             </div>
 
             <div class="form-group">
-              <div class="col-xs-offset-2 col-xs-8" id="sign-up">
+              <div class="col-xs-offset-2 col-xs-8" id="sign-up-landing">
                 <label class="sr-only" for="exampleInputLast Name2">LastName</label>
                 <input type="text" class="form-control" id="exampleInputLastName2" placeholder="Last Name">
               </div>
@@ -135,14 +135,14 @@
           </p>
           
           <div class="form-group">
-            <div class="col-xs-offset-2 col-xs-8" id="sign-up">
+            <div class="col-xs-offset-2 col-xs-8" id="sign-up-landing">
               <label class="sr-only" for="exampleInputEmail2">Email</label>
               <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
             </div>
           </div>
 
           <div class="form-group">
-            <div class="col-xs-offset-2 col-xs-8" id="sign-up">
+            <div class="col-xs-offset-2 col-xs-8" id="sign-up-landing">
               <label class="sr-only" for="exampleInputPassword2">Password</label>
               <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
             </div>
@@ -152,8 +152,8 @@
 
           <!-- *****Birthday Dropdown***** -->
           <div class="dropdown">
-            <h4 class="labels">Birthday</h4>
-              <div class="col-xs-2" id="year">
+            <h4 class="labels-landing">Birthday</h4>
+              <div class="col-xs-2" id="year-landing">
                 <select class="form-control" id="bday-year" name="bday-year">
                     <option selected>Year</option>
                     <option>2010</option>
@@ -220,7 +220,7 @@
                 </select>
               </div>
 
-              <div class="col-xs-2" id="month-day">
+              <div class="col-xs-2" id="month-day-landing">
                 <select class="form-control" id="bday-month" name="bday-month">
                     <option selected>Month</option>
                     <option>01</option>
@@ -238,7 +238,7 @@
                 </select>
               </div>
 
-              <div class="col-xs-2" id="month-day">
+              <div class="col-xs-2" id="month-day-landing">
                 <select class="form-control" id="bday-day" name="bday-day">
                     <option selected>Day</option>
                     <option>01</option>
@@ -275,14 +275,14 @@
                 </select>
               </div>
 
-<!--               <div class="col-xs-2" id="bday-day">
-                <select class="form-control" id="bday-day" name="bday-day">
+              <div class="col-xs-2" id="month-day-landing">
+                <select class="form-control" id="language-landing" name="language-landing">
                     <option selected>Language</option>
                     <option>English</option>
                     <option>French</option>
                     <option>Spanish</option>
                 </select>
-              </div> -->
+              </div>
           </div>
 
           <br>
@@ -290,9 +290,9 @@
           <br>
 
           <!-- *****Gender Selection***** -->
-          <div class="radio">
-            <h4 class="labels">Gender</h4>
-              <div id="radio">
+          <div class="radio-landing">
+            <h4 class="labels-landing">Gender</h4>
+              <div id="radio-landing">
                 <label class="radio-inline">
                   <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Female
                 </label>
@@ -308,7 +308,7 @@
           <div class="form-group">
             <div class="col-xs-offset-2 col-xs-6">
               <label class="sr-only" for="exampleInputSignUp2">Sign Up</label>
-              <button type="submit" class="btn btn-lg btn-success" id="sign-up_btn">Sign Up</button>
+              <button type="submit" class="btn btn-lg btn-success" id="sign-up_btn-landing">Sign Up</button>
             </div>
           </div>
         </form>

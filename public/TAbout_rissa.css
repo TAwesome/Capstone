@@ -4,9 +4,10 @@
 body {
 	text-align: center;
 	text-shadow: 2px 2px 2px #FFFFFF;
-	background-image: url('/img/jumbotron.jpg');
+	background-image: url('/img/bcg_slide-2.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
+	background-attachment: fixed;
 }
 .row {
 	position: relative;

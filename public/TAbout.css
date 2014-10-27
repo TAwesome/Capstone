@@ -1,20 +1,20 @@
-.jumbotron {
+.container .jumbotron-about {
+border-radius: 6px;
+background-color: rgba(0, 0, 0, 0);
+}
+.jumbotron-about {
 	padding: 30px;
 	margin-bottom: 30px;
 	margin-top: 75px;
 	color: inherit;
 	background-color: rgba(238, 238, 238, 0);
 }
-.container .jumbotron {
-border-radius: 6px;
-background-color: rgba(0, 0, 0, 0);
-}
 #dropdown-nav {
 	left: 400px;
 }
 body {
 	text-align: center;
-	background-image: url('/img/jumbotron.jpg');
+	background-image: url('/img/bcg_slide-2.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 }
