@@ -47,9 +47,9 @@
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
     <style>
     
-      body {
+    body {
         margin-top: 70px;
-      }
+    }
       
     </style>
     @yield('header')
@@ -76,45 +76,32 @@
             @if (Auth::check())
             <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
             @endif
-<!--        
-     <li><a href="#">Messages <span class="badge">3</span></a></li> -->
+            @if(Auth::check())
+            <li><a href="{{ action('HomeController@doLogout') }}">Logout</a></li>
+            @else      
+            <li><a href="#">Messages <span class="badge">3</span></a></li> 
             <li><a href="#about">About</a></li>
             <li><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
-            <!-- <li class="dropdown-nav">
-              <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li> -->
+              {{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'form-inline', 'role' => 'form')) }}
+                <div class="sign-in" style="margin-left: 670px; width: 500px; margin-top: 7px;">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon">@</div>
+                      <input class="form-control" name="email" type="email" placeholder="Enter email">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="exampleInputPassword2">Password</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                  </div>
+                  {{Form::submit('Log In')}}
+                </div>
+              {{ Form::close() }}
+            @endif
+
           </ul>
                     
-        @if (Auth::check())
         
-            <li>{{ link_to_action('HomeController@doLogout', 'Logout', array('class' => 'btn btn-default')) }} </li>
-                    
-        @else 
-          {{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'form-inline', 'role' => 'form')) }}
-            <div class="sign-in" style="margin-left: 670px; width: 500px; margin-top: 7px;">
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-addon">@</div>
-                  <input class="form-control" name="email" type="email" placeholder="Enter email">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="sr-only" for="exampleInputPassword2">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-              </div>
-              {{Form::submit('Log In')}}
-            </div>
-          {{ Form::close() }}
-        @endif
 
         </div><!--/.nav-collapse -->
       </div>
