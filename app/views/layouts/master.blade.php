@@ -6,17 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+
     <link rel="stylesheet" type="text/css" href="/TAwesome.css">
 
     <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+
 
 
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -42,9 +41,7 @@
     <!-- Bootstrap theme -->
     <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
     <style>
     
     body {
@@ -68,21 +65,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ action('HomeController@showWelcome') }}">MyLanguage</a>
+          <a class="navbar-brand" href="{{ action('HomeController@showWelcome') }}">SkyLanguage</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#about">Apples</a></li>
-            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="{{ action('HomeController@showAbout') }}">About</a></li>
+            <li><a href="{{ action('HomeController@showContact') }}">Contact Us</a></li>
+            
             @if (Auth::check())
             <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
-            @endif
-            @if(Auth::check())
+            <li><a href="#">Messages <span class="badge">3</span></a></li>
             <li><a href="{{ action('HomeController@doLogout') }}">Logout</a></li>
-            @else      
-            <li><a href="#">Messages <span class="badge">3</span></a></li> 
-            <li><a href="#about">About</a></li>
-            <li><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
+            
+            @else
               {{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'form-inline', 'role' => 'form')) }}
                 <div class="sign-in" style="margin-left: 670px; width: 500px; margin-top: 7px;">
                   <div class="form-group">
@@ -113,5 +109,11 @@
 
 
     </body>
+    
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     @yield('bottom-script')
+    
 </html>
