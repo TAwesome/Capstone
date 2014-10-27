@@ -1,5 +1,8 @@
 @extends('layouts.master')
-
+@section('header')
+    <script src="/js/jquery.tagsinput.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/jquery.tagsinput.css" />
+@stop
 @section('content')
     <!-- Need to add follow/unfollow button 
     that dynamically loads based on the user's relationship to other users -->
@@ -17,9 +20,9 @@
         </div>
         
     @endforeach
-    <div>
+    <div class='container'>
         <div>
-            <input id="tag"/>
+            <input id="tags"/>
         </div>
     </div>
     
