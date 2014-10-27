@@ -12,29 +12,31 @@
 */
 
 
-Route::get('/follow/{id}', 'FollowsController@follow');
+Route::get('/Follow/{id}', 'FollowsController@follow');
 
-Route::get('/unfollow/{id}', 'FollowsController@unfollow');
+Route::get('/Unfollow/{id}', 'FollowsController@unfollow');
 
-Route::get('/following/me', 'FollowsController@followers');
+Route::get('/Following/me', 'FollowsController@followers');
 
-Route::get('/following', 'FollowsController@following');
+Route::get('/Following', 'FollowsController@following');
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::post('/login', 'HomeController@doLogin');
+Route::post('/Login', 'HomeController@doLogin');
 
-Route::get('/logout', 'HomeController@doLogout');
+Route::get('/Logout', 'HomeController@doLogout');
 
-// Route::get('/about', 'HomeController@showAbout');
+Route::get('/About', 'HomeController@showAbout');
+
+Route::get('/Home', 'HomeController@showHome');
+
+Route::get('/ContactUs', 'HomeController@showContact');
 
 Route::get('/Rissa', 'HomeController@showRissa');
 
 Route::get('/Jill', 'HomeController@showJill');
 
 Route::get('/Jacob', 'HomeController@showJacob');
-
-Route::get('/Rissa', 'HomeController@showRissa');
 
 Route::resource('posts', 'PostsController');
 
