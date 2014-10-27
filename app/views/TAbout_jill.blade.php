@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/TAcontactus.css">
+    <link rel="stylesheet" type="text/css" href="/TAwesome.css">
 
     <!-- Custom styles for this template -->
     <link href="cover.css" rel="stylesheet">
@@ -24,28 +24,25 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
     <!-- Bootstrap core CSS -->
     <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
-    <link href="../../dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="theme.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <!--[if lt IE 9]><script src="/bootstrap/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet"> -->
 
-    <title>Cover Template for Bootstrap</title>
+    <title>About Jill</title>
 
   </head>
 
@@ -61,15 +58,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">MyLanguage</a>
+          <a class="navbar-brand" href="{{ action('HomeController@showWelcome') }}">MyLanguage</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Messages <span class="badge">3</span></a></li>
-            <li><a href="#about">About</a></li>
-            <li class="active"><a href="#contact">Contact Us</a></li>
+            @if (Auth::check())
+            <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
+            @endif
+            <li class="active"><a href="#about">About</a></li>
+            <li><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
+            <li><a href="#">Logout</a></li>
             <li class="dropdown-nav">
               <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -89,53 +88,29 @@
     </div>
 
 
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-4">
+
+        <div class="col-xs-offset-3 col-xs-6">
           <img class="img-circle" src="img/Jillian.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
           <h2>Jillian Donovan</h2>
-          <p><a href="https://github.com/Jbns89" role="button">Github</a></p>
-          <p><a href="https://www.linkedin.com/pub/jill-donovan/a3/8a6/a1a/" role="button">Linkedin</a></p>
-          <p><a href="https://twitter.com/JDonovan89" role="button">Twitter</a></p>
-          <p><a href="jbns89@gmail.com" role="button">Email</a></p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <p>Cat ipsum dolor sit amet, chase mice. Poop on grasses scamper behind the couch, so leave hair everywhere jump off balcony, onto stranger's head. Pooping rainbow while flying in a toasted bread costume in space. Shake treat bag sleep in the bathroom sink, and chase ball of string missing until dinner time. Missing until dinner time leave hair everywhere rub face on everything. Intently stare at the same spot. Peer out window, chatter at birds, lure them to mouth all of a sudden cat goes crazy, for stretch, or swat at dog find something else more interesting, and cat snacks, or meow all night having their mate disturbing sleeping humans. Loves cheeseburgers hunt by meowing loudly at 5am next to human slave food dispenser vommit food and eat it again burrow under covers, so throwup on your pillow, for stretch. Stretch destroy couch rub face on everything, bathe private parts with tongue then lick owner's face play time, for give attitude, and chase ball of string. Loves cheeseburgers hack up furballs and stick butt in face, so plan steps for world domination who's the baby, so present belly, scratch hand when stroked, intrigued by the shower. Run in circles has closed eyes but still sees you. Chew foot stick butt in face hate dog. 
+          </p>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="img/Jacob.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Jacob Ernst</h2>
-          <p><a href="https://github.com/Jacob-Ernst" role="button">Github</a></p>
-          <p><a href="https://www.linkedin.com/pub/jacob-ernst/a3/3aa/497" role="button">Linkedin</a></p>
-          <p><a href="https://twitter.com/ernst_je" role="button">Twitter</a></p>
-          <p><a href="jacob.f.ernst@gmail.com" role="button">Email</a></p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="img/Rissa.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Rissa Waters</h2>
-          <p><a href="https://github.com/rissa3896" role="button">Github</a></p>
-          <p><a href="https://www.linkedin.com/pub/marissa-waters/a3/8a9/2a9" role="button">Linkedin</a></p>
-          <p><a href="https://twitter.com/rissawaters3896" role="button">Twitter</a></p>
-          <p><a href="rissa@rissawaters.com" role="button">Email</a></p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
+
       </div><!-- /.row -->
 
     </div><!-- /.container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap/assets/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

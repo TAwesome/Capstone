@@ -24,23 +24,20 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
     <!-- Bootstrap core CSS -->
     <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
-    <link href="../../dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="theme.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <!--[if lt IE 9]><script src="/bootstrap/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet"> -->
@@ -69,9 +66,8 @@
             @if (Auth::check())
             <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
             @endif
-            <li><a href="#">Messages <span class="badge">3</span></a></li>
-            <li><a href="#about">About</a></li>
-            <li class="active"><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
+            <li class="active"><a href="#about">About</a></li>
+            <li><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
             <li><a href="#">Logout</a></li>
             <li class="dropdown-nav">
               <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
@@ -118,10 +114,10 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap/assets/js/docs.min.js"></script>
     <script src="js/skrollr.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
