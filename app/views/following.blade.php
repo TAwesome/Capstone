@@ -17,6 +17,12 @@
         </div>
         
     @endforeach
+    <div>
+        <div>
+            <input id="tag"/>
+        </div>
+    </div>
+    
         <script type="text/javascript">
             $(".follow").click(function(event) {
                 event.preventDefault();
@@ -32,6 +38,12 @@
                 });
                 
             });
+            
+            $('#tags').tagsInput({
+                    "width": "75%",
+                    "height": "70px",
+                    'defaultText':''
+            }); 
         </script>
 
 @stop
