@@ -72,6 +72,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+            <li><a href="#about">Apples</a></li>
             <li class="active"><a href="#">Home</a></li>
             @if (Auth::check())
             <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
