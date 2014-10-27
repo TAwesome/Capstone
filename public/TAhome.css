@@ -17,3 +17,10 @@
 	padding-top: 10px;
 	padding-bottom: 300px;
 }
+body {
+	text-align: center;
+	text-shadow: 2px 2px 2px #FFFFFF;
+	background-image: url('/img/bcg_slide-2.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+}

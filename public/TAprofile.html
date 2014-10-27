@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/TAprofile.css">
+    <link rel="stylesheet" type="text/css" href="/TAwesome.css">
 
     <!-- Custom styles for this template -->
     <!-- <link href="cover.css" rel="stylesheet"> -->
@@ -42,7 +42,7 @@
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-    <title>Cover Template for Bootstrap</title>
+    <title>Profile</title>
  
   </head>
 
@@ -64,7 +64,6 @@
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
             <li class="active"><a href="#">Profile</a></li>
-            <li><a href="#">Messages <span class="badge">3</span></a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact Us</a></li>
             <li><a href="#">Logout</a></li>
@@ -105,7 +104,7 @@
     <div class="container theme-showcase" role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-       <div class="jumbotron">
+       <div class="jumbotron-profile">
           <div class="content">
             <h1>Rissa Waters</h1>
             <p>This is a place where you can place your favorite quote/song title/bio.</p>
@@ -115,7 +114,7 @@
        </div>
 
       <!-- User Posting ability -->
-      <div class="guidebar list-group col-sm-3">
+      <div class="guidebar-profile list-group col-sm-3">
         <a href="#" class="list-group-item active">Cras justo odio</a>
         <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
         <a href="#" class="list-group-item">Morbi leo risus</a>
@@ -124,7 +123,7 @@
       </div>
 
 
-      <div class="posts-container col-sm-8">
+      <div class="posts-container-profile col-sm-8">
          <div>
             <input type="text" class="form-control" placeholder="Try a new Language!">
         </div>
