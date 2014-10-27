@@ -43,6 +43,67 @@
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
     <title>{{ $user->first_name }}</title>
+    
+    <style>
+    
+    body {
+        background-position: initial;
+    }
+    
+    .posts-container {
+        padding-bottom: 10px;
+    }
+    
+    button, input, optgroup, select, textarea {
+        margin-top: 5px;
+    }
+    
+    .guidebar {
+        margin-left: 35px;
+    }
+    
+    .posts {
+        width: 500px;
+        margin-left: auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-right: auto;
+        background-color: rgba(19, 130, 199, 0.2); 
+        border-radius: 6px;
+        
+    }
+    
+    .postings {
+        width: 1200px;
+        margin-left: 125px;
+    }
+    
+    .likes {
+        margin-bottom: 0;
+        font-size: 12px;
+        border: 1px solid rgba(0, 41, 252, 0.35);
+        border-radius: 100px;
+        margin: 5px;
+        background-color: rgba(240, 248, 255, 0);
+    }
+
+    .comments {
+        margin-bottom: 0;
+        font-size: 12px;
+        border: 1px solid rgba(0, 41, 252, 0.35);
+        border-radius: 100px;
+        margin: 5px;
+        background-color: rgba(240, 248, 255, 0);
+    }
+    
+    .ggl {
+        margin: 5px;
+        margin-bottom: 7px;
+    }
+
+
+    
+    </style>
  
   </head>
 
@@ -67,18 +128,6 @@
             <li><a href="#">Messages <span class="badge">3</span></a></li>
             <li><a href="#about">About</a></li>
             <li><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
-            <li class="dropdown-nav">
-              <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
           </ul>
 
 <!--           <form class="form-inline" role="form">
@@ -103,51 +152,59 @@
 
     <div class="container theme-showcase" role="main">
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <div class="content">
-            <h1> Welcome {{$user->first_name}}!</h1>
-            <p class="tagline">This is a place where you can place your favorite quote/song title/bio.</p>
-            <img src="/img/toy-story-alien2.jpg" alt="Toy Story Alien" class="img-thumbnail">
-            <p id="about-style"><a href="#" id="about"class="btn btn-primary btn-lg" role="button">Cover photo! &raquo;</a></p>
-        </div>
-    </div>
 
-    <!-- User Posting ability -->
-    <div class="guidebar list-group col-xs-3">
-        <a href="#" class="list-group-item active">View Posts</a>
-        <a href="#" class="list-group-item">English</a>
-        <a href="#" class="list-group-item">Spanish</a>
-        <a href="#" class="list-group-item">French</a>
-    </div>
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+   <div class="jumbotron">
+      <div class="content">
+        <h1> Welcome {{$user->first_name}}!</h1>
+        <p>This is a place where you can place your favorite quote/song title/bio.</p>
+        <img src="/img/toy-story-alien2.jpg" alt="Toy Story Alien" class="img-thumbnail">
+        <p id="about-style"><a href=# id="about"class="btn btn-primary btn-lg" role="button">Cover photo! &raquo;</a></p>
+      </div>
+   </div>
 
-    {{ Form::open(array('action' => 'PostsController@store', 'class' => 'form-inline', 'role' => 'form')) }}
-        <div class="posts-container col-xs-8">
-            <div class="input-group input-group-lg">
-                
-                {{ Form::label('newpost', 'New Post') }}
-                {{ Form::textarea('content', array('class' => 'span12', 'placeholder' => 'New Post Here', 'rows' => '3'))}}
-                {{ Form::submit('Post') }}
-                
-            </div>
-        </div>
+
+
+  <!-- User Posting ability -->
+  <div class="guidebar list-group col-xs-3">
+    <a href="#" class="list-group-item active">View Posts</a>
+    <a href="#" class="list-group-item">English</a>
+    <a href="#" class="list-group-item">Spanish</a>
+    <a href="#" class="list-group-item">French</a>
+  </div>
+
+  {{ Form::open(array('action' => 'PostsController@store', 'class' => 'form-inline', 'role' => 'form')) }}
+  <div class="posts-container col-xs-8">
+    <h1>Write A New Post</h1>
+     <div>
+        {{ Form::textarea('content', null , array('class' => 'span12 form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
+    </div>
+    {{Form::submit('Post', array('class' => 'span12 form-control', 'rows' => '5'))}}
+  </div>
+      
     {{ Form::close() }}
-        
-        <!-- @forelse($posts as $post)
-        <div class="blogs">
-            <p class="info"> {{{ $post->content }}} </p>
-            <p class="info"> by: {{{ $user->first_name }}} {{{ $user->last_name }}} </p>
 
-        </div>
-        @empty
-        <p>No Blogs</p>
-        @endforelse -->
-        
+    </div>
     
 
-    </div>
-
-
+    <div>
+    @forelse($user->posts as $post)
+    
+        <div class="postings">
+            <p class="posts"> {{ $post->content }} 
+            <br>
+                <button type="button" class="btn btn-group-xs likes">Like</button>
+                <button type="button" class="btn btn-group-xs comments">Comment</button>
+                <button type="button" class="btn btn-group-xs ggl">TRANSLATE</button>
+            </p>
+            
+        </div>
+    @empty
+        <div>
+            <p class="posts">You haven't Written any posts yet...</p>
+        </div>
+    @endforelse
+</div>
 
 
     <!-- Bootstrap core JavaScript
