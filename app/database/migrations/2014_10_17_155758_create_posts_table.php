@@ -16,6 +16,7 @@ class CreatePostsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('content', 200);
+			$table->string('img', 255)->nullable();
 			$table->softDeletes();
 			$table->timestamps();
 		});
