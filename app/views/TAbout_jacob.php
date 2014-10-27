@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/TAcontactus.css">
+    <link rel="stylesheet" type="text/css" href="/TAwesome.css">
 
     <!-- Custom styles for this template -->
     <link href="cover.css" rel="stylesheet">
@@ -45,7 +45,7 @@
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet"> -->
 
-    <title>Cover Template for Bootstrap</title>
+    <title>About Jacob</title>
 
   </head>
 

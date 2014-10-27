@@ -1,86 +1,199 @@
+#dropdown-nav {
+	left: 400px;
+}
 body {
 	text-align: center;
-	background-image: url('/img/jumbotron.jpg');
+	text-shadow: 2px 2px 2px #FFFFFF;
+	background-image: url('/img/landingBG.png');
 	background-repeat: no-repeat;
 	background-position: center;
+	background-attachment: fixed;
 }
-.jumbotron {
+.row {
+	position: relative;
+	top: 150px;
+}
+.guidebar {
 	float: left;
 	position: relative;
 	margin-bottom: 30px;
-	margin: 20px;
+	margin: 50px;
     width: 500px;
+}
+.container .jumbotron-about {
+border-radius: 6px;
+background-color: rgba(0, 0, 0, 0);
+}
+.jumbotron-about {
 	padding: 30px;
-	padding-bottom: 160px;
-}
-.content {
-	position: absolute;
-}
-
-.container .jumbotron {
-	border-radius: 6px;
+	margin-bottom: 30px;
+	margin-top: 75px;
+	color: inherit;
+	background-color: rgba(238, 238, 238, 0);
 }
 
-#about {
-	color: #fff;
-	background-color: #1F88F1;
-	border-color: #357ebd;
-}
-#welcome-jumbo {
-	background-color: inherit;
-}
-#sign-up_container {
-	/*border: 1px solid black;*/
-	margin-left: 600px;
-	position: relative;
-    margin-top: 100px;
-    width: 500px;
-}
-.labels {
-	position: relative;
-	width: 295px;
-}
-#sign-up {
-	position: relative;
-	top: 10px;
-	bottom: 10px;
-	left: 10px;
-	right: 10px;
-	margin-left: 100px;
-}
-#radio {
-	position: relative;
-	top: 10px;
-	bottom: 10px;
-	left: 10px;
-	right: 10px;
-	margin-left: 13px; 
-	width: 310px
-}
+/******* landing *******/
+	.container .jumbotron-landing {
+		border-radius: 6px;
+	}
+	.jumbotron-landing {
+		float: left;
+		position: relative;
+		margin-bottom: 30px;
+		margin: 20px;
+	    width: 500px;
+		padding: 30px;
+		padding-bottom: 160px;
+	}
+	.content-landing {
+		position: absolute;
+		top: 75px;
+	}
+	#h1-landing {
+		font-size: 50px;
+	}
+	#p-landing {
+		font-size: 20px;
+	}
+	#about-landing {
+		color: #fff;
+		background-color: #1F88F1;
+		border-color: #357ebd;
+	}
+	#welcome-jumbo-landing {
+		background-color: inherit;
+	}
+	#sign-up_container-landing {
+		/*border: 1px solid black;*/
+		position: relative;
+	    margin-top: 100px;
+	    width: 500px;
+	   	float: right;
+	}
+	.labels-landing {
+		position: relative;
+		width: 295px;
+	}
+	#sign-up-landing {
+		position: relative;
+		top: 10px;
+		bottom: 10px;
+		left: 10px;
+		right: 10px;
+		margin-left: 100px;
+	}
+	#radio-landing {
+		position: relative;
+		top: 10px;
+		bottom: 10px;
+		left: 10px;
+		right: 10px;
+		margin-left: 13px; 
+		width: 310px;
+	}
+	.radio-landing {
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+	#year-landing {
+		position: relative;
+		top: 10px;
+		bottom: 10px;
+		left: 10px;
+		right: 10px;
+		padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 100px;
+	}
 
-#year {
-	position: relative;
-	top: 10px;
-	bottom: 10px;
-	left: 10px;
-	right: 10px;
-	padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 100px;
-}
-
-#month-day {
-	position: relative;
-	top: 10px;
-	bottom: 10px;
-	left: 10px;
-	right: 10px;
-	padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 10px;
-}
-#sign-up_btn {
-	position: relative;
-	right: 80px;
-	margin-left: 100px;
-	width: 334px;
-}
+	#month-day-landing {
+		position: relative;
+		top: 10px;
+		bottom: 10px;
+		left: 10px;
+		right: 10px;
+		padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 10px;
+	}
+	#language-landing {
+		width: 322px;
+		margin-left: 90px;
+	}
+	#sign-up_btn-landing {
+		position: relative;
+		right: 80px;
+		margin-left: 100px;
+		width: 334px;
+	}
 
 
+/******* Home *******/
+	.guidebar-home {
+		float: left;
+		position: relative;
+		margin-bottom: 30px;
+		margin: 50px;
+	    width: 500px;
+	}
+	.posts-container-home {
+	/*	border: 1px solid black;*/
+		float: right;
+		position: relative;
+		margin-left: 0px;
+		margin-top: 42px;
+		padding-top: 10px;
+		padding-bottom: 300px;
+	}
+
+
+
+/******* profile *******/
+	.container .jumbotron-profile {
+		border-radius: 6px;
+		background-repeat: no-repeat;
+		background-position: center;
+	    background-image: url('/img/FancyfbBG.jpg');
+	    padding-bottom: 130px;
+	}
+	.jumbotron-profile {
+		position: relative;
+	}
+	#about {
+		color: #fff;
+		background-color: #1F88F1;
+		border-color: #357ebd;
+	}
+	#about-style {
+		width: 100px;
+		position: absolute;
+		right: 80px;
+		bottom: 10px;
+	}
+	.img-thumbnail {
+		width: 250px;
+		position: absolute;
+		left: 30px;
+	}
+	.img-thumbnail img {
+		max-width: 100%;
+	}
+	p {
+		text-shadow: 2px 2px 2px #FFFFFF;
+	}
+	.guidebar-profile {
+	/*	border: 1px solid black;*/
+		float: left;
+		position: relative;
+		margin-bottom: 30px;
+		margin: 20px;
+	    width: 500px;
+		padding: 30px;
+		padding-bottom: 160px;
+	}
+	.posts-container-profile {
+	/*	border: 1px solid black;*/
+		float: right;
+		position: relative;
+		margin-left: 0px;
+		margin-top: 42px;
+		padding-top: 10px;
+		padding-bottom: 300px;
+	}
 
