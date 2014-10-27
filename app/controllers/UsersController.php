@@ -144,14 +144,43 @@ class UsersController extends \BaseController {
         
     }
     
-    public function uploadFile ()
+    public function uploadCover ()
     {
         if (Input::hasFile('image')) {
             $file = Input::file('image');
             $orig_name = $file->getClientOriginalName() . str_random(6);
             $dest_path = public_path() . '/img/';
             $upload = $file->move($dest_path, $orig_name);
-            $user->post->img_path = '/img/' . $orig_name;
+            $user->cover = '/img/' . $orig_name;
+            $user->save();
+            $id = $user->id;
+            return Redirect::action('UsersController@show', array($id));
+        }
+    }
+    
+    
+    public function uploadAvatar ()
+    {
+        if (Input::hasFile('image')) {
+            $file = Input::file('image');
+            $orig_name = $file->getClientOriginalName() . str_random(6);
+            $dest_path = public_path() . '/img/';
+            $upload = $file->move($dest_path, $orig_name);
+            $user->avatar = '/img/' . $orig_name;
+            $user->save();
+            $id = $user->id;
+            return Redirect::action('UsersController@show', array($id));
+        }
+    }
+    
+    public function uploadPostImage ()
+    {
+        if (Input::hasFile('image')) {
+            $file = Input::file('image');
+            $orig_name = $file->getClientOriginalName() . str_random(6);
+            $dest_path = public_path() . '/img/';
+            $upload = $file->move($dest_path, $orig_name);
+            $user->post->avatar = '/img/' . $orig_name;
             $user->save();
             $id = $user->id;
             return Redirect::action('UsersController@show', array($id));

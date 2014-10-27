@@ -46,6 +46,10 @@
     
     <style>
     
+    body {
+        background-position: initial;
+    }
+    
     .posts-container {
         padding-bottom: 10px;
     }
@@ -90,6 +94,11 @@
         border-radius: 100px;
         margin: 5px;
         background-color: rgba(240, 248, 255, 0);
+    }
+    
+    .ggl {
+        margin: 5px;
+        margin-bottom: 7px;
     }
 
 
@@ -184,10 +193,9 @@
         <div class="postings">
             <p class="posts"> {{ $post->content }} 
             <br>
-              <button type="button" class="btn btn-group-xs likes">Like</button>
-              <button type="button" class="btn btn-group-xs comments">Comment</button>
-            
-            
+                <button type="button" class="btn btn-group-xs likes">Like</button>
+                <button type="button" class="btn btn-group-xs comments">Comment</button>
+                <button type="button" class="btn btn-group-xs ggl">TRANSLATE</button>
             </p>
             
         </div>
