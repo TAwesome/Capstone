@@ -4,11 +4,20 @@
 body {
 	text-align: center;
 	text-shadow: 2px 2px 2px #FFFFFF;
-	background-image: url('/img/jumbotron.jpg');
+	background-image: url('/img/bcg_slide-2.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 }
-
+.container .jumbotron-profile {
+	border-radius: 6px;
+	background-repeat: no-repeat;
+	background-position: center;
+    background-image: url('/img/FancyfbBG.jpg');
+    padding-bottom: 130px;
+}
+.jumbotron-profile {
+	position: relative;
+}
 #about {
 	color: #fff;
 	background-color: #1F88F1;
@@ -27,17 +36,6 @@ body {
 }
 .img-thumbnail img {
 	max-width: 100%;
-}
-.container .jumbotron {
-	border-radius: 6px;
-	background-repeat: no-repeat;
-	background-position: center;
-    background-image: url('/img/FancyfbBG.jpg');
-    padding-bottom: 130px;
-
-}
-.jumbotron {
-	position: relative;
 }
 p {
 	text-shadow: 2px 2px 2px #FFFFFF;

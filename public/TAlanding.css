@@ -1,0 +1,85 @@
+body {
+	text-align: center;
+	background-image: url('/img/bcg_slide-2.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.container .jumbotron-landing {
+	border-radius: 6px;
+}
+.jumbotron-landing {
+	float: left;
+	position: relative;
+	margin-bottom: 30px;
+	margin: 20px;
+    width: 500px;
+	padding: 30px;
+	padding-bottom: 160px;
+}
+.content-landing {
+	position: absolute;
+}
+#about-landing {
+	color: #fff;
+	background-color: #1F88F1;
+	border-color: #357ebd;
+}
+#welcome-jumbo-landing {
+	background-color: inherit;
+}
+#sign-up_container-landing {
+	/*border: 1px solid black;*/
+	position: relative;
+    margin-top: 100px;
+    width: 500px;
+	float: right;
+}
+.labels-landing {
+	position: relative;
+	width: 295px;
+}
+#sign-up-landing {
+	position: relative;
+	top: 10px;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	margin-left: 100px;
+}
+#radio-landing {
+	position: relative;
+	top: 10px;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	margin-left: 13px; 
+	width: 310px
+}
+#year-landing {
+	position: relative;
+	top: 10px;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 100px;
+}
+#month-day-landing {
+	position: relative;
+	top: 10px;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 10px;
+}
+#sign-up_btn-landing {
+	position: relative;
+	right: 80px;
+	margin-left: 100px;
+	width: 334px;
+}
+.form-group-landing {
+	height: 34px;
+}
+
+
+
