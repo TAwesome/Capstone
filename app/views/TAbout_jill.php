@@ -45,7 +45,7 @@
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet"> -->
 
-    <title>About Jacob</title>
+    <title>About Jill</title>
 
   </head>
 
@@ -61,14 +61,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">MyLanguage</a>
+          <a class="navbar-brand" href="{{ action('HomeController@showWelcome') }}">MyLanguage</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
+            @if (Auth::check())
+            <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
+            @endif
+            <li><a href="#">Messages <span class="badge">3</span></a></li>
             <li><a href="#about">About</a></li>
-            <li class="active"><a href="#contact">Contact Us</a></li>
+            <li class="active"><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
             <li><a href="#">Logout</a></li>
             <li class="dropdown-nav">
               <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
@@ -89,9 +92,6 @@
     </div>
 
 
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container marketing">
 
@@ -99,18 +99,17 @@
       <div class="row">
 
         <div class="col-xs-offset-3 col-xs-6">
-          <img class="img-circle" src="img/Jacob.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Jacob Ernst</h2>
-          <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead. Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.
+          <img class="img-circle" src="img/Jillian.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>Jillian Donovan</h2>
+          <p>Cat ipsum dolor sit amet, chase mice. Poop on grasses scamper behind the couch, so leave hair everywhere jump off balcony, onto stranger's head. Pooping rainbow while flying in a toasted bread costume in space. Shake treat bag sleep in the bathroom sink, and chase ball of string missing until dinner time. Missing until dinner time leave hair everywhere rub face on everything. Intently stare at the same spot. Peer out window, chatter at birds, lure them to mouth all of a sudden cat goes crazy, for stretch, or swat at dog find something else more interesting, and cat snacks, or meow all night having their mate disturbing sleeping humans. Loves cheeseburgers hunt by meowing loudly at 5am next to human slave food dispenser vommit food and eat it again burrow under covers, so throwup on your pillow, for stretch. Stretch destroy couch rub face on everything, bathe private parts with tongue then lick owner's face play time, for give attitude, and chase ball of string. Loves cheeseburgers hack up furballs and stick butt in face, so plan steps for world domination who's the baby, so present belly, scratch hand when stroked, intrigued by the shower. Run in circles has closed eyes but still sees you. Chew foot stick butt in face hate dog. 
           </p>
         </div><!-- /.col-lg-4 -->
-        <div class="col-xs-4">
+
+      </div><!-- /.row -->
 
     </div><!-- /.container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>

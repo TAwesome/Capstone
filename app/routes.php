@@ -11,11 +11,30 @@
 |
 */
 
+
+Route::get('/follow/{id}', 'FollowsController@follow');
+
+Route::get('/unfollow/{id}', 'FollowsController@unfollow');
+
+Route::get('/following/me', 'FollowsController@followers');
+
+Route::get('/following', 'FollowsController@following');
+
 Route::get('/', 'HomeController@showWelcome');
 
 Route::post('/login', 'HomeController@doLogin');
 
 Route::get('/logout', 'HomeController@doLogout');
+
+// Route::get('/about', 'HomeController@showAbout');
+
+Route::get('/Rissa', 'HomeController@showRissa');
+
+Route::get('/Jill', 'HomeController@showJill');
+
+Route::get('/Jacob', 'HomeController@showJacob');
+
+Route::get('/Rissa', 'HomeController@showRissa');
 
 Route::resource('posts', 'PostsController');
 

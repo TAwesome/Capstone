@@ -45,7 +45,7 @@
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet"> -->
 
-    <title>About Rissa</title>
+    <title>About Jacob</title>
 
   </head>
 
@@ -61,14 +61,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">MyLanguage</a>
+          <a class="navbar-brand" href="{{ action('HomeController@showWelcome') }}">MyLanguage</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
+            @if (Auth::check())
+            <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
+            @endif
+            <li><a href="#">Messages <span class="badge">3</span></a></li>
             <li><a href="#about">About</a></li>
-            <li class="active"><a href="#contact">Contact Us</a></li>
+            <li class="active"><a href="{{ action('UsersController@index') }}">Contact Us</a></li>
             <li><a href="#">Logout</a></li>
             <li class="dropdown-nav">
               <a href="#" id="dropdown-nav" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
@@ -93,22 +96,20 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-      <div class="container marketing">
+    <div class="container marketing">
 
-        <!-- Three columns of text below the carousel -->
-        <div class="row">
-          
-          <div class="col-xs-offset-3 col-xs-6">
-            <img class="img-circle" src="img/Rissa.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-            <h2>Rissa Waters</h2>
-            <p>Applicake halvah sesame snaps muffin. Gummies powder donut caramels biscuit tart topping. Donut sesame snaps tiramisu. Cotton candy cotton candy gummi bears sesame snaps sweet roll biscuit. Gummies candy carrot cake sweet roll. Dessert cake bear claw croissant. Apple pie sesame snaps sweet roll bonbon liquorice lemon drops chocolate cake chocolate tiramisu. Applicake sweet roll tiramisu. Gummi bears caramels chocolate chocolate bar jelly-o lollipop danish muffin chupa chups. Powder bear claw pastry applicake jelly unerdwear.com powder gingerbread. Caramels jelly soufflé bear claw oat cake. Sweet roll lemon drops candy topping sesame snaps lemon drops cupcake. Cheesecake bonbon brownie chupa chups brownie dragée. Chocolate sweet roll fruitcake danish. Cotton candy liquorice sesame snaps dessert jelly-o cupcake chocolate jelly caramels. Jelly beans sesame snaps candy pudding candy marzipan brownie tiramisu dragée. Applicake cupcake carrot cake jelly-o pudding chupa chups pudding apple pie. Fruitcake bonbon unerdwear.com cotton candy icing ice cream. Jujubes candy canes brownie chocolate pudding marshmallow gingerbread chocolate cake. Tart liquorice tootsie roll cupcake chocolate cake muffin tootsie roll lemon drops. Caramels powder gummies. Gummi bears sweet sweet roll carrot cake liquorice tiramisu ice cream applicake. Bonbon cupcake brownie. Chupa chups carrot cake jelly-o sweet roll gummies. Applicake halvah sesame snaps muffin. Gummies powder donut caramels biscuit tart topping. Donut sesame snaps tiramisu. Cotton candy cotton candy gummi bears sesame snaps sweet roll biscuit. Gummies candy carrot cake sweet roll. Dessert cake bear claw croissant. Apple pie sesame snaps sweet roll bonbon liquorice lemon drops chocolate cake chocolate tiramisu. Applicake sweet roll tiramisu. Gummi bears caramels chocolate chocolate bar jelly-o lollipop danish muffin chupa chups. Powder bear claw pastry applicake jelly unerdwear.com powder gingerbread. Caramels jelly soufflé bear claw oat cake. Sweet roll lemon drops candy topping sesame snaps lemon drops cupcake. Cheesecake bonbon brownie chupa chups brownie dragée. Chocolate sweet roll fruitcake danish. Cotton candy liquorice sesame snaps dessert jelly-o cupcake chocolate jelly caramels. Jelly beans sesame snaps candy pudding candy marzipan brownie tiramisu dragée. Applicake cupcake carrot cake jelly-o pudding chupa chups pudding apple pie. Fruitcake bonbon unerdwear.com cotton candy icing ice cream. Jujubes candy canes brownie chocolate pudding marshmallow gingerbread chocolate cake. Tart liquorice tootsie roll cupcake chocolate cake muffin tootsie roll lemon drops. Caramels powder gummies. Gummi bears sweet sweet roll carrot cake liquorice tiramisu ice cream applicake. Bonbon cupcake brownie. Chupa chups carrot cake jelly-o sweet roll gummies. 
-            </p>
-            
-          </div><!-- /.col-lg-4 -->
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
 
-        </div><!-- /.row -->
+        <div class="col-xs-offset-3 col-xs-6">
+          <img class="img-circle" src="img/Jacob.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">
+          <h2>Jacob Ernst</h2>
+          <p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead. Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.
+          </p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-xs-4">
 
-      </div><!-- /.container -->
+    </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
@@ -117,7 +118,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/docs.min.js"></script>
-    <script src="js/skrollr.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
