@@ -11,13 +11,6 @@ class FollowsController extends BaseController
         $follower->follow()->save($followed);
         return;
     }
-// Route::get('/follow/{user1}/{user2}', function($user1, $user2)
-// {
-//     $follower = User::find($user1);
-//     $followed = User::find($user2);
-//     $follower->follow()->save($followed);
-//     return  'YAY';
-// });
     
     public function unfollow($id)
     {
@@ -26,70 +19,25 @@ class FollowsController extends BaseController
         $follower->follow()->detach($followed->id);
         return Redirect::back();
     }
-
-// Route::get('/unfollow/{user1}/{user2}', function($user1, $user2)
-// {
-//     $follower = User::find($user1);
-//     $followed = User::find($user2);
-//     $follower->follow()->detach($followed->id);
-//     return  $followed->id;
-// }); 
     
+    /**
+     * Route: /following
+     */
+    //change to verb noun combination
     public function following()
     {
-        $follower = User::find(Auth::id());
-        $data = [];
-    
-        foreach($follower->follow as $followed) {
-            $data[] = array(
-                'name' => $followed->first_name . ' ' . $followed->last_name,
-                'id'   => $followed->id
-            );
-        }
-        
+        $data = Auth::user()->follow()->paginate(2);
         return View::make('following')->with('data', $data);
     }
 
-// Route::get('/following/{user1}', function($user1)
-// {
-//     $follower = User::find($user1);
-    
-//     $data = [];
-    
-//     foreach($follower->follow as $followed) {
-//         $data[] = $followed->first_name . ' ' . $followed->last_name;
-//     }
-    
-//     return View::make('following')->with('data', $data);
-// });
-
+    /**
+     * Route: /following/me
+     */
     public function followers()
     {
-        $user = User::find(Auth::id());
-        $data = [];
-    
-        foreach($user->followers as $follower) {
-            $data[] = array(
-                'name' => $follower->first_name . ' ' . $follower->last_name,
-                'id'   => $follower->id
-            );
-        }
-        
+        $data = Auth::user()->followers()->paginate(2);
         return View::make('followers')->with('data', $data);
     }
-
-// Route::get('/followers/{user1}', function($user1)
-// {
-//     $person = User::find($user1);
-    
-//     $data = [];
-    
-//     foreach($person->followers as $followers) {
-//         $data[] = $followers->first_name . ' ' . $followers->last_name;
-//     }
-    
-//     return View::make('followers')->with('data', $data);
-// });
 
 }
 

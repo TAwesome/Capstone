@@ -22,7 +22,7 @@ class Post extends BaseModel {
     
     public function likes()
     {
-        return $this->belongsToMany('User', 'likes', 'user_id', 'post_id')->withTimestamps();    
+        return $this->belongsToMany('User', 'likes', 'post_id', 'user_id')->withTimestamps();    
     }
     
     public function languages()
