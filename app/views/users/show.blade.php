@@ -75,12 +75,12 @@
 
 
   <!-- Main jumbotron for a primary marketing message or call to action -->
-   <div class="jumbotron">
+   <div class="jumbotron-profile">
       <div class="content">
-        <h1> Welcome {{$user->first_name}}!</h1>
-        <p>This is a place where you can place your favorite quote/song title/bio.</p>
+        <h1 id='h1-profile'> Welcome {{$user->first_name}}!</h1>
+        <p id='p-profile'>This is a place where you can place your favorite quote/song title/bio.</p>
         <img src="/img/toy-story-alien2.jpg" alt="Toy Story Alien" class="img-thumbnail">
-<!--  -->
+
         </p>
         
       </div>
@@ -89,7 +89,7 @@
 
 
   <!-- User Posting ability -->
-  <div class="guidebar list-group col-xs-3">
+  <div class="guidebar-profile list-group col-xs-3">
     <a href="#" class="list-group-item active">View Posts</a>
     <a href="#" class="list-group-item">English</a>
     <a href="#" class="list-group-item">Spanish</a>
@@ -97,7 +97,7 @@
   </div>
 
   {{ Form::open(array('action' => 'PostsController@store', 'class' => 'form-inline', 'role' => 'form')) }}
-  <div class="posts-container col-xs-8">
+  <div class="posts-container-profile col-xs-8">
     <h1>Write A New Post</h1>
      <div>
         {{ Form::textarea('content', null , array('class' => 'span12 form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
@@ -115,17 +115,18 @@
                 <span id="text"> {{ $post->content }}</span> 
 
             <br>
+                
                 <button type="button" class="btn btn-group-xs likes">Like</button>
                 <button id="comment"type="button" class="btn btn-group-xs comments">Comment</button>
             <br>
-                <strong>Translate into:</strong> 
+                <!-- <strong>Translate into:</strong> 
                 <select id="target">
                     <option value="en">English</option>
                     <option value="es">Spanish</option>
                     <option value="fr">French</option>
                 </select>
                 <input type="button" value="Translate"  onclick="translate()" />
-            </p>
+            </p> -->
             
         </div>
     @empty
