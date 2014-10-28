@@ -67,9 +67,12 @@
     
     
     </style>
-<!-- 
+    
+    <script>
     // $(document).ready(function() 
     // {
+        
+        
     //     function translate()
     //     {
     //         $.get("https://www.googleapis.com/language/translate/v2",
@@ -88,7 +91,8 @@
     //             alert( "error :"+errorThrown );
     //         });
     //     }
-    // }); -->
+    // }); 
+    </script>
     
     
 @stop
@@ -137,10 +141,27 @@
 
             <div type="text" id="translated" class="posts"> 
                 <span id="text"> {{ $post->content }}</span>
+                @forelse($user->comments as $comment)
+            <p>{{ $comment->content }}</p>
+            @empty
+            <div>
+                <p class="posts">You haven't Written any posts yet...</p>
+            </div>
+            @endforelse
             <br>
-                <button type="button" class="btn btn-group-xs likes">Like</button>
+            
+            
+            @if(Auth::user()->likes->contains($post->id))
+                <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs likes">unlike</button>
+                <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow hide btn-group-xs likes">like</button>
+            @else
+                <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow hide btn-group-xs likes">unlike</button>
+                <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs likes">like</button>
+            @endif
+            
                 <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
             </div>
+            
             <div class="container">
                     <div id="modal-1" class="modal fade lg" tabindex="-1" role="dialog">
                         <div class="modal-dialog">
@@ -150,12 +171,13 @@
                                     <h4 class="modal-title">Leave Your Comment</h4>
                                 </div>
                                 {{ Form::open(array('action' => 'PostsController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
-                                <div class="modal-body">
+                                <div class="modal-body" value=""autofocus>
                                     {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5'))}}
                                 </div>
                                 <div class="modal-footer">
                                     <div class="btn-group">
                                         <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                                        {{ Form::hidden('post_id', $post->id) }}
                                         {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
                                         {{ Form::close() }}
                                     </div>
@@ -180,5 +202,7 @@
         </div>
     @endforelse
 </div>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="/js/following.js"></script>
 
 @stop

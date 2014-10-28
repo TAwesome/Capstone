@@ -12,11 +12,11 @@ class Comment extends BaseModel {
         'post_id' => 'required'
     );
     
-    public function users()
+    public function user()
     {
         return $this->belongsTo('User');
     }
-    public function posts()
+    public function post()
     {
         return $this->belongsTo('Post');
     }
