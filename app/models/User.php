@@ -36,7 +36,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     
     public function likes()
     {
-        return $this->belongsToMany('Post', 'likes', 'post_id', 'user_id')->withTimestamps();    
+        return $this->belongsToMany('Post', 'likes', 'user_id', 'post_id')->withTimestamps();    
     }
     // changed to followed? Or following? Ugh...
     public function follow()
