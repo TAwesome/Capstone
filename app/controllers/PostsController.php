@@ -147,5 +147,15 @@ class PostsController extends \BaseController {
         
         return Redirect::action('PostsController@index');
     }
+    
+    public function like($id)
+    {
+        
+    }
+    
+    public function unlike($id)
+    {
+        
+    }
 
 }

@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/Like/{id}', 'PostController@like');
+Route::get('/Like/{id}', 'PostsController@like');
 
-Route::get('/Unlike/{id}', 'PostController@unlike');
+Route::get('/Unlike/{id}', 'PostsController@unlike');
 
 Route::get('/Follow/{id}', 'FollowsController@follow');
 
