@@ -2,16 +2,13 @@
 	left: 400px;
 }
 body {
-	text-align: center;
+	/*text-align: center;*/
 	text-shadow: 2px 2px 2px #FFFFFF;
 	background-image: url('/img/landingBG.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
-}
-.row {
-	position: relative;
-	top: 150px;
+    padding-top: 70px;
 }
 .guidebar {
 	float: left;
@@ -41,98 +38,9 @@ body {
 	}
 
 /******* landing *******/
-	.container .jumbotron-landing {
-		border-radius: 6px;
+	#landing-jumbotron {
+		padding-top: 0;
 	}
-	.jumbotron-landing {
-		float: left;
-		position: relative;
-		margin-bottom: 30px;
-		margin: 20px;
-	    width: 500px;
-		padding: 30px;
-		padding-bottom: 160px;
-	}
-	.content-landing {
-		position: absolute;
-		top: 75px;
-	}
-	#h1-landing {
-		font-size: 50px;
-	}
-	#p-landing {
-		font-size: 20px;
-	}
-	#about-landing {
-		color: #fff;
-		background-color: #1F88F1;
-		border-color: #357ebd;
-	}
-	#welcome-jumbo-landing {
-		background-color: inherit;
-	}
-	#sign-up_container-landing {
-		/*border: 1px solid black;*/
-		position: relative;
-	    margin-top: 100px;
-	    width: 500px;
-	   	float: right;
-	}
-	.labels-landing {
-		position: relative;
-		width: 295px;
-	}
-	#sign-up-landing {
-		position: relative;
-		top: 10px;
-		bottom: 10px;
-		left: 10px;
-		right: 10px;
-		margin-left: 100px;
-	}
-	#radio-landing {
-		position: relative;
-		top: 10px;
-		bottom: 10px;
-		left: 10px;
-		right: 10px;
-		margin-left: 13px; 
-		width: 310px;
-	}
-	.radio-landing {
-		margin-top: 20px;
-		margin-bottom: 10px;
-		margin-top: 60px;
-	}
-	#year-landing {
-		position: relative;
-		top: 10px;
-		bottom: 10px;
-		left: 10px;
-		right: 10px;
-		padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 100px;
-	}
-
-	#month-day-landing {
-		position: relative;
-		top: 10px;
-		bottom: 10px;
-		left: 10px;
-		right: 10px;
-		padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 10px;
-	}
-	#language-landing {
-		width: 322px;
-		margin-left: 90px;
-		margin-top: 25px;
-	}
-	#sign-up_btn-landing {
-		position: relative;
-		right: 80px;
-		margin-left: 100px;
-		width: 334px;
-	}
-
 
 /******* Home *******/
 	.guidebar-home {
