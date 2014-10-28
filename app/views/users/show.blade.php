@@ -144,17 +144,21 @@
             <br>
                 
                 <button type="button" class="btn btn-group-xs likes">Like</button>
+
                 <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
            
             <div class="container">
                 <div class="row">
                     <div id="modal-1" class="modal" tabindex="-1" role="dialog">
+
                         <div class="modal-dialog">
                             <div class="modal-content">
                  
                                 <div class="modal-header">
+
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     <h4 class="modal-title">Leave Your Comment</h4>
+
                                 </div>
                                 <div class="modal-body">
                                     {{ Form::open(array('action' => 'PostsController@store', 'class' => 'form-inline', 'role' => 'form')) }}
