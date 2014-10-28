@@ -6,26 +6,27 @@
 @section('content')
     <!-- Need to add follow/unfollow button 
     that dynamically loads based on the user's relationship to other users -->
-    @foreach($data as $person)
     
+    @forelse($data as $person)
         <div class='container'>
-            <h1>{{$person['name']}}</h1>
-            @if(User::find(Auth::id())->follow->contains($person['id']))
-                <a href="/unfollow/{{{$person['id']}}}" class="btn btn-default follow">Unfollow</a>
-                <a href="/follow/{{{$person['id']}}}" class="btn btn-default follow hide">Follow</a>
+            <h1>{{ $person->first_name }} {{ $person->last_name }}</h1>
+            @if(Auth::user()->follow->contains($person->id))
+                <a href="/unfollow/{{{$person->id}}}" class="btn btn-danger follow">Unfollow</a>
+                <a href="/follow/{{{$person->id}}}" class="btn btn-info follow hide">Follow</a>
             @else
-                <a href="/unfollow/{{{$person['id']}}}" class="btn btn-default follow hide">Unfollow</a>
-                <a href="/follow/{{{$person['id']}}}" class="btn btn-default follow">Follow</a>
+                <a href="/unfollow/{{{$person->id}}}" class="btn btn-danger follow hide">Unfollow</a>
+                <a href="/follow/{{{$person->id}}}" class="btn btn-info follow">Follow</a>
             @endif
         </div>
-        
-    @endforeach
+    @empty
+        <h1>You're not following anyone</h1>
+    @endforelse
     <div class='container'>
         <div>
             <input id="tags"/>
         </div>
     </div>
-    
+    {{ $data->links() }}
         <script src="/js/following.js"></script>
         <script type="text/javascript">
             $('#tags').tagsInput({
