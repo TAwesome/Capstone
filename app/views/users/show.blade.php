@@ -67,8 +67,7 @@
     
     
     </style>
-     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>
+<!-- 
     // $(document).ready(function() 
     // {
     //     function translate()
@@ -89,9 +88,7 @@
     //             alert( "error :"+errorThrown );
     //         });
     //     }
-    // });
-    
-    </script>
+    // }); -->
     
     
 @stop
@@ -138,36 +135,28 @@
     
         <div class="postings">
 
-            <p type="text" id="translated" class="posts"> 
-                <span id="text"> {{ $post->content }}</span> 
-
+            <div type="text" id="translated" class="posts"> 
+                <span id="text"> {{ $post->content }}</span>
             <br>
-                
                 <button type="button" class="btn btn-group-xs likes">Like</button>
-
                 <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
-           
+            </div>
             <div class="container">
-                <div class="row">
-                    <div id="modal-1" class="modal" tabindex="-1" role="dialog">
-
+                    <div id="modal-1" class="modal fade lg" tabindex="-1" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                 
                                 <div class="modal-header">
-
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     <h4 class="modal-title">Leave Your Comment</h4>
-
                                 </div>
+                                {{ Form::open(array('action' => 'PostsController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
                                 <div class="modal-body">
-                                    {{ Form::open(array('action' => 'PostsController@store', 'class' => 'form-inline', 'role' => 'form')) }}
-                                    {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '3'))}}
+                                    {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5'))}}
                                 </div>
                                 <div class="modal-footer">
                                     <div class="btn-group">
-                                        <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                        <button class="btn btn-primary" action=" {{action('PostsController@create')}} ">Save changes</button>
+                                        <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                                        {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
                                         {{ Form::close() }}
                                     </div>
                                 </div>
@@ -176,9 +165,6 @@
                     </div><!-- /.modal -->
                 </div>
             </div>
-
-
-            <br>
                 <!-- <strong>Translate into:</strong> 
                 <select id="target">
                     <option value="en">English</option>
@@ -187,10 +173,6 @@
                 </select>
                 <input type="button" value="Translate"  onclick="translate()" />
             </p> -->
-            
-            
-            
-            
         </div>
     @empty
         <div>

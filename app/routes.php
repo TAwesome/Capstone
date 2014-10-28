@@ -25,21 +25,23 @@ Route::get('/following', 'FollowsController@following');
 
 Route::get('/', 'HomeController@showWelcome');
 
-Route::post('/Login', 'HomeController@doLogin');
+Route::post('/login', 'HomeController@doLogin');
 
-Route::get('/Logout', 'HomeController@doLogout');
+Route::get('/logout', 'HomeController@doLogout');
 
-Route::get('/About', 'HomeController@showAbout');
+Route::get('/about', 'HomeController@showAbout');
 
-Route::get('/Home', 'HomeController@showHome');
+Route::get('/home', 'HomeController@showHome');
 
-Route::get('/ContactUs', 'HomeController@showContact');
+Route::get('/contactUs', 'HomeController@showContact');
 
-Route::get('/Rissa', 'HomeController@showRissa');
+Route::get('/rissa', 'HomeController@showRissa');
 
-Route::get('/Jill', 'HomeController@showJill');
+Route::get('/jill', 'HomeController@showJill');
 
-Route::get('/Jacob', 'HomeController@showJacob');
+Route::get('/jacob', 'HomeController@showJacob');
+
+Route::post('/comments', 'PostsController@createComment');
 
 Route::resource('posts', 'PostsController');
 

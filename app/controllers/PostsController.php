@@ -44,21 +44,13 @@ class PostsController extends \BaseController {
      *
      * @return Response
      */
-    public function create()
+    public function createComment()
     {
-        $validator = Validator::make($data = Input::all(), Post::$rules);
-
-        if ($validator->fails()) {
-            Log::info('No empty posts', Input::all());
-            return Redirect::back()->withErrors($validator)->withInput();
-        }
-        else {
             if (Input::hasFile('comment')) {
                 $comment = new Comment();
                 $comment->content = Input::get('comment');
                 $comment->save();
             }
-        }
         return View::make('users.show');
     }
 
