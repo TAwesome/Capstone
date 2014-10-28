@@ -39,10 +39,34 @@
         margin: 5px;
         margin-bottom: 7px;
     }
-
-
-    
     </style>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+    // $(document).ready(function() 
+    // {
+    //     function translate()
+    //     {
+    //         $.get("https://www.googleapis.com/language/translate/v2",
+    //         {
+    //             key:"AIzaSyDgydXTWspIfKggxymxfDh0VcyvdEMrGAc",
+    //             source:"en",
+    //             target:$("#target").val(),
+    //             q:$("#text").val()
+    //         },
+    //         function(response)
+    //         {
+    //             $("#translated").html(response.data.translations[0].translatedText);
+ 
+    //         },"json") .fail(function(jqXHR, textStatus, errorThrown) 
+    //         {
+    //             alert( "error :"+errorThrown );
+    //         });
+    //     }
+    // });
+    
+    </script>
+    
+    
 @stop
 
 @section('content')
@@ -56,7 +80,9 @@
         <h1> Welcome {{$user->first_name}}!</h1>
         <p>This is a place where you can place your favorite quote/song title/bio.</p>
         <img src="/img/toy-story-alien2.jpg" alt="Toy Story Alien" class="img-thumbnail">
-        <p id="about-style"><a href=# id="about"class="btn btn-primary btn-lg" role="button">Cover photo! &raquo;</a></p>
+<!--  -->
+        </p>
+        
       </div>
    </div>
 
@@ -81,18 +107,24 @@
       
     {{ Form::close() }}
 
-    </div>
-    
-
-    <div>
     @forelse($user->posts as $post)
     
         <div class="postings">
-            <p class="posts"> {{ $post->content }} 
+
+            <p type="text" id="translated" class="posts"> 
+                <span id="text"> {{ $post->content }}</span> 
+
             <br>
                 <button type="button" class="btn btn-group-xs likes">Like</button>
-                <button type="button" class="btn btn-group-xs comments">Comment</button>
-                <button type="button" class="btn btn-group-xs ggl">TRANSLATE</button>
+                <button id="comment"type="button" class="btn btn-group-xs comments">Comment</button>
+            <br>
+                <strong>Translate into:</strong> 
+                <select id="target">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                </select>
+                <input type="button" value="Translate"  onclick="translate()" />
             </p>
             
         </div>
