@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="icon" href="../../favicon.ico">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
     <link rel="stylesheet" type="text/css" href="/TAwesome.css">
 
     <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
+    <!-- <link href="cover.css" rel="stylesheet"> -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,23 +24,23 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
     <!-- Bootstrap core CSS -->
     <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <!-- <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
-    <link href="../../dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="theme.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-    <title>About us!</title>
-
+    <title>Profile</title>
+ 
   </head>
 
   <body role="document">
@@ -60,8 +60,8 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li class="active"><a href="#about">About</a></li>
+            <li class="active"><a href="#">Profile</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact Us</a></li>
             <li><a href="#">Logout</a></li>
             <li class="dropdown-nav">
@@ -78,32 +78,68 @@
             </li>
           </ul>
 
+<!--           <form class="form-inline" role="form">
+            <div class="sign-in" style="margin-left: 670px; width: 500px; margin-top: 7px;">
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-addon">@</div>
+                  <input class="form-control" type="email" placeholder="Enter email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="exampleInputPassword2">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-default">Sign in</button>
+            </div>
+          </form> -->
+
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
+    <div class="container theme-showcase" role="main">
 
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+       <div class="jumbotron-profile">
+          <div class="content">
+            <h1 id="h1-profile">Rissa Waters</h1>
+            <p id="p-profile">This is a place where you can place your favorite quote/song title/bio.</p>
+            <img src="/img/user-deafault.jpg" alt="Toy Story Alien" class="img-thumbnail">
+            <p id="about-style"><a href="#" id="about"class="btn btn-primary btn-lg" role="button">Cover photo! &raquo;</a></p>
+          </div>
+       </div>
 
-    <div class="container marketing">
+      <!-- User Posting ability -->
+      <div class="profile-posts">
+        <div class="guidebar-profile list-group col-xs-3">
+          <a href="#" class="list-group-item active">Cras justo odio</a>
+          <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+          <a href="#" class="list-group-item">Morbi leo risus</a>
+          <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+          <a href="#" class="list-group-item">Vestibulum at eros</a>
+        </div>
 
-      <div class="jumbotron-about">
-        <h1 id="h1-about">Hello, Language Learners!</h1>
-        <p id="p-about">Have you ever wanted to learn a foriegn yet not so foreign language? Like French or Spanish, the classes you took in high school, you want to make something out of them! Do you not know where to start? Do you want to learn in an encouraging environment full of your peers wanting to learn and improve just like you?! WELL look no further! Welcome to SkyLanguage! Where the sky's the limit on language learning! Participate in an open, friendly forum where you can post, revise and persue your goal to learn a foregin yet not so foregin language!! </p>
+
+        <div class="posts-container-profile col-xs-8">
+           <div>
+              <input type="text" class="form-control" placeholder="Try a new Language!">
+          </div>
+        </div>
       </div>
 
-    </div><!-- /.container -->
+    </div>
+
+
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap/assets/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

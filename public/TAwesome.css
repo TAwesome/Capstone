@@ -2,16 +2,13 @@
 	left: 400px;
 }
 body {
-	text-align: center;
+	/*text-align: center;*/
 	text-shadow: 2px 2px 2px #FFFFFF;
 	background-image: url('/img/landingBG.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
-}
-.row {
-	position: relative;
-	top: 150px;
+    padding-top: 70px;
 }
 .guidebar {
 	float: left;
@@ -20,129 +17,60 @@ body {
 	margin: 50px;
     width: 500px;
 }
-.container .jumbotron-about {
-border-radius: 6px;
-background-color: rgba(0, 0, 0, 0);
-}
-.jumbotron-about {
-	padding: 30px;
-	margin-bottom: 30px;
-	margin-top: 75px;
-	color: inherit;
-	background-color: rgba(238, 238, 238, 0);
-}
 
-/******* landing *******/
-	.container .jumbotron-landing {
+/******* about *******/
+	.container .jumbotron-about {
 		border-radius: 6px;
+		background-color: rgba(0, 0, 0, 0);
 	}
-	.jumbotron-landing {
-		float: left;
-		position: relative;
-		margin-bottom: 30px;
-		margin: 20px;
-	    width: 500px;
+	.jumbotron-about {
 		padding: 30px;
-		padding-bottom: 160px;
+		margin-bottom: 30px;
+		margin-top: 75px;
+		color: inherit;
+		background-color: rgba(238, 238, 238, 0);
 	}
-	.content-landing {
-		position: absolute;
-		top: 75px;
-	}
-	#h1-landing {
+	#h1-about {
 		font-size: 50px;
 	}
-	#p-landing {
+	#p-about {
 		font-size: 20px;
 	}
-	#about-landing {
-		color: #fff;
-		background-color: #1F88F1;
-		border-color: #357ebd;
+/****** contact us ******/
+	.carousel {
+		width: 140px; 
+		height: 140px;
 	}
-	#welcome-jumbo-landing {
-		background-color: inherit;
-	}
-	#sign-up_container-landing {
-		/*border: 1px solid black;*/
-		position: relative;
-	    margin-top: 100px;
-	    width: 500px;
-	   	float: right;
-	}
-	.labels-landing {
-		position: relative;
-		width: 295px;
-	}
-	#sign-up-landing {
-		position: relative;
-		top: 10px;
-		bottom: 10px;
-		left: 10px;
-		right: 10px;
-		margin-left: 100px;
-	}
-	#radio-landing {
-		position: relative;
-		top: 10px;
-		bottom: 10px;
-		left: 10px;
-		right: 10px;
-		margin-left: 13px; 
-		width: 310px;
-	}
-	.radio-landing {
-		margin-top: 20px;
-		margin-bottom: 10px;
-	}
-	#year-landing {
-		position: relative;
-		top: 10px;
-		bottom: 10px;
-		left: 10px;
-		right: 10px;
-		padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 100px;
+	.contact-us {
+		padding-top: 60px;
 	}
 
-	#month-day-landing {
-		position: relative;
-		top: 10px;
-		bottom: 10px;
-		left: 10px;
-		right: 10px;
-		padding-left: 0px; width: 101px; padding-right: 0px; margin-left: 10px;
+/******* landing *******/
+	#landing-jumbotron {
+		padding-top: 0;
 	}
-	#language-landing {
-		width: 322px;
-		margin-left: 90px;
-	}
-	#sign-up_btn-landing {
-		position: relative;
-		right: 80px;
-		margin-left: 100px;
-		width: 334px;
-	}
-
 
 /******* Home *******/
-	.guidebar-home {
-		float: left;
-		position: relative;
-		margin-bottom: 30px;
-		margin: 50px;
-	    width: 500px;
+	.posts {
+        background-color: rgba(19, 130, 199, 0.2); 
+        border-radius: 6px;
+        padding: 10px; 
+        margin-bottom: 20px;  
+    }
+    .posts-btn {
+        border: 1px solid rgba(0, 41, 252, 0.35);
+        border-radius: 100px;
+        background-color: rgba(240, 248, 255, 0);
+    }
+    .post-pic {
+    	width: 150px;
+    }
+    .post-pic img {
+		max-width: 100%;
 	}
-	.posts-container-home {
-	/*	border: 1px solid black;*/
-		float: right;
-		position: relative;
-		margin-left: 0px;
-		margin-top: 42px;
-		padding-top: 10px;
-		padding-bottom: 300px;
+	.pull-left {
+		margin-right: 20px;
 	}
-
-
 
 /******* profile *******/
 	.container .jumbotron-profile {
@@ -151,9 +79,20 @@ background-color: rgba(0, 0, 0, 0);
 		background-position: center;
 	    background-image: url('/img/FancyfbBG.jpg');
 	    padding-bottom: 130px;
+	    margin-bottom: 75px;
+	    height: 230px;
+		padding-top: 15px;
+		padding-bottom: 50px;
+		margin-top: 51px;
 	}
 	.jumbotron-profile {
 		position: relative;
+	}
+	#h1-profile {
+		font-size: 50px;
+	}
+	#p-profile {
+		font-size: 20px;
 	}
 	#about {
 		color: #fff;
@@ -166,12 +105,12 @@ background-color: rgba(0, 0, 0, 0);
 		right: 80px;
 		bottom: 10px;
 	}
-	.img-thumbnail {
+	.img-circle-profile {
 		width: 250px;
 		position: absolute;
 		left: 30px;
 	}
-	.img-thumbnail img {
+	.img-circle-profile img {
 		max-width: 100%;
 	}
 	p {
