@@ -11,14 +11,17 @@
 |
 */
 
+Route::get('/like/{id}', 'PostsController@like');
 
-Route::get('/Follow/{id}', 'FollowsController@follow');
+Route::get('/unlike/{id}', 'PostsController@unlike');
 
-Route::get('/Unfollow/{id}', 'FollowsController@unfollow');
+Route::get('/follow/{id}', 'FollowsController@follow');
 
-Route::get('/Following/me', 'FollowsController@followers');
+Route::get('/unfollow/{id}', 'FollowsController@unfollow');
 
-Route::get('/Following', 'FollowsController@following');
+Route::get('/following/me', 'FollowsController@followers');
+
+Route::get('/following', 'FollowsController@following');
 
 Route::get('/', 'HomeController@showWelcome');
 
