@@ -20,9 +20,14 @@ class HomeController extends BaseController {
         return View::make('landingpage');
     }
     
+    public function showHome()
+    {
+        return View::make('TAhome');
+    }
+    
     public function showContact()
     {
-        return View::make('index');
+        return View::make('TAcontactus');
     }
     
      public function showJill()
@@ -40,11 +45,11 @@ class HomeController extends BaseController {
         return View::make('TAbout_rissa');
     }
     
-    // public function showAbout()
-    // {
-    //     return View::make('');
-    // }
     
+    public function showAbout()
+    {
+        return View::make('TAbout');
+    }
     
     public function doLogin()
     {
