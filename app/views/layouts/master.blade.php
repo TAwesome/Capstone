@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
     <!-- Custom styles for this template -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,14 +14,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/font_awesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" type="text/css" href="/TAwesome.css">
+
     @yield('header')
 </head>
 <body role="document">
@@ -70,6 +68,13 @@
     </div>
     
     @yield('content')
+
+   <!-- Placed at the end of the document so the pages load faster -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   
+     <!-- Latest compiled and minified JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 
     @yield('bottom-script')
 </body>    

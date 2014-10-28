@@ -36,6 +36,14 @@ body {
 	#p-about {
 		font-size: 20px;
 	}
+/****** contact us ******/
+	.carousel {
+		width: 140px; 
+		height: 140px;
+	}
+	.contact-us {
+		padding-top: 60px;
+	}
 
 /******* landing *******/
 	#landing-jumbotron {
@@ -43,24 +51,26 @@ body {
 	}
 
 /******* Home *******/
-	.guidebar-home {
-		float: left;
-		position: relative;
-		margin-bottom: 30px;
-		margin: 50px;
-	    width: 500px;
+	.posts {
+        background-color: rgba(19, 130, 199, 0.2); 
+        border-radius: 6px;
+        padding: 10px; 
+        margin-bottom: 20px;  
+    }
+    .posts-btn {
+        border: 1px solid rgba(0, 41, 252, 0.35);
+        border-radius: 100px;
+        background-color: rgba(240, 248, 255, 0);
+    }
+    .post-pic {
+    	width: 150px;
+    }
+    .post-pic img {
+		max-width: 100%;
 	}
-	.posts-container-home {
-	/*	border: 1px solid black;*/
-		float: right;
-		position: relative;
-		margin-left: 0px;
-		margin-top: 42px;
-		padding-top: 10px;
-		padding-bottom: 300px;
+	.pull-left {
+		margin-right: 20px;
 	}
-
-
 
 /******* profile *******/
 	.container .jumbotron-profile {
@@ -95,12 +105,12 @@ body {
 		right: 80px;
 		bottom: 10px;
 	}
-	.img-thumbnail {
+	.img-circle-profile {
 		width: 250px;
 		position: absolute;
 		left: 30px;
 	}
-	.img-thumbnail img {
+	.img-circle-profile img {
 		max-width: 100%;
 	}
 	p {

@@ -4,7 +4,6 @@
     <title>SkyLanguage</title>
 @stop
 
-
 @section('content')
     <div class="container" role="main">
         <div class="row">
@@ -101,6 +100,14 @@
                             <label>
                                 <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Male
                             </label>
+                        </div>
+                    </div>
+
+                    <!-- Sign Up Button -->
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                          <label class="sr-only" for="exampleInputSignUp2">Sign Up</label>
+                          <button type="submit" class="btn btn-lg btn-success" id="sign-up_btn-landing">Sign Up</button>
                         </div>
                     </div>
                 </form>
