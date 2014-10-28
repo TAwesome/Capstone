@@ -39,6 +39,33 @@
         margin: 5px;
         margin-bottom: 7px;
     }
+    
+    
+    
+.modal .modal-header {
+  border-bottom: none;
+  position: relative;
+}
+.modal .modal-header .btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.modal .modal-footer {
+  border-top: none;
+  padding: 0;
+}
+.modal .modal-footer .btn-group > .btn:first-child {
+  border-bottom-left-radius: 0;
+}
+.modal .modal-footer .btn-group > .btn:last-child {
+  border-top-right-radius: 0;
+}
+    
+    
     </style>
      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
@@ -117,7 +144,36 @@
             <br>
                 
                 <button type="button" class="btn btn-group-xs likes">Like</button>
-                <button id="comment"type="button" class="btn btn-group-xs comments">Comment</button>
+                <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
+           
+            <div class="container">
+                <div class="row">
+                    <div id="modal-1" class="modal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                 
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Leave Your Comment</h4>
+                                </div>
+                                <div class="modal-body">
+                                    {{ Form::open(array('action' => 'PostsController@store', 'class' => 'form-inline', 'role' => 'form')) }}
+                                    {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '3'))}}
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="btn-group">
+                                        <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                        <button class="btn btn-primary" action=" {{action('PostsController@create')}} ">Save changes</button>
+                                        {{ Form::close() }}
+                                    </div>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dalog -->
+                    </div><!-- /.modal -->
+                </div>
+            </div>
+
+
             <br>
                 <!-- <strong>Translate into:</strong> 
                 <select id="target">
@@ -127,6 +183,9 @@
                 </select>
                 <input type="button" value="Translate"  onclick="translate()" />
             </p> -->
+            
+            
+            
             
         </div>
     @empty
