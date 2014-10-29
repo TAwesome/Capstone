@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h4>Write A New Post</h4>
-                    {{ Form::open(array('action' => 'PostsController@store', 'role' => 'form')) }}
+                    {{ Form::open(array('action' => 'HomeController@showHome', 'role' => 'form')) }}
                         <div class="form-group">
                             {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
                         </div>
@@ -50,80 +50,69 @@
             <div class="row">
                 <div class="posts col-md-12">
                     <div class="pull-left">
+                      @forelse($user->posts as $post)
+                              
                         <img src="/img/user-deafault.jpg" alt="SkyLanguage" class="img-circle post-pic">
+                        
                         <br>
                         <br>
-                        <h4 class="text-center">Rissa Waters</h4>
+                        <h4 class="text-center"> {{ $user->first_name }} </h4>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <button type="button" class="btn btn-group-xs posts-btn">Like</button>
-                    <button type="button" class="btn btn-group-xs posts-btn">Comment</button>
-                    <button type="button" class="btn btn-group-xs posts-btn">TRANSLATE</button>
+                    <p> {{ $post->content }}</p>
+                    <br>
+                    @if(Auth::user()->likes->contains($post->id))
+                        <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs likes">unlike</button>
+                        <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow hide btn-group-xs likes">like</button>
+                    @else
+                        <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow hide btn-group-xs likes">unlike</button>
+                        <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs likes">like</button>
+                    @endif
+                    <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
+                    @forelse($user->comments as $comment)
+                    <p>{{ $comment->content }}</p>
+                    @empty
+                    @endforelse
+                    <br>
+                    
+                        
+                    </div>
+                    
+                    <div class="container">
+                            <div id="modal-1" class="modal fade lg" tabindex="-1" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Leave Your Comment</h4>
+                                        </div>
+                                        {{ Form::open(array('action' => 'PostsController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
+                                        <div class="modal-body" >
+                                            {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5'))}}
+                                         <div class='container'>
+                                                <div>
+                                                    <input id="tags" rows="5" placeholder="Create tags"></input>
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                               
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                                                {{ Form::hidden('post_id', $post->id) }}
+                                                {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
+                                                {{ Form::close() }}
+                                            </div>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dalog -->
+                            </div><!-- /.modal -->
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="posts col-md-12">
-                    <div class="pull-left">
-                        <img src="/img/user-deafault.jpg" alt="SkyLanguage" class="img-circle post-pic">
-                        <br>
-                        <br>
-                        <h4 class="text-center">Russa Ocean</h4>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <button type="button" class="btn btn-group-xs posts-btn">Like</button>
-                    <button type="button" class="btn btn-group-xs posts-btn">Comment</button>
-                    <button type="button" class="btn btn-group-xs posts-btn">TRANSLATE</button>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="posts col-md-12">
-                    <div class="pull-left">
-                        <img src="/img/user-deafault.jpg" alt="SkyLanguage" class="img-circle post-pic">
-                        <br>
-                        <br>
-                        <h4 class="text-center">Jacob Ernst</h4>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <button type="button" class="btn btn-group-xs posts-btn">Like</button>
-                    <button type="button" class="btn btn-group-xs posts-btn">Comment</button>
-                    <button type="button" class="btn btn-group-xs posts-btn">TRANSLATE</button>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="posts col-md-12">
-                    <div class="pull-left">
-                        <img src="/img/user-deafault.jpg" alt="SkyLanguage" class="img-circle post-pic">
-                        <br>
-                        <br>
-                        <h4 class="text-center">Jillian Donovan</h4>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <button type="button" class="btn btn-group-xs posts-btn">Like</button>
-                    <button type="button" class="btn btn-group-xs posts-btn">Comment</button>
-                    <button type="button" class="btn btn-group-xs posts-btn">TRANSLATE</button>
+                    @empty
+                        
+                    @endforelse
+                    
                 </div>
             </div>
 
@@ -134,7 +123,17 @@
 
 @stop
 
-    
+@section('bottom-script')
+        <script src="/js/jquery.tagsinput.js"></script>
+        <script src="/js/following.js"></script>
+        <script type="text/javascript">
+            $('#tags').tagsInput({
+                    "width": "75%",
+                    "height": "70px",
+                    'defaultText':''
+            }); 
+        </script>
+@stop
 
 
 

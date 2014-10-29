@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('header')
-    <script src="/js/jquery.tagsinput.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/jquery.tagsinput.css" />
 @stop
 @section('content')
@@ -27,6 +26,9 @@
         </div>
     </div>
     {{ $data->links() }}
+@stop
+@section('bottom-script')
+        <script src="/js/jquery.tagsinput.js"></script>
         <script src="/js/following.js"></script>
         <script type="text/javascript">
             $('#tags').tagsInput({
@@ -35,5 +37,5 @@
                     'defaultText':''
             }); 
         </script>
-
 @stop
+
