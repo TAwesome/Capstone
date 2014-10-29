@@ -15,7 +15,7 @@ class Post extends BaseModel {
         return $this->belongsToMany('Tag');
     }
     
-    public function users()
+    public function user()
     {
         return $this->belongsTo('User');
     }
