@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder {
                 'email'           => $faker->unique()->email,
                 'date_of_birth'   => $faker->date($format = 'Y-m-d', $max = '2006-00-00'),
                 'gender'          => $faker->randomElement($array = ['M','F']),
-                'native_language' => $faker->randomElement($array = ['English','Spanish', 'French']),
+                'native_language' => $faker->randomElement($array = ['english','spanish', 'french']),
                 'password'        => Hash::make('adminPass123!')
 			]);
 		}
