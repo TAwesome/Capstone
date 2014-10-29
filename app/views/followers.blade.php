@@ -7,7 +7,7 @@
         <div class='container'>
             <h1>{{ $person->first_name }} {{ $person->last_name }}</h1>
             <a href="/unfollow/{{{$person->id}}}" class="btn btn-danger follow {{(Auth::user()->follow->contains($person->id)) ? '' : 'hide';}}">unfollow</a>
-            <a href="/follow/{{{$person->id}}}" class="btn btn-info follow hide {{(Auth::user()->follow->contains($person->id)) ? 'hide' : '';}}">follow</a>
+            <a href="/follow/{{{$person->id}}}" class="btn btn-info follow {{(Auth::user()->follow->contains($person->id)) ? 'hide' : '';}}">follow</a>
         </div>
     @empty
         <h1>No Followers</h1>
