@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container" role="main">
-    <div class="row">
+    <div class="row home">
         <div class="col-md-3">
             <div class="list-group">
                 <a href="#" class="list-group-item active">Home</a>
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="col-xs-offset-1 col-md-8">
+        <div class="col-md-offset-1 col-md-8">
             <!-- Search Row -->
             <div class="row">
                 <div class="col-md-12">
@@ -33,7 +33,7 @@
 
             <!-- Post Form Row -->
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12">
                     <h4>Write A New Post</h4>
                     {{ Form::open(array('action' => 'PostsController@store', 'role' => 'form')) }}
                         <div class="form-group">
