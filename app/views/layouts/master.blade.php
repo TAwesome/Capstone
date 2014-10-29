@@ -46,6 +46,7 @@
                         <li><a href="{{ action('HomeController@doLogout') }}">Logout</a></li>
                     @endif
                 </ul>
+                <img class="logo" src="img/skylanguageLogo.png" alt="Sky Language Logo">
                 @if(Auth::guest())
                     {{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'navbar-form navbar-right', 'role' => 'form')) }}
                         <div class="form-group">

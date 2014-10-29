@@ -20,6 +20,9 @@ body {
 	margin: 50px;
     width: 500px;
 }
+.logo {
+	padding-left: 574px;
+}
 
 /******* about *******/
 	.container .jumbotron-about {
