@@ -48,3 +48,4 @@ Route::resource('posts', 'PostsController');
 Route::resource('users', 'UsersController');
 
 // Route::post('/cover', 'UsersController@uploadCover');
+
