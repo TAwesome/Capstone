@@ -18,11 +18,14 @@
             @endif
         </div>
     @empty
+    <div class="container">
         <h1>You're not following anyone</h1>
+    </div>
     @endforelse
     <div class='container'>
         <div>
             <input id="tags"/>
+            
         </div>
     </div>
     {{ $data->links() }}

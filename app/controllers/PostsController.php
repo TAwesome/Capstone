@@ -19,24 +19,18 @@ class PostsController extends \BaseController {
      */
     public function index()
     {
-        //This can be uncommented once we get a combined 
-        //firstname lastname user 
-        //May need to do lazy loading
-        
-        // $search = Input::get('search');
+        $posts = Post::whereHas('user', function($q)
+            {
+                $userIds = array(Auth::id());
+                
+                foreach(Auth::user()->follow as $following) {
+                    $userIds[] = $following->id;
+                }
+                
+                $q->whereIn('id', $userIds);
+            })->get();
 
-        // $query = Post::with('user');
-        
-        // $query->where('tag', 'like', "%$search%");
-        
-        // $query->orWhere('content', 'like', "%$search%");
-
-        // $posts = $query->orderBy('id', 'DESC')->paginate(5);
-        
-        $post = Post::with('id');
-        $posts = $post->orderBy('id', 'DESC')->paginate(5);
-
-        return View::make('posts.index', compact('posts'));
+        return View::make('TAhome', compact('posts'));
     }
 
     /**
