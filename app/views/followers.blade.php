@@ -6,13 +6,8 @@
     @forelse($data as $person)
         <div class='container'>
             <h1>{{ $person->first_name }} {{ $person->last_name }}</h1>
-            @if(Auth::user()->follow->contains($person->id))
-                <a href="/unfollow/{{{$person->id}}}" class="btn btn-danger follow">Unfollow</a>
-                <a href="/follow/{{{$person->id}}}" class="btn btn-info follow hide">Follow</a>
-            @else
-                <a href="/unfollow/{{{$person->id}}}" class="btn btn-danger follow hide">Unfollow</a>
-                <a href="/follow/{{{$person->id}}}" class="btn btn-info follow">Follow</a>
-            @endif
+            <a href="/unfollow/{{{$person->id}}}" class="btn btn-danger follow {{(Auth::user()->follow->contains($person->id)) ? '' : 'hide';}}">unfollow</a>
+            <a href="/follow/{{{$person->id}}}" class="btn btn-info follow hide {{(Auth::user()->follow->contains($person->id)) ? 'hide' : '';}}">follow</a>
         </div>
     @empty
         <h1>No Followers</h1>
@@ -20,26 +15,18 @@
     
     <div class='container'>
         <h1>Post 1</h1>
-        @if(Auth::user()->likes->contains(1))
-            <a href="/unlike/1" class="btn btn-danger follow">unlike</a>
-            <a href="/like/1" class="btn btn-info follow hide">like</a>
-        @else
-            <a href="/unlike/1" class="btn btn-danger follow hide">unlike</a>
-            <a href="/like/1" class="btn btn-info follow">like</a>
-        @endif
+        <a href="/unlike/1" class="btn btn-info follow {{(Auth::user()->likes->contains(1)) ? '' : 'hide';}}"><i class="fa fa-heart"></i></a>
+        <a href="/like/1" class="btn btn-default follow {{(Auth::user()->likes->contains(1)) ? 'hide' : '';}}"><i class="fa fa-heart-o"></i></a>
     </div>
     
     <div class='container'>
         <h1>Post 2</h1>
-        @if(Auth::user()->likes->contains(2))
-            <a href="/unlike/2" class="btn btn-danger follow">unlike</a>
-            <a href="/like/2" class="btn btn-info follow hide">like</a>
-        @else
-            <a href="/unlike/2" class="btn btn-danger follow hide">unlike</a>
-            <a href="/like/2" class="btn btn-info follow">like</a>
-        @endif
+        <a href="/unlike/2" class="btn btn-info follow {{(Auth::user()->likes->contains(2)) ? '' : 'hide';}}"><i class="fa fa-heart"></i></a>
+        <a href="/like/2" class="btn btn-default follow {{(Auth::user()->likes->contains(2)) ? 'hide' : '';}}"><i class="fa fa-heart-o"></i></a>
     </div>
     
     {{ $data->links() }}
+@stop
+@section('bottom-script')
     <script src="/js/following.js"></script>
 @stop

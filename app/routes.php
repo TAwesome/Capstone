@@ -44,3 +44,20 @@ Route::get('/Jacob', 'HomeController@showJacob');
 Route::resource('posts', 'PostsController');
 
 Route::resource('users', 'UsersController');
+
+Route::get('ormTest', function() {
+    $posts = Post::whereHas('user', function($q)
+    {
+        $userIds = array(Auth::id());
+        
+        foreach(Auth::user()->follow as $following) {
+            $userIds[] = $following->id;
+        }
+        
+        $q->whereIn('id', $userIds);
+    })->get();
+    
+    foreach($posts as $post) {
+        var_dump($post);
+    }
+});
