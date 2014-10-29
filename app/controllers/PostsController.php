@@ -44,9 +44,18 @@ class PostsController extends \BaseController {
      *
      * @return Response
      */
-    public function create()
+    public function createComment()
     {
-        return View::make('posts.create');
+            $id = Auth::user()->id;
+            $user = User::find($id);
+            if (Input::has('comment')) {
+                $comment = new Comment();
+                $comment->user_id = $id;
+                $comment->post_id = Input::get('post_id');
+                $comment->content = Input::get('comment');
+                $comment->save();
+            }
+        return View::make('users.show', compact('user'));
     }
 
     protected function savePost($post)
