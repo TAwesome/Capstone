@@ -15,7 +15,7 @@
     <div class="container">
 
       <!-- Three columns of text below the carousel -->
-      <div class="row text-center">
+      <div class="row text-center top contact-us">
 
         <div class="col-md-offset-3 col-md-6">
           <img class="img-circle" src="img/Jillian.jpg" alt="Generic placeholder image" style="width: 140px; height: 140px;">

@@ -79,22 +79,28 @@
     
         <div class="row">
             <div class="posts col-md-offset-3 col-md-8">
-                <div class="pull-left">
-                    <img src="/img/user-deafault.jpg" alt="SkyLanguage" class="img-circle post-pic">
-                    <br>
-                    <br>
-                    <h4 class="text-center">Rissa Waters</h4>
-                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="/img/user-deafault.jpg" alt="SkyLanguage" class="img-circle text-center post-pic">
 
-                <div type="text" id="translated"> 
-                    <span id="text"><h4>{{ $post->content }}</h4></span>
-                    @forelse($user->comments as $comment)
-                        <p class="posts">{{ $comment->content }}</p>
-                    @empty
-                        <div>
-                            <p class="posts">You haven't Written any posts yet...</p>
+                        <h4 class="text-center">{{{ $post->user->first_name }}} {{{ $post->user->last_name }}}</h4>
+                    </div>
+                    <div class="col-md-8"> 
+                        <h4>{{{ $post->content }}}</h4>
+                    </div>
+                </div>
+                @foreach($post->comments as $comment)
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4 class="text-center">{{{ $comment->user->first_name }}} {{{ $comment->user->last_name }}}</h4>
                         </div>
-                    @endforelse
+
+                        <div class="col-md-8">
+                            <p>{{{ $comment->content }}}</p>
+                        </div>
+                    </div>
+
+                @endforeach
                             
                     @if(Auth::user()->likes->contains($post->id))
                         <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs likes">unlike</button>
