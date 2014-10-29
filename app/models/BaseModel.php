@@ -17,4 +17,24 @@ class BaseModel extends Eloquent {
     {
         $this->attributes['tag'] = strtolower($value);
     }
+    
+    public function setFirstNameAttribute($value)
+    {
+        $this->attributes['first_name'] = strtolower($value);
+    }
+    
+    public function setLastNameAttribute($value)
+    {
+        $this->attributes['last_name'] = strtolower($value);
+    }
+    
+    public function getFirstNameAttribute($value){
+        $first_name = ucfirst($value);
+        return $first_name;
+    }
+    
+    public function getLastNameAttribute($value){
+        $last_name = ucfirst($value);
+        return $last_name;
+    }
 }
