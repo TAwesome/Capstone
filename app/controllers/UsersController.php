@@ -28,13 +28,19 @@ class UsersController extends \BaseController {
         $query = User::with('languages');
         
         if (Input::has('search')) {
-            $search = strtolower(Input::get('search'));
+            $search = Input::get('search');
             $query->where('native_language', 'like', "%$search%");
             
             $query->orWhereHas('languages', function($languageSearch){
                 $search = Input::get('search');
                 $languageSearch->where('language', 'like', "%$search%");
             });
+            $meta = [];
+            foreach (explode(' ', Input::get('search')) as $value) {
+                $meta[] = metaphone($value);
+            }
+            $query->orWhereIn('first_name_meta', $meta);
+            $query->orWhereIn('last_name_meta', $meta);
         }
         
         $users = $query->orderBy('last_name', 'ASC')->paginate(3);
