@@ -20,21 +20,14 @@ class BaseModel extends Eloquent {
     
     public function setFirstNameAttribute($value)
     {
-        $this->attributes['first_name'] = strtolower($value);
+        $this->attributes['first_name'] = $value;
+        $this->attributes['first_name_meta'] = metaphone($value);
     }
     
     public function setLastNameAttribute($value)
     {
-        $this->attributes['last_name'] = strtolower($value);
+        $this->attributes['last_name'] = $value;
+        $this->attributes['last_name_meta'] = metaphone($value);
     }
     
-    public function getFirstNameAttribute($value){
-        $first_name = ucfirst($value);
-        return $first_name;
-    }
-    
-    public function getLastNameAttribute($value){
-        $last_name = ucfirst($value);
-        return $last_name;
-    }
 }
