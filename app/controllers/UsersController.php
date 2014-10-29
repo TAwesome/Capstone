@@ -128,7 +128,7 @@ class UsersController extends \BaseController {
         $user->first_name = Input::get('first_name');
         $user->last_name = Input::get('last_name');
         $user->gender = Input::get('gender');
-        //$user->native_language = 'English';
+        $user->native_language = Input::get('language');
         
         //concatonate the three dropdowns 
         

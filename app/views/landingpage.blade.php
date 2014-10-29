@@ -22,35 +22,35 @@
 
             <div class="col-md-6">
                 <h2 class="labels-landing">Sign up!</h2>
-                <form class="form-horizontal" role="form">
+                <form method="POST" action="{{ action('UsersController@store') }}" class="form-horizontal" role="form">
                     <div class="form-group">
                         <div class="col-md-6">
                             <label class="sr-only" for="exampleInputFirstName2">First Name</label>
-                            <input type="text" class="form-control" id="exampleInputFirstName2" placeholder="First Name">
+                            <input type="text" class="form-control" name="first_name" id="exampleInputFirstName2" placeholder="First Name">
                         </div>
                         <div class="col-md-6">
                             <label class="sr-only" for="exampleInputLast Name2">LastName</label>
-                            <input type="text" class="form-control" id="exampleInputLastName2" placeholder="Last Name">
+                            <input type="text" class="form-control" name="last_name" id="exampleInputLastName2" placeholder="Last Name">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-12">
                             <label class="sr-only" for="exampleInputEmail2">Email</label>
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                            <input type="email" class="form-control" name="email" id="inputEmail3" placeholder="Email">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-12">
                             <label class="sr-only" for="exampleInputPassword2">Password</label>
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                            <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
                         </div>
                     </div>
                     <h4>Birthday</h4>
                     <div class="form-group">
                         <div class="col-xs-4">
-                            <select class="form-control" id="bday-year" name="bday-year">
+                            <select class="form-control" id="bday-year" name="b_year">
                                 <option selected>Year</option>
                                 @for ($i=2010; $i >= 1950; $i--)
                                     <option>{{{ $i }}}</option>
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="col-xs-4">
-                            <select class="form-control" id="bday-month" name="bday-month">
+                            <select class="form-control" id="bday-month" name="b_month">
                                 <option>Month</option>
                                 @for ($i=1; $i <= 12; $i++) 
                                     <option>{{{ $i }}}</option>
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="col-xs-4">
-                            <select class="form-control" id="bday-day" name="bday-day">
+                            <select class="form-control" id="bday-day" name="b_date">
                                 <option>Day</option>
                                 @for ($i=1; $i <= 31; $i++) 
                                     <option>{{{ $i }}}</option>
@@ -82,9 +82,9 @@
                         <div class="col-md-12">
                             <select class="form-control" id="language" name="language">
                                 <option selected>Language</option>
-                                <option>English</option>
-                                <option>French</option>
-                                <option>Spanish</option>
+                                <option value="English" >English</option>
+                                <option value="French" >French</option>
+                                <option value="Spanish" >Spanish</option>
                             </select>
                         </div>
                     </div> 
@@ -93,12 +93,12 @@
                     <div class="form-group">
                         <div class="col-md-2 col-xs-6">
                             <label>
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Female
+                                <input type="radio" name="gender" id="inlineRadio1" value="F"> Female
                             </label>
                         </div>
                         <div class="col-md-2 col-xs-6">
                             <label>
-                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Male
+                                <input type="radio" name="gender" id="inlineRadio2" value="M"> Male
                             </label>
                         </div>
                     </div>
