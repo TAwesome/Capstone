@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container" role="main">
-    <div class="row home">
+    <div class="row top">
         <div class="col-md-3">
             <div class="list-group">
                 <a href="#" class="list-group-item active">Home</a>

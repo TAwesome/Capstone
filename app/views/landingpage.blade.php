@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container" role="main">
-        <div class="row">
+        <div class="row top">
             <div class="col-md-6">
                 <!-- Main jumbotron for a primary marketing message or call to action -->
                 <div class="jumbotron text-center" id="landing-jumbotron">
