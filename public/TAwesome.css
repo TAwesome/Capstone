@@ -10,6 +10,9 @@ body {
 	background-attachment: fixed;
     padding-top: 0px;
 }
+.top {
+	padding-top: 70px;
+}
 .guidebar {
 	float: left;
 	position: relative;
@@ -42,7 +45,7 @@ body {
 		height: 140px;
 	}
 	.contact-us {
-		padding-top: 60px;
+		padding-top: 160px;
 	}
 
 /******* landing *******/
@@ -70,9 +73,6 @@ body {
 	}
 	.pull-left {
 		margin-right: 20px;
-	}
-	.home {
-		padding-top: 70px;
 	}
 
 /******* profile *******/
