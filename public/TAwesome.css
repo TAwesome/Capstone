@@ -8,7 +8,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
-    padding-top: 70px;
+    padding-top: 0px;
 }
 .guidebar {
 	float: left;
@@ -71,6 +71,9 @@ body {
 	.pull-left {
 		margin-right: 20px;
 	}
+	.home {
+		padding-top: 70px;
+	}
 
 /******* profile *******/
 	.container .jumbotron-profile {
@@ -81,18 +84,15 @@ body {
 	    padding-bottom: 130px;
 	    margin-bottom: 75px;
 	    height: 230px;
-		padding-top: 15px;
+/*		padding-top: 15px;
 		padding-bottom: 50px;
-		margin-top: 51px;
+		margin-top: 51px;*/
 	}
 	.jumbotron-profile {
 		position: relative;
 	}
-	#h1-profile {
-		font-size: 50px;
-	}
-	#p-profile {
-		font-size: 20px;
+	.content {
+		padding-top: 50px;
 	}
 	#about {
 		color: #fff;
@@ -105,26 +105,16 @@ body {
 		right: 80px;
 		bottom: 10px;
 	}
-	.img-circle-profile {
+	.profile-img {
 		width: 250px;
 		position: absolute;
 		left: 30px;
 	}
-	.img-circle-profile img {
+	.profile-img img {
 		max-width: 100%;
 	}
 	p {
 		text-shadow: 2px 2px 2px #FFFFFF;
-	}
-	.guidebar-profile {
-	/*	border: 1px solid black;*/
-		float: left;
-		position: relative;
-		margin-bottom: 30px;
-		margin: 20px;
-	    width: 500px;
-		padding: 30px;
-		padding-bottom: 160px;
 	}
 	.posts-container-profile {
 	/*	border: 1px solid black;*/
@@ -135,4 +125,20 @@ body {
 		padding-top: 10px;
 		padding-bottom: 300px;
 	}
+	.comments {
+        margin-bottom: 0;
+        font-size: 12px;
+        border: 1px solid rgba(0, 41, 252, 0.35);
+        border-radius: 100px;
+        margin: 5px;
+        background-color: rgba(240, 248, 255, 0);
+    }
+    
+    .ggl {
+        margin: 5px;
+        margin-bottom: 7px;
+    }
+    h3 {
+    	margin-top: 0px;
+    }
 
