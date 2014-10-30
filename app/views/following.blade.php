@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('header')
-    <script src="/js/jquery.tagsinput.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/jquery.tagsinput.css" />
 @stop
 @section('content')
@@ -19,14 +18,20 @@
             @endif
         </div>
     @empty
+    <div class="container">
         <h1>You're not following anyone</h1>
+    </div>
     @endforelse
     <div class='container'>
         <div>
             <input id="tags"/>
+            
         </div>
     </div>
     {{ $data->links() }}
+@stop
+@section('bottom-script')
+        <script src="/js/jquery.tagsinput.js"></script>
         <script src="/js/following.js"></script>
         <script type="text/javascript">
             $('#tags').tagsInput({
@@ -35,5 +40,5 @@
                     'defaultText':''
             }); 
         </script>
-
 @stop
+
