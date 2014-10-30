@@ -63,14 +63,19 @@
                     <div class="pull-left">
                     @forelse($user->posts as $post)
                               
-                        <img src="/img/user-deafault.jpg" alt="SkyLanguage" class="img-circle post-pic">
+                        <img src="/img/Logo-user-default.png" alt="SkyLanguage" class="img-circle post-pic">
                         
                         <br>
                         <br>
-                        <h4 class="text-center"> {{ $user->first_name }} </h4>
+                        <h4 class="text-center"> {{ $user->first_name }} {{ $user->last_name }}</h4>
                     </div>
-                        <p> {{ $post->content }}</p>
+                        <h4> {{ $post->content }}</h4>
                         <br>
+                        
+                        @forelse($user->comments as $comment)
+                        <p>{{ $comment->content }}</p>
+                        @empty
+                        @endforelse
                         @if(Auth::user()->likes->contains($post->id))
                             <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs likes">unlike</button>
                             <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow hide btn-group-xs likes">like</button>
@@ -79,12 +84,14 @@
                             <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs likes">like</button>
                         @endif
                         <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
+
                         @forelse($user->comments as $comment)
                         <p>{{ $comment->content }}</p>
                             
                         @empty
                         @endforelse
                         
+
                         <br>
                         </div>
                         <div class="container">
@@ -98,9 +105,8 @@
                                             {{ Form::open(array('action' => 'HomeController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
                                             <div class="modal-body" >
                                                 {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5', 'width' => '100%'))}}
-                                                <label for="tagCreation">Create Tags</label>
-                                                <input id="tags" value="" data-default="" style="color: rgb(102, 102, 102); width: 100%; margin-top: 2%;">
                                             <div class="modal-footer">
+                                                
                                                 <div class="btn-group">
                                                     <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
                                                     {{ Form::hidden('post_id', $post->id) }}

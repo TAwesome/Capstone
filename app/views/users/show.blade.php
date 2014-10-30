@@ -41,7 +41,7 @@
             <h1> Welcome {{$user->first_name}}!</h1>
             <p>This is a place where you can place your favorite quote/song title/bio.</p>
             <a href=# id="about"class="btn btn-primary btn-lg fa fa-pencil user-quote" role="button"> &raquo;</a>
-            <img src="/img/user-deafault.jpg" alt="SkyLanguage" class="img-circle carousel profile-img">
+            <img src="/img/Logo-user-default.png" alt="SkyLanguage" class="img-circle carousel profile-img">
             <a href=# id="about"class="btn btn-primary btn-lg fa fa-camera-retro user-pic" role="button"> &raquo;</a>
             <p id="about-style"><a href=# id="about"class="btn btn-primary btn-lg fa fa-image" role="button"> &raquo;</a></p>
         </div>
@@ -83,9 +83,9 @@
             <div class="posts col-md-offset-3 col-md-8">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="/img/user-deafault.jpg" alt="SkyLanguage" class="img-circle text-center post-pic">
+                        <img src="/img/Logo-user-default.png" alt="SkyLanguage" class="img-circle post-pic">
 
-                        <h4 class="text-center">{{{ $post->user->first_name }}} {{{ $post->user->last_name }}}</h4>
+                        <h4>{{{ $post->user->first_name }}} {{{ $post->user->last_name }}}</h4>
                     </div>
                     <div class="col-md-8"> 
                         <h4>{{{ $post->content }}}</h4>
@@ -94,7 +94,7 @@
                 @foreach($post->comments as $comment)
                     <div class="row">
                         <div class="col-md-4">
-                            <h4 class="text-center">{{{ $comment->user->first_name }}} {{{ $comment->user->last_name }}}</h4>
+                            <h4>{{{ $comment->user->first_name }}} {{{ $comment->user->last_name }}}</h4>
                         </div>
 
                         <div class="col-md-8">
@@ -130,9 +130,13 @@
 
                         <div class="modal-body" value=""autofocus>
                             {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5'))}}
+
+                                             
+
                         </div>
 
                         <div class="modal-footer">
+
                             <div class="btn-group">
                                 <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
                                 {{ Form::hidden('post_id', $post->id) }}
