@@ -21,8 +21,31 @@ class UsersController extends \BaseController {
     {
         //This will need to be only viewable to 
         //the admins
+        
+        
+        //may want to add the ability
+        //to search by names
+        $query = User::with('languages');
+        
+        if (Input::has('search')) {
+            $search = Input::get('search');
+            $query->where('native_language', 'like', "%$search%");
+            
+            $query->orWhereHas('languages', function($languageSearch){
+                $search = Input::get('search');
+                $languageSearch->where('language', 'like', "%$search%");
+            });
+            $meta = [];
+            foreach (explode(' ', Input::get('search')) as $value) {
+                $meta[] = metaphone($value);
+            }
+            $query->orWhereIn('first_name_meta', $meta);
+            $query->orWhereIn('last_name_meta', $meta);
+        }
+        
+        $users = $query->orderBy('last_name', 'ASC')->paginate(3);
 
-        return View::make('users.index');
+        return View::make('users.index')->with('users', $users);
     }
 
     /**
