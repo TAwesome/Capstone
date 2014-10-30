@@ -130,9 +130,13 @@
 
                         <div class="modal-body" value=""autofocus>
                             {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5'))}}
+
+                                             
+
                         </div>
 
                         <div class="modal-footer">
+
                             <div class="btn-group">
                                 <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
                                 {{ Form::hidden('post_id', $post->id) }}

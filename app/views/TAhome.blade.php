@@ -97,9 +97,8 @@
                                             {{ Form::open(array('action' => 'PostsController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
                                             <div class="modal-body" >
                                                 {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5', 'width' => '100%'))}}
-                                                <label for="tagCreation">Create Tags</label>
-                                                <input id="tags" value="" data-default="" style="color: rgb(102, 102, 102); width: 100%; margin-top: 2%;">
                                             <div class="modal-footer">
+                                                
                                                 <div class="btn-group">
                                                     <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
                                                     {{ Form::hidden('post_id', $post->id) }}
