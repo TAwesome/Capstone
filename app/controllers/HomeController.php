@@ -28,7 +28,8 @@ class HomeController extends BaseController {
             return View::make('TAhome', compact('user'));
         }
         else {
-            return View::make('TAhome');
+            $posts = Post::all()->paginate(4);
+            return View::make('TAhome', compact('posts'));
         }
     }
     
