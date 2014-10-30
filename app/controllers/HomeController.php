@@ -22,7 +22,9 @@ class HomeController extends BaseController {
     
     public function showHome()
     {
-        return View::make('TAhome');
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        return View::make('TAhome', compact('user'));
     }
     
     public function showContact()

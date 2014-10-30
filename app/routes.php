@@ -47,4 +47,7 @@ Route::resource('posts', 'PostsController');
 
 Route::resource('users', 'UsersController');
 
-// Route::post('/cover', 'UsersController@uploadCover');
+Route::get('/profile', 'UsersController@show');
+
+
+//Route::post('/cover', 'UsersController@uploadCover');
