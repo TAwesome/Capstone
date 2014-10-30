@@ -12,7 +12,9 @@
                 <div class="jumbotron text-center" id="landing-jumbotron">
                     <div>
                         <h1>Welcome!</h1>
-                        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                        <p>This is SkyLanguage, where the sky is the limit on language learning!<br>
+                            SkyLanguage is a user friendly, fun environment for language learning.<br>
+                            Sign up and try it out!</p>
                         <p>
                             <a href="{{ action('HomeController@showAbout') }}" id="about"class="btn btn-primary btn-lg" role="button">About us &raquo;</a>
                         </p>

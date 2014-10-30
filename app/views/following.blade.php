@@ -18,16 +18,16 @@
             @endif
         </div>
     @empty
-    <div class="container">
+    <div class="container top">
         <h1>You're not following anyone</h1>
     </div>
     @endforelse
-    <div class='container'>
+<!--     <div class='container'>
         <div>
             <input id="tags"/>
             
         </div>
-    </div>
+    </div> -->
     {{ $data->links() }}
 @stop
 @section('bottom-script')
