@@ -20,6 +20,12 @@ body {
 	margin: 50px;
     width: 500px;
 }
+.logo {
+	float: right;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
 
 /******* about *******/
 	.container .jumbotron-about {
@@ -105,6 +111,11 @@ body {
 		right: 80px;
 		bottom: 10px;
 	}
+    .user-pic {
+    	position: absolute;
+		left: 250px;
+		bottom: -50px;
+    }	
 	.profile-img {
 		width: 250px;
 		position: absolute;

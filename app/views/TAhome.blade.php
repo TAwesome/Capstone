@@ -115,7 +115,6 @@
                     @empty
                             
                     @endforelse
-                    @forelse($user->posts as $post)
                     
                 </div>
             </div>
