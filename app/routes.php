@@ -43,6 +43,8 @@ Route::get('/jacob', 'HomeController@showJacob');
 
 Route::post('/comments', 'PostsController@createComment');
 
+Route::post('/comment', 'HomeController@createComment');
+
 Route::resource('posts', 'PostsController');
 
 Route::resource('users', 'UsersController');

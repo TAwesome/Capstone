@@ -28,7 +28,7 @@ class HomeController extends BaseController {
             return View::make('TAhome', compact('user'));
         }
         else {
-            $posts = Post::all()->paginate(4);
+            $posts = Post::all();
             return View::make('TAhome', compact('posts'));
         }
     }
@@ -80,6 +80,20 @@ class HomeController extends BaseController {
         else {
             return Redirect::back()->withInput();
         }
+    }
+    
+    public function createComment()
+    {
+            $id = Auth::user()->id;
+            $user = User::find($id);
+            if (Input::has('comment')) {
+                $comment = new Comment();
+                $comment->user_id = $id;
+                $comment->post_id = Input::get('post_id');
+                $comment->content = Input::get('comment');
+                $comment->save();
+            }
+        return View::make('TAhome', compact('user'));
     }
     
     

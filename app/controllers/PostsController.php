@@ -8,7 +8,7 @@ class PostsController extends \BaseController {
         parent::__construct();
 
         // run auth filter before all methods on this controller except index and show
-        $this->beforeFilter('auth.basic', array('except' => array('index', 'show')));
+        $this->beforeFilter('auth.basic', array('except' => array('index', 'show', 'TAhome')));
     }
     
     
@@ -122,6 +122,16 @@ class PostsController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
+    
+    public function indexHome($id)
+    {
+        
+        $post = Post::find($id);
+
+        return $this->savePost($post);
+    }
+    
+    
     public function update($id)
     {
         
