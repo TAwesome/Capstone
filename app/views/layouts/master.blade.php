@@ -37,7 +37,6 @@
                 @if (Auth::check())
                 <a class="navbar-brand" href="{{ action('HomeController@showHome') }}">SkyLanguage</a>
                 @else
-                 (!Auth::check())
                 <a class="navbar-brand" href="{{ action('HomeController@showWelcome') }}">SkyLanguage</a>
                 @endif
             </div>
