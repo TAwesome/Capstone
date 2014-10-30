@@ -148,6 +148,10 @@
 
     @endforelse
 </div>
+
+@stop
+@section('bottom-script')
+
     <script src="/js/following.js"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 

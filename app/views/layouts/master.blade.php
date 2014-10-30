@@ -42,8 +42,16 @@
                     <li><a href="{{ action('HomeController@showAbout') }}">About</a></li>
                     <li><a href="{{ action('HomeController@showContact') }}">Contact Us</a></li>
                     @if (Auth::check())
-                        <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
-                        <li><a href="{{ action('HomeController@doLogout') }}">Logout</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> User Options <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ action('UsersController@show') }}">Profile</a></li>
+                            <li><a href="{{ action('FollowsController@following') }}">Following</a></li>
+                            <li><a href="{{ action('FollowsController@followers') }}">Followers</a></li>
+                            <li><a href="{{ action('HomeController@doLogout') }}">Logout</a></li>
+                        </ul>
+                    </li>
+                        
                     @endif
                 </ul>
                 @if(Auth::guest())
