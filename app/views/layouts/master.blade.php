@@ -34,7 +34,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                @if (Auth::check())
+                <a class="navbar-brand" href="{{ action('HomeController@showHome') }}">SkyLanguage</a>
+                @endif
+                @if (!Auth::check())
                 <a class="navbar-brand" href="{{ action('HomeController@showWelcome') }}">SkyLanguage</a>
+                @endif
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -46,7 +51,6 @@
                         <li><a href="{{ action('HomeController@doLogout') }}">Logout</a></li>
                     @endif
                 </ul>
-                <img class="logo" src="img/skylanguageLogo.png" alt="Sky Language Logo">
                 @if(Auth::guest())
                     {{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'navbar-form navbar-right', 'role' => 'form')) }}
                         <div class="form-group">
@@ -66,6 +70,7 @@
                 @endif
             </div><!--/.nav-collapse -->
         </div>
+        <img class="logo" src="img/skylanguageLogo.png" alt="Sky Language Logo">
     </div>
     
     @yield('content')
