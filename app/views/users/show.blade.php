@@ -144,10 +144,10 @@
                     <div class="col-md-8 post-content"> 
                         <h4>{{{ $post->content }}}</h4>
                     </div>
-                    @if (Auth::check())
-                        {{link_to_action('PostController@update','Edit', array($post->id))}}
+                    @if(Auth::user()->id == $user->id)
+                        {{link_to_action('PostsController@update','Edit', array($post->id))}}
                         
-                        {{Form::open(['method' => 'Delete', 'action' => ['PostController@destroy', $post->id], 'id' => 'delete-form'])}}
+                        {{Form::open(['method' => 'Delete', 'action' => ['PostsController@destroy', $post->id], 'id' => 'delete-form'])}}
                             <button type="submit" class="btn btn-link">Delete</button>
                         {{Form::close()}}
                     @endif
