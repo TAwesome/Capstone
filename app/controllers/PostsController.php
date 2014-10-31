@@ -161,11 +161,23 @@ class PostsController extends \BaseController {
         return Redirect::action('PostsController@index');
     }
     
-    public function like($id)
+    public function postHome()
     {
-        $user = Auth::user();
-        $user->likes()->attach($id);
-        return Redirect::back();
+        $post = new Post();
+        $validator = Validator::make($data = Input::all(), Post::$rules);
+
+        if ($validator->fails()) {
+            Log::info('No empty posts', Input::all());
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else {
+            $post->content = Input::get('content');
+            $post->user_id = Auth::id();
+        }
+        
+        $post->save();
+        $id = $post->id;
+        return Redirect::action('HomeController@showHome');
     }
     
     public function unlike($id)

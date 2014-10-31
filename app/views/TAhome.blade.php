@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h4>Write A New Post</h4>
-                    {{ Form::open(array('action' => 'HomeController@showHome', 'role' => 'form')) }}
+                    {{ Form::open(array('action' => 'PostsController@postHome', 'role' => 'form')) }}
                         <div class="form-group">
                             {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
                         </div>
@@ -106,7 +106,11 @@
                                             <div class="modal-body" >
                                                 {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5', 'width' => '100%'))}}
                                             <div class="modal-footer">
-                                                
+                                                <div class='container'>
++                                                <div>
++                                                    <input id="tags" rows="5" placeholder="Create tags"></input>
++                                                </div>
++                                        </div>
                                                 <div class="btn-group">
                                                     <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
                                                     {{ Form::hidden('post_id', $post->id) }}
