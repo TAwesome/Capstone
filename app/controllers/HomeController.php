@@ -29,21 +29,35 @@ class HomeController extends BaseController {
     
     public function showHome()
     {
-        if(Auth::check()) {
-            $posts = Post::whereHas('user', function($q)
+        $posts = array();
+        $query = Post::with('user');
+        
+        $query->whereHas('user', function($q)
+        {
+            $userIds = array(Auth::id());
+            
+            foreach(Auth::user()->follow as $following) {
+                $userIds[] = $following->id;
+            }
+            
+            $q->whereIn('id', $userIds);
+        });
+        
+        if (Input::has('tag')) {
+            $query->whereHas('tags', function($q)
             {
-                $userIds = array(Auth::id());
-                
-                foreach(Auth::user()->follow as $following) {
-                    $userIds[] = $following->id;
-                }
-                
-                $q->whereIn('id', $userIds);
-            })->get();
+                $q->where('tag', '=', Input::get('tag'));
+            });
         }
-        else {
-            $posts = Post::all();
+        
+        if (Input::has('language')) {
+            $query->whereHas('language', function($q)
+            {
+                $q->where('language', '=', Input::get('language'));
+            });
         }
+        
+        $posts = $query->paginate(5);
         return View::make('TAhome', compact('posts'));
     }
     
