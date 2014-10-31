@@ -79,14 +79,20 @@
                     {{ Form::close() }}
                 @endif
                 <!-- Search Row -->
-<!--                 <div class="form-group">
+                <!-- <div class="form-group">
                     <div class="col-md-3">
                         <div class="input-group">
                             <div class="input-group-addon glyphicon glyphicon-search"></div>
                             <input type="text" class="form-control" name="email" placeholder="Search">
-                        </div>/input-group
+                        </div>
                     </div>
                 </div> -->
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
 
             </div><!--/.nav-collapse -->
         </div>
