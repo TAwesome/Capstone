@@ -114,6 +114,16 @@
                         {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
                     </div>
                     <div class="form-group">
+                        <div class="col-md-12">
+                            <select class="form-control" id="language" name="language">
+                                <option selected>Language</option>
+                                <option value="1" >English</option>
+                                <option value="2" >French</option>
+                                <option value="3" >Spanish</option>
+                            </select>
+                        </div>
+                    </div> 
+                    <div class="form-group">
                         {{Form::submit('Post', array('class' => 'btn btn-default'))}}
                     </div>
                 {{ Form::close() }}
@@ -134,6 +144,13 @@
                     <div class="col-md-8 post-content"> 
                         <h4>{{{ $post->content }}}</h4>
                     </div>
+                    @if (Auth::check())
+                        {{link_to_action('PostController@update','Edit', array($post->id))}}
+                        
+                        {{Form::open(['method' => 'Delete', 'action' => ['PostController@destroy', $post->id], 'id' => 'delete-form'])}}
+                            <button type="submit" class="btn btn-link">Delete</button>
+                        {{Form::close()}}
+                    @endif
                 </div>
             @foreach($post->comments as $comment)
                 <div class="row posts">
@@ -144,7 +161,7 @@
                         <p>{{{ $comment->content }}}</p>
                     </div>
                 </div>
-
+                
             @endforeach
                         
                 @if(Auth::user()->likes->contains($post->id))

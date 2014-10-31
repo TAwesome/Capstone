@@ -28,6 +28,16 @@
                             {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
                         </div>
                         <div class="form-group">
+                        <div class="col-md-12">
+                            <select class="form-control" id="language" name="language">
+                                <option selected>Language</option>
+                                <option value="1" >English</option>
+                                <option value="2" >French</option>
+                                <option value="3" >Spanish</option>
+                            </select>
+                        </div>
+                    </div> 
+                        <div class="form-group">
                             {{Form::submit('Post', array('class' => 'btn btn-default'))}}
                         </div>
                     {{ Form::close() }}
