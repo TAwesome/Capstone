@@ -8,7 +8,7 @@ class UsersController extends \BaseController {
     
     public function __construct()
     {
-        $this->beforeFilter('auth', array('except' => array('index', 'show', 'store')));
+        $this->beforeFilter('auth');
     }
     
     
