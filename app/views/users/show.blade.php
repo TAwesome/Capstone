@@ -1,41 +1,13 @@
 @extends('layouts.master')
 
 @section('header')
-
     <title>{{ $user->first_name }}</title>
-
-<script>
-    // $(document).ready(function() 
-    // {
-        
-        
-    //     function translate()
-    //     {
-    //         $.get("https://www.googleapis.com/language/translate/v2",
-    //         {
-    //             key:"AIzaSyDgydXTWspIfKggxymxfDh0VcyvdEMrGAc",
-    //             source:"en",
-    //             target:$("#target").val(),
-    //             q:$("#text").val()
-    //         },
-    //         function(response)
-    //         {
-    //             $("#translated").html(response.data.translations[0].translatedText);
- 
-    //         },"json") .fail(function(jqXHR, textStatus, errorThrown) 
-    //         {
-    //             alert( "error :"+errorThrown );
-    //         });
-    //     }
-    // }); 
-</script>
-     
 @stop
 
 @section('content')
 
 <div class="container theme-showcase" role="main">
-  <!-- Main jumbotron for a primary marketing message or call to action -->
+    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron-profile">
         <div class="content text-center">
             <h1> {{$user->first_name}} {{$user->last_name}} </h1>
@@ -90,7 +62,7 @@
                         <h4>{{{ $post->user->first_name }}} {{{ $post->user->last_name }}}</h4>
                     </div>
                     <div class="col-md-8 post-content"> 
-                        <h4 data-lang="{{{ $post->user->i18n }}}">{{{ $post->content }}}</h4>
+                        <h4 data-lang="{{{ $post->user->i18n }}}" id="post-{{{ $post->id }}}">{{{ $post->content }}}</h4>
                     </div>
                 </div>
             @foreach($post->comments as $comment)
@@ -103,9 +75,12 @@
                     </div>
                 @endforeach
 
-                <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs {{{ $post->isLiked() ? '' : 'hide' }}} likes comments">unlike</button>
-                <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs {{{ $post->isLiked() ? 'hide' : '' }}} likes comments">like</button>
-                <button data-toggle="modal" type="button" data-target="#modal-{{{ $post->id }}}" class="btn btn-primary btn-group-xs comments">Comment</button>
+                <button type="button" class="btn btn-danger follow btn-sm {{{ $post->isLiked() ? '' : 'hide' }}} likes comments">unlike</button>
+                <button type="button" class="btn btn-info follow btn-sm {{{ $post->isLiked() ? 'hide' : '' }}} likes comments">like</button>
+
+                <button data-toggle="modal" type="button" data-target="#modal-{{{ $post->id }}}" class="btn btn-primary btn-sm comments">Comment</button>
+
+                <button type="button" class="btn btn-success btn-sm translate-btn" data-post-id="{{{ $post->id }}}">Translate with Google</button>
             </div>
         </div>
 
@@ -142,8 +117,33 @@
 
 @stop
 @section('bottom-script')
+<script src="/js/following.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
-    <script src="/js/following.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.translate-btn').click(function() {
+            var userLang = "{{{ Auth::user()->i18n }}}";
+            var postId   = $(this).data('post-id');
+            var $post    = $("#post-" + postId);
+            var postLang = $post.data('lang');
+            var content  = $post.text();
+
+            $.get(
+                'https://www.googleapis.com/language/translate/v2',
+                {
+                    key: 'AIzaSyB8ZnHXraNbVNUpQMuez5cpoSh0lF4uetw',
+                    source: postLang,
+                    target: userLang,
+                    q: content
+                },
+                function(data) {
+                    // maybe pop up a modal
+                    console.log(data);
+                }
+            );
+        });
+    });
+</script>
 
 @stop
