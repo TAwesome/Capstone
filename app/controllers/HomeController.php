@@ -93,7 +93,7 @@ class HomeController extends BaseController {
                 $comment->content = Input::get('comment');
                 $comment->save();
             }
-        return View::make('TAhome', compact('user'));
+        return View::make('TAhome', compact('user', 'comment', 'posts'));
     }
     
     
