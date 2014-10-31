@@ -26,7 +26,7 @@ class FollowsController extends BaseController
     //change to verb noun combination
     public function following()
     {
-        $data = Auth::user()->follow()->paginate(2);
+        $data = Auth::user()->follow()->paginate(4);
         return View::make('following')->with('data', $data);
     }
 
@@ -35,7 +35,7 @@ class FollowsController extends BaseController
      */
     public function followers()
     {
-        $data = Auth::user()->followers()->paginate(2);
+        $data = Auth::user()->followers()->paginate(4);
         return View::make('followers')->with('data', $data);
     }
 
