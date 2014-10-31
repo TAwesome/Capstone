@@ -40,8 +40,10 @@
         <div class="content text-center">
             <h1> {{$user->first_name}} {{$user->last_name}} </h1>
             <div class="default-img img-circle carousel profile-img"></div>
+            @if(Auth::user()->id == $user->id)
             <a href=# id="about"class="btn btn-primary btn-lg fa fa-camera-retro user-pic" role="button"> &raquo;</a>
             <p id="about-style"><a href=# id="about"class="btn btn-primary btn-lg fa fa-image" role="button"> &raquo;</a></p>
+            @endif
 
             @if(!(Auth::user()->id == $user->id))
                 <div class="container">
