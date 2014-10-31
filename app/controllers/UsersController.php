@@ -169,6 +169,7 @@ class UsersController extends \BaseController {
     
     public function uploadCover ()
     {
+        $user = Auth::user();
         if (Input::hasFile('image')) {
             $file = Input::file('image');
             $orig_name = $file->getClientOriginalName() . str_random(6);
@@ -184,6 +185,7 @@ class UsersController extends \BaseController {
     
     public function uploadAvatar ()
     {
+        $user = Auth::user();
         if (Input::hasFile('image')) {
             $file = Input::file('image');
             $orig_name = $file->getClientOriginalName() . str_random(6);
@@ -198,6 +200,7 @@ class UsersController extends \BaseController {
     
     public function uploadPostImage ()
     {
+        $user = Auth::user();
         if (Input::hasFile('image')) {
             $file = Input::file('image');
             $orig_name = $file->getClientOriginalName() . str_random(6);
