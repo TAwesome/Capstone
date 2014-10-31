@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h4>Write A New Post</h4>
-                    {{ Form::open(array('action' => 'HomeController@showHome', 'role' => 'form')) }}
+                    {{ Form::open(array('action' => 'PostsController@postHome', 'role' => 'form')) }}
                         <div class="form-group">
                             {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
                         </div>
@@ -42,43 +42,55 @@
                         <div class="default-img img-circle post-img"></div>
                         <h4 class="text-center"> {{ $user->first_name }} {{ $user->last_name }}</h4>
                     </div>
+                        <h4> {{ $post->content }}</h4>
+                        <br>
+                        
+                        @forelse($user->comments as $comment)
+                        <p>{{ $comment->content }}</p>
+                        @empty
+                        @endforelse
+                        @if(Auth::user()->likes->contains($post->id))
+                            <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs likes">unlike</button>
+                            <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow hide btn-group-xs likes">like</button>
+                        @else
+                            <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow hide btn-group-xs likes">unlike</button>
+                            <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs likes">like</button>
+                        @endif
+                        <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
 
-                    <h4> {{ $post->content }}</h4>
-                    <br>
-                    
-                    @forelse($user->comments as $comment)
-                    <p>{{ $comment->content }}</p>
-                    @empty
-                    @endforelse
-                    @if(Auth::user()->likes->contains($post->id))
-                        <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs likes">unlike</button>
-                        <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow hide btn-group-xs likes">like</button>
-                    @else
-                        <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow hide btn-group-xs likes">unlike</button>
-                        <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs likes">like</button>
-                    @endif
-                    <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
-                    <br>
+                        @forelse($user->comments as $comment)
+                        <p>{{ $comment->content }}</p>
+                            
+                        @empty
+                        @endforelse
+                        
 
-                </div>
-                    <div class="container">
-                        <div id="modal-1" class="modal fade lg" tabindex="-1" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Leave Your Comment</h4>
-                                    </div>
-                                    {{ Form::open(array('action' => 'PostsController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
-                                    <div class="modal-body" >
-                                        {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5', 'width' => '100%'))}}
-                                        <div class="modal-footer">
+                        <br>
+                        </div>
+                        <div class="container">
+                                <div id="modal-1" class="modal fade lg" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Leave Your Comment</h4>
+                                            </div>
+                                            {{ Form::open(array('action' => 'HomeController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
+                                            <div class="modal-body" >
+                                                {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5', 'width' => '100%'))}}
+                                            <div class="modal-footer">
+                                                <div class='container'>
+                                                <div>
+                                                    <input id="tags" rows="5" placeholder="Create tags"></input>
+                                                </div>
+                                        </div>
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                                                    {{ Form::hidden('post_id', $post->id) }}
+                                                    {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
+                                            {{ Form::close() }}
+                                                </div>
 
-                                            <div class="btn-group">
-                                                <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
-                                                {{ Form::hidden('post_id', $post->id) }}
-                                                {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
-                                                {{ Form::close() }}
                                             </div>
                                         </div>
                                     </div><!-- /.modal-content -->

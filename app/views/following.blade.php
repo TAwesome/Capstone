@@ -8,20 +8,15 @@
     that dynamically loads based on the user's relationship to other users -->
     <div class="following top">
         @forelse($data as $person)
-            <div class='container'>
-                <h1>{{ $person->first_name }} {{ $person->last_name }}</h1>
-                @if(Auth::user()->follow->contains($person->id))
-                    <a href="/unfollow/{{{$person->id}}}" class="btn btn-danger follow">Unfollow</a>
-                    <a href="/follow/{{{$person->id}}}" class="btn btn-info follow hide">Follow</a>
-                @else
-                    <a href="/unfollow/{{{$person->id}}}" class="btn btn-danger follow hide">Unfollow</a>
-                    <a href="/follow/{{{$person->id}}}" class="btn btn-info follow">Follow</a>
-                @endif
-            </div>
+                <div class='container'>
+                    <h1>{{ $person->first_name }} {{ $person->last_name }}</h1>
+                    <a href="/unfollow/{{{$person->id}}}" class="btn btn-danger follow {{(Auth::user()->follow->contains($person->id)) ? '' : 'hide';}}">unfollow</a>
+                    <a href="/follow/{{{$person->id}}}" class="btn btn-info follow {{(Auth::user()->follow->contains($person->id)) ? 'hide' : '';}}">follow</a>
+                </div>
         @empty
-        <div class="container">
-            <h1>You're not following anyone</h1>
-        </div>
+                <div class="container">
+                    <h1>No Followers</h1>
+                </div>
         @endforelse
     <!--     <div class='container'>
             <div>

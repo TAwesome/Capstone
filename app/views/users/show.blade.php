@@ -114,7 +114,7 @@
                     <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow hide btn-group-xs likes">like</button>
                 @else
                     <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow hide btn-group-xs likes">unlike</button>
-                    <button type="button" href="/like/{{$post->id}}" class=btn btn-info follow btn-group-xs likes">like</button>"
+                    <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs likes">like</button>
                 @endif
                     <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
             </div>
