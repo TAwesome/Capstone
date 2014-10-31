@@ -62,16 +62,17 @@
                         <h4>{{{ $post->user->first_name }}} {{{ $post->user->last_name }}}</h4>
                     </div>
                     <div class="col-md-8 post-content"> 
-                        <h4 data-lang="{{{ $post->user->i18n }}}" id="post-{{{ $post->id }}}">{{{ $post->content }}}</h4>
+                        <h4 data-lang="{{{ $post->i18n }}}" id="post-{{{ $post->id }}}">{{{ $post->content }}}</h4>
                     </div>
                 </div>
-            @foreach($post->comments as $comment)
-                <div class="row posts">
-                    <div class="col-md-4">
-                        <h4>{{{ $comment->user->first_name }}} {{{ $comment->user->last_name }}}</h4>
-                    </div>
-                    <div class="col-md-8">
-                        <p>{{{ $comment->content }}}</p>
+                @foreach($post->comments as $comment)
+                    <div class="row posts">
+                        <div class="col-md-4">
+                            <h4>{{{ $comment->user->first_name }}} {{{ $comment->user->last_name }}}</h4>
+                        </div>
+                        <div class="col-md-8">
+                            <p>{{{ $comment->content }}}</p>
+                        </div>
                     </div>
                 @endforeach
 
@@ -129,19 +130,23 @@
             var postLang = $post.data('lang');
             var content  = $post.text();
 
-            $.get(
-                'https://www.googleapis.com/language/translate/v2',
-                {
+            $.ajax({
+                method: 'get',
+                url: 'https://www.googleapis.com/language/translate/v2',
+                data: {
                     key: 'AIzaSyB8ZnHXraNbVNUpQMuez5cpoSh0lF4uetw',
                     source: postLang,
                     target: userLang,
                     q: content
                 },
-                function(data) {
+                success: function(data) {
                     // maybe pop up a modal
                     console.log(data);
+                },
+                error: function() {
+                    console.log("NOPE!");
                 }
-            );
+            });
         });
     });
 </script>
