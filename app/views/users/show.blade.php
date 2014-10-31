@@ -38,16 +38,19 @@
   <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron-profile">
         <div class="content text-center">
-            <h1> Welcome {{$user->first_name}}!</h1>
-            <p>This is a place where you can place your favorite quote/song title/bio.</p>
+            <h1> {{$user->first_name}} {{$user->last_name}} </h1>
+            <div class="default-img img-circle carousel profile-img"></div>
             @if(Auth::user()->id == $user->id)
-                <a href=# id="about"class="btn btn-primary btn-lg fa fa-pencil user-quote" role="button"> &raquo;</a>
+            <a href=# id="about"class="btn btn-primary btn-lg fa fa-camera-retro user-pic" role="button"> &raquo;</a>
+            <p id="about-style"><a href=# id="about"class="btn btn-primary btn-lg fa fa-image" role="button"> &raquo;</a></p>
             @endif
-            <img src="/img/Logo-user-default.png" alt="SkyLanguage" class="img-circle carousel profile-img">
-            @if(Auth::user()->id == $user->id)
-                <a href=# id="about"class="btn btn-primary btn-lg fa fa-camera-retro user-pic" role="button"> &raquo;</a>
-                <p id="about-style"><a href=# id="about"class="btn btn-primary btn-lg fa fa-image" role="button"> &raquo;</a></p>
-            @endif    
+
+            @if(!(Auth::user()->id == $user->id))
+                <div class="container">
+                    <a href="/unfollow/{{{$user->id}}}" class="btn btn-danger follow {{(Auth::user()->follow->contains($user->id)) ? '' : 'hide';}}">unfollow</a>
+                    <a href="/follow/{{{$user->id}}}" class="btn btn-info follow {{(Auth::user()->follow->contains($user->id)) ? 'hide' : '';}}">follow</a>
+                </div>
+            @endif
         </div>
     </div>
 
@@ -87,37 +90,33 @@
             <div class="posts col-md-offset-3 col-md-8">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="/img/Logo-user-default.png" alt="SkyLanguage" class="img-circle post-pic">
-
+                        <div class="default-img img-circle post-img"></div>
                         <h4>{{{ $post->user->first_name }}} {{{ $post->user->last_name }}}</h4>
                     </div>
-                    <div class="col-md-8"> 
+                    <div class="col-md-8 post-content"> 
                         <h4>{{{ $post->content }}}</h4>
                     </div>
                 </div>
-                @foreach($post->comments as $comment)
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h4>{{{ $comment->user->first_name }}} {{{ $comment->user->last_name }}}</h4>
-                        </div>
-
-                        <div class="col-md-8">
-                            <p>{{{ $comment->content }}}</p>
-                        </div>
+            @foreach($post->comments as $comment)
+                <div class="row posts">
+                    <div class="col-md-4">
+                        <h4>{{{ $comment->user->first_name }}} {{{ $comment->user->last_name }}}</h4>
                     </div>
-
-                @endforeach
-                            
-                    @if(Auth::user()->likes->contains($post->id))
-                        <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs likes">unlike</button>
-                        <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow hide btn-group-xs likes">like</button>
-                    @else
-                        <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow hide btn-group-xs likes">unlike</button>
-                        <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs likes">like</button>
-                    @endif
-                    
-                        <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
+                    <div class="col-md-8">
+                        <p>{{{ $comment->content }}}</p>
+                    </div>
                 </div>
+
+            @endforeach
+                        
+                @if(Auth::user()->likes->contains($post->id))
+                    <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs likes">unlike</button>
+                    <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow hide btn-group-xs likes">like</button>
+                @else
+                    <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow hide btn-group-xs likes">unlike</button>
+                    <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs likes">like</button>
+                @endif
+                    <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
             </div>
         </div>
             
@@ -153,7 +152,6 @@
             </div><!-- /.modal -->
         </div>
     </div>
-</div>
     @empty
 
     @endforelse
