@@ -56,3 +56,5 @@ Route::get('/profile', 'UsersController@show');
 Route::post('/avatar', 'UsersController@uploadAvatar');
 
 Route::post('/cover', 'UsersController@uploadCover');
+
+

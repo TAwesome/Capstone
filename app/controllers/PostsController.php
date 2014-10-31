@@ -62,6 +62,7 @@ class PostsController extends \BaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else {
+            $post->language_id = Input::get('language');
             $post->content = Input::get('content');
             $post->user_id = Auth::id();
         }
@@ -154,11 +155,9 @@ class PostsController extends \BaseController {
         }
         $post->delete();
   
-        Log::info("$post->title has been deleted");
+        Log::info("$post->$id has been deleted");
         
-        Session::flash('successMessage', 'Post deleted!');
-        
-        return Redirect::action('PostsController@index');
+        return Redirect::action('UsersController@show');
     }
     
     public function postHome()
@@ -171,6 +170,7 @@ class PostsController extends \BaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else {
+            $post->language_id = Input::get('language');
             $post->content = Input::get('content');
             $post->user_id = Auth::id();
         }
