@@ -2,6 +2,7 @@
 
 @section('header')
 
+
     <title>{{ $user->first_name }} {{ $user->last_name }}'s Profile</title>
 
      
@@ -10,7 +11,7 @@
 @section('content')
 
 <div class="container theme-showcase" role="main">
-  <!-- Main jumbotron for a primary marketing message or call to action -->
+    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron-profile">
         <div class="content text-center">
             <h1> {{$user->first_name}} {{$user->last_name}} </h1>
@@ -129,11 +130,7 @@
                 {{ Form::close() }}
             </div>
         </div>
-
-            
-
-    @forelse($user->posts as $post)
-    
+    @foreach($user->posts as $post)
         <div class="row">
             <div class="posts col-md-offset-3 col-md-8">
                 <div class="row">
@@ -142,7 +139,7 @@
                         <h4>{{{ $post->user->first_name }}} {{{ $post->user->last_name }}}</h4>
                     </div>
                     <div class="col-md-8 post-content"> 
-                        <h4>{{{ $post->content }}}</h4>
+                        <h4 data-lang="{{{ $post->i18n }}}" id="post-{{{ $post->id }}}">{{{ $post->content }}}</h4>
                     </div>
                     @if(Auth::user()->id == $user->id)
                         {{link_to_action('PostsController@update','Edit', array($post->id))}}
@@ -152,31 +149,30 @@
                         {{Form::close()}}
                     @endif
                 </div>
-            @foreach($post->comments as $comment)
-                <div class="row posts">
-                    <div class="col-md-4">
-                        <h4>{{{ $comment->user->first_name }}} {{{ $comment->user->last_name }}}</h4>
+                @foreach($post->comments as $comment)
+                    <div class="row posts">
+                        <div class="col-md-4">
+                            <h4>{{{ $comment->user->first_name }}} {{{ $comment->user->last_name }}}</h4>
+                        </div>
+                        <div class="col-md-8">
+                            <p>{{{ $comment->content }}}</p>
+                        </div>
                     </div>
-                    <div class="col-md-8">
-                        <p>{{{ $comment->content }}}</p>
-                    </div>
-                </div>
-                
-            @endforeach
-                        
-                @if(Auth::user()->likes->contains($post->id))
-                    <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs likes">unlike</button>
-                    <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow hide btn-group-xs likes">like</button>
-                @else
-                    <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow hide btn-group-xs likes">unlike</button>
-                    <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs likes">like</button>
-                @endif
-                    <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
+
+                @endforeach
+
+                <button type="button" class="btn btn-danger follow btn-sm {{{ $post->isLiked() ? '' : 'hide' }}} likes comments">unlike</button>
+                <button type="button" class="btn btn-info follow btn-sm {{{ $post->isLiked() ? 'hide' : '' }}} likes comments">like</button>
+
+                <button data-toggle="modal" type="button" data-target="#modal-{{{ $post->id }}}" class="btn btn-primary btn-sm comments">Comment</button>
+
+                <button type="button" class="btn btn-success btn-sm translate-btn" data-post-id="{{{ $post->id }}}">Translate with Google</button>
+
             </div>
         </div>
-            
+
         <div class="container">
-            <div id="modal-1" class="modal fade lg" tabindex="-1" role="dialog">
+            <div id="modal-{{{ $post->id }}}" class="modal fade lg" tabindex="-1" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -188,34 +184,57 @@
 
                         <div class="modal-body" value=""autofocus>
                             {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5'))}}
-
-                                             
-
                         </div>
 
                         <div class="modal-footer">
-
                             <div class="btn-group">
                                 <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
                                 {{ Form::hidden('post_id', $post->id) }}
                                 {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
-                                {{ Form::close() }}
                             </div>
                         </div>
+                        {{ Form::close() }}
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dalog -->
             </div><!-- /.modal -->
         </div>
+    @endforeach
     </div>
-    @empty
-
-    @endforelse
 </div>
 
 @stop
 @section('bottom-script')
+<script src="/js/following.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
-    <script src="/js/following.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.translate-btn').click(function() {
+            var userLang = "{{{ Auth::user()->i18n }}}";
+            var postId   = $(this).data('post-id');
+            var $post    = $("#post-" + postId);
+            var postLang = $post.data('lang');
+            var content  = $post.text();
+
+            $.ajax({
+                method: 'get',
+                url: 'https://www.googleapis.com/language/translate/v2',
+                data: {
+                    key: 'AIzaSyB8ZnHXraNbVNUpQMuez5cpoSh0lF4uetw',
+                    source: postLang,
+                    target: userLang,
+                    q: content
+                },
+                success: function(data) {
+                    // maybe pop up a modal
+                    console.log(data);
+                },
+                error: function() {
+                    console.log("NOPE!");
+                }
+            });
+        });
+    });
+</script>
 
 @stop

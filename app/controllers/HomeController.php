@@ -15,6 +15,13 @@ class HomeController extends BaseController {
     |
     */
 
+    public function __construct()
+    {
+        parent::__construct();
+        
+        $this->beforeFilter('auth', array('only' => array('showHome', 'createComment', 'doLogout')));
+    }
+
     public function showWelcome()
     {
         return View::make('landingpage');
@@ -23,14 +30,21 @@ class HomeController extends BaseController {
     public function showHome()
     {
         if(Auth::check()) {
-            $id = Auth::user()->id;
-            $user = User::find($id);
-            return View::make('TAhome', compact('user'));
+            $posts = Post::whereHas('user', function($q)
+            {
+                $userIds = array(Auth::id());
+                
+                foreach(Auth::user()->follow as $following) {
+                    $userIds[] = $following->id;
+                }
+                
+                $q->whereIn('id', $userIds);
+            })->get();
         }
         else {
             $posts = Post::all();
-            return View::make('TAhome', compact('posts'));
         }
+        return View::make('TAhome', compact('posts'));
     }
     
     public function showContact()
