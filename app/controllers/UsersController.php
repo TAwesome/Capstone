@@ -176,7 +176,7 @@ class UsersController extends \BaseController {
             $orig_name = $file->getClientOriginalName() . str_random(6);
             $dest_path = public_path() . "/img/cover/$id/";
             $upload = $file->move($dest_path, $orig_name);
-            $user->avatar = "/img/cover/$id/" . $orig_name;
+            $user->cover = "/img/cover/$id/" . $orig_name;
             $user->save();
 
             return Redirect::action('UsersController@show', array($id));
