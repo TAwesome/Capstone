@@ -42,6 +42,13 @@
             <div class="default-img img-circle carousel profile-img"></div>
             <a href=# id="about"class="btn btn-primary btn-lg fa fa-camera-retro user-pic" role="button"> &raquo;</a>
             <p id="about-style"><a href=# id="about"class="btn btn-primary btn-lg fa fa-image" role="button"> &raquo;</a></p>
+
+            @if(!(Auth::user()->id == $user->id))
+                <div class="container">
+                    <a href="/unfollow/{{{$user->id}}}" class="btn btn-danger follow {{(Auth::user()->follow->contains($user->id)) ? '' : 'hide';}}">unfollow</a>
+                    <a href="/follow/{{{$user->id}}}" class="btn btn-info follow {{(Auth::user()->follow->contains($user->id)) ? 'hide' : '';}}">follow</a>
+                </div>
+            @endif
         </div>
     </div>
 
