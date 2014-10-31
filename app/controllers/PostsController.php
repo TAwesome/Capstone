@@ -19,18 +19,18 @@ class PostsController extends \BaseController {
      */
     public function index()
     {
-        $posts = Post::whereHas('user', function($q)
-            {
-                $userIds = array(Auth::id());
+        // $posts = Post::whereHas('user', function($q)
+        //     {
+        //         $userIds = array(Auth::id());
                 
-                foreach(Auth::user()->follow as $following) {
-                    $userIds[] = $following->id;
-                }
+        //         foreach(Auth::user()->follow as $following) {
+        //             $userIds[] = $following->id;
+        //         }
                 
-                $q->whereIn('id', $userIds);
-            })->get();
+        //         $q->whereIn('id', $userIds);
+        //     })->get();
 
-        return View::make('TAhome', compact('posts'));
+        // return View::make('TAhome', compact('posts'));
     }
 
     /**
