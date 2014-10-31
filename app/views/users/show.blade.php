@@ -81,11 +81,7 @@
                 {{ Form::close() }}
             </div>
         </div>
-
-            
-
-    @forelse($user->posts as $post)
-    
+    @foreach($user->posts as $post)
         <div class="row">
             <div class="posts col-md-offset-3 col-md-8">
                 <div class="row">
@@ -94,7 +90,7 @@
                         <h4>{{{ $post->user->first_name }}} {{{ $post->user->last_name }}}</h4>
                     </div>
                     <div class="col-md-8 post-content"> 
-                        <h4>{{{ $post->content }}}</h4>
+                        <h4 data-lang="{{{ $post->user->i18n }}}">{{{ $post->content }}}</h4>
                     </div>
                 </div>
             @foreach($post->comments as $comment)
@@ -105,23 +101,16 @@
                     <div class="col-md-8">
                         <p>{{{ $comment->content }}}</p>
                     </div>
-                </div>
+                @endforeach
 
-            @endforeach
-                        
-                @if(Auth::user()->likes->contains($post->id))
-                    <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs likes">unlike</button>
-                    <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow hide btn-group-xs likes">like</button>
-                @else
-                    <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow hide btn-group-xs likes">unlike</button>
-                    <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs likes">like</button>
-                @endif
-                    <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
+                <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs {{{ $post->isLiked() ? '' : 'hide' }}} likes comments">unlike</button>
+                <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs {{{ $post->isLiked() ? 'hide' : '' }}} likes comments">like</button>
+                <button data-toggle="modal" type="button" data-target="#modal-{{{ $post->id }}}" class="btn btn-primary btn-group-xs comments">Comment</button>
             </div>
         </div>
-            
+
         <div class="container">
-            <div id="modal-1" class="modal fade lg" tabindex="-1" role="dialog">
+            <div id="modal-{{{ $post->id }}}" class="modal fade lg" tabindex="-1" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -133,28 +122,22 @@
 
                         <div class="modal-body" value=""autofocus>
                             {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5'))}}
-
-                                             
-
                         </div>
 
                         <div class="modal-footer">
-
                             <div class="btn-group">
                                 <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
                                 {{ Form::hidden('post_id', $post->id) }}
                                 {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
-                                {{ Form::close() }}
                             </div>
                         </div>
+                        {{ Form::close() }}
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dalog -->
             </div><!-- /.modal -->
         </div>
+    @endforeach
     </div>
-    @empty
-
-    @endforelse
 </div>
 
 @stop
