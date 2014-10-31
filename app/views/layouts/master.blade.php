@@ -75,6 +75,16 @@
                         </div>
                     {{ Form::close() }}
                 @endif
+                <!-- Search Row -->
+<!--                 <div class="form-group">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <div class="input-group-addon glyphicon glyphicon-search"></div>
+                            <input type="text" class="form-control" name="email" placeholder="Search">
+                        </div>/input-group
+                    </div>
+                </div> -->
+
             </div><!--/.nav-collapse -->
         </div>
         <img class="logo" src="img/skylanguageLogo.png" alt="Sky Language Logo">

@@ -2,17 +2,7 @@
 
 @section('header')
     <title>Home</title>
-    <style>
-    #tags_tag {
-        width: 100%;
-    }
-    .form-inline .form-control {
-        display: inline-block;
-        width: 100%;
-        vertical-align: middle;
-    }
-    </style>
-    
+
 @stop
 
 @section('content')
@@ -28,20 +18,7 @@
         </div>
 
         <div class="col-md-offset-1 col-md-8">
-            <!-- Search Row -->
-            <div class="row">
-                <div class="col-md-12">
-                    <form>
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Search</button>
-                            </span>
-                            <input type="text" class="form-control">
-                        </div><!-- /input-group -->
-                    </form>
-                </div>
-            </div>
-
+            
             <!-- Post Form Row -->
             <div class="row">
                 <div class="col-xs-12">
@@ -62,11 +39,7 @@
                 <div class="posts col-md-12">
                     <div class="pull-left">
                     @forelse($user->posts as $post)
-                              
-                        <img src="/img/Logo-user-default.png" alt="SkyLanguage" class="img-circle post-pic">
-                        
-                        <br>
-                        <br>
+                        <div class="default-img img-circle post-img"></div>
                         <h4 class="text-center"> {{ $user->first_name }} {{ $user->last_name }}</h4>
                     </div>
                         <h4> {{ $post->content }}</h4>
@@ -107,23 +80,25 @@
                                                 {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5', 'width' => '100%'))}}
                                             <div class="modal-footer">
                                                 <div class='container'>
-+                                                <div>
-+                                                    <input id="tags" rows="5" placeholder="Create tags"></input>
-+                                                </div>
-+                                        </div>
+                                                <div>
+                                                    <input id="tags" rows="5" placeholder="Create tags"></input>
+                                                </div>
+                                        </div>
                                                 <div class="btn-group">
                                                     <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
                                                     {{ Form::hidden('post_id', $post->id) }}
                                                     {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
                                             {{ Form::close() }}
                                                 </div>
+
                                             </div>
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dalog -->
-                                </div><!-- /.modal -->
-                            </div>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dalog -->
+                            </div><!-- /.modal -->
                         </div>
                     </div>
+                </div>
                     @empty
                             
                     @endforelse
