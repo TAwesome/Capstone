@@ -41,11 +41,11 @@ Route::get('/jill', 'HomeController@showJill');
 
 Route::get('/jacob', 'HomeController@showJacob');
 
-Route::post('/profile/comments', 'PostsController@createComment');
+Route::post('/profile/comment', 'PostsController@createComment');
 
-Route::post('/home/comment/create', 'HomeController@createComment');
+Route::post('/home/comment', 'HomeController@createComment');
 
-Route::post('/home/comment', 'PostsController@postHome');
+Route::post('/home/post', 'PostsController@postHome');
 
 Route::resource('posts', 'PostsController');
 
