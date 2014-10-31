@@ -19,18 +19,18 @@ class PostsController extends \BaseController {
      */
     public function index()
     {
-        $posts = Post::whereHas('user', function($q)
-            {
-                $userIds = array(Auth::id());
+        // $posts = Post::whereHas('user', function($q)
+        //     {
+        //         $userIds = array(Auth::id());
                 
-                foreach(Auth::user()->follow as $following) {
-                    $userIds[] = $following->id;
-                }
+        //         foreach(Auth::user()->follow as $following) {
+        //             $userIds[] = $following->id;
+        //         }
                 
-                $q->whereIn('id', $userIds);
-            })->get();
+        //         $q->whereIn('id', $userIds);
+        //     })->get();
 
-        return View::make('TAhome', compact('posts'));
+        // return View::make('TAhome', compact('posts'));
     }
 
     /**
@@ -62,6 +62,7 @@ class PostsController extends \BaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else {
+            $post->language_id = Input::get('language');
             $post->content = Input::get('content');
             $post->user_id = Auth::id();
         }
@@ -148,17 +149,17 @@ class PostsController extends \BaseController {
      */
     public function destroy($id)
     {
+        $user = Auth::user();
+        $id = $user->id;
         $post = Post::find($id);
         if(!$post) {
             App::abort(404);
         }
         $post->delete();
   
-        Log::info("$post->title has been deleted");
+        Log::info("$post->$id has been deleted");
         
-        Session::flash('successMessage', 'Post deleted!');
-        
-        return Redirect::action('PostsController@index');
+        return Redirect::action('UsersController@show', $id);
     }
     
     public function postHome()
@@ -171,6 +172,7 @@ class PostsController extends \BaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else {
+            $post->language_id = Input::get('language');
             $post->content = Input::get('content');
             $post->user_id = Auth::id();
         }

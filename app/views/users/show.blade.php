@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
 @section('header')
-    <title>{{ $user->first_name }}</title>
+
+
+    <title>{{ $user->first_name }} {{ $user->last_name }}'s Profile</title>
+
+     
 @stop
 
 @section('content')
@@ -13,8 +17,8 @@
             <h1> {{$user->first_name}} {{$user->last_name}} </h1>
             <div class="default-img img-circle carousel profile-img"></div>
             @if(Auth::user()->id == $user->id)
-            <a href=# id="about"class="btn btn-primary btn-lg fa fa-camera-retro user-pic" role="button"> &raquo;</a>
-            <p id="about-style"><a href=# id="about"class="btn btn-primary btn-lg fa fa-image" role="button"> &raquo;</a></p>
+            <button data-toggle="modal" type="button" data-target="#modal-avatar" id="about" class="btn btn-primary btn-lg fa fa-camera-retro user-pic"> &raquo;</button>
+            <p id="about-style"><button data-toggle="modal" type="button" data-target="#modal-cover" id="about" class="btn btn-primary btn-lg fa fa-image"> &raquo;</button></p>
             @endif
 
             @if(!(Auth::user()->id == $user->id))
@@ -25,6 +29,69 @@
             @endif
         </div>
     </div>
+    
+<!-- --------------------- Modal for avatar upload --------------------- -->
+
+<div class="container">
+    <div id="modal-avatar" class="modal fade lg" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                {{ Form::open(array('action' => 'UsersController@uploadAvatar', 'class' => 'form-inline', 'role' => 'form', 'files' => 'true')) }}
+
+                <div class="modal-body">
+                    {{ Form::label('image', 'Choose a new avatar!', ['class' => 'uploader']) }}
+                    {{ Form::file('image', Input::file('image'), ['class' => 'uploader']) }}
+                </div>
+
+                <div class="modal-footer">
+
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                        {{ Form::submit('Upload', array('class' => 'btn btn-primary')) }}
+                        {{ Form::close() }}
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+    </div><!-- /.modal -->
+</div>
+        
+        
+<!-- --------------------- Modal for cover upload --------------------- -->
+
+<div class="container">
+    <div id="modal-cover" class="modal fade lg" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                {{ Form::open(array('action' => 'UsersController@uploadCover', 'class' => 'form-inline', 'role' => 'form', 'files' => 'true')) }}
+
+                <div class="modal-body">
+                    {{ Form::label('image', 'Choose a new cover photo!', ['class' => 'uploader']) }}
+                    {{ Form::file('image', Input::file('image'), ['class' => 'uploader']) }}
+                </div>
+
+                <div class="modal-footer">
+
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                        {{ Form::submit('Upload', array('class' => 'btn btn-primary')) }}
+                        {{ Form::close() }}
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+    </div><!-- /.modal -->
+</div>
+
+
 
 
 
@@ -48,6 +115,16 @@
                         {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
                     </div>
                     <div class="form-group">
+                        <div class="col-md-12">
+                            <select class="form-control" id="language" name="language">
+                                <option selected>Language</option>
+                                <option value="1" >English</option>
+                                <option value="2" >French</option>
+                                <option value="3" >Spanish</option>
+                            </select>
+                        </div>
+                    </div> 
+                    <div class="form-group">
                         {{Form::submit('Post', array('class' => 'btn btn-default'))}}
                     </div>
                 {{ Form::close() }}
@@ -64,6 +141,13 @@
                     <div class="col-md-8 post-content"> 
                         <h4 data-lang="{{{ $post->i18n }}}" id="post-{{{ $post->id }}}">{{{ $post->content }}}</h4>
                     </div>
+                    @if(Auth::user()->id == $user->id)
+                        {{link_to_action('PostsController@update','Edit', array($post->id))}}
+                        
+                        {{Form::open(['method' => 'Delete', 'action' => ['PostsController@destroy', $post->id], 'id' => 'delete-form'])}}
+                            <button type="submit" class="btn btn-link">Delete</button>
+                        {{Form::close()}}
+                    @endif
                 </div>
                 @foreach($post->comments as $comment)
                     <div class="row posts">
@@ -74,6 +158,7 @@
                             <p>{{{ $comment->content }}}</p>
                         </div>
                     </div>
+
                 @endforeach
 
                 <button type="button" class="btn btn-danger follow btn-sm {{{ $post->isLiked() ? '' : 'hide' }}} likes comments">unlike</button>
@@ -82,6 +167,7 @@
                 <button data-toggle="modal" type="button" data-target="#modal-{{{ $post->id }}}" class="btn btn-primary btn-sm comments">Comment</button>
 
                 <button type="button" class="btn btn-success btn-sm translate-btn" data-post-id="{{{ $post->id }}}">Translate with Google</button>
+
             </div>
         </div>
 

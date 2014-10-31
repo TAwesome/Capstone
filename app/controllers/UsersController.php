@@ -170,14 +170,15 @@ class UsersController extends \BaseController {
     public function uploadCover ()
     {
         $user = Auth::user();
+        $id = $user->id;
         if (Input::hasFile('image')) {
             $file = Input::file('image');
             $orig_name = $file->getClientOriginalName() . str_random(6);
-            $dest_path = public_path() . '/img/';
+            $dest_path = public_path() . "/img/cover/$id/";
             $upload = $file->move($dest_path, $orig_name);
-            $user->cover = '/img/' . $orig_name;
+            $user->cover = "/img/cover/$id/" . $orig_name;
             $user->save();
-            $id = $user->id;
+
             return Redirect::action('UsersController@show', array($id));
         }
     }
@@ -186,14 +187,15 @@ class UsersController extends \BaseController {
     public function uploadAvatar ()
     {
         $user = Auth::user();
+        $id = $user->id;
         if (Input::hasFile('image')) {
             $file = Input::file('image');
             $orig_name = $file->getClientOriginalName() . str_random(6);
-            $dest_path = public_path() . '/img/';
+            $dest_path = public_path() . "/img/avatar/$id/";
             $upload = $file->move($dest_path, $orig_name);
-            $user->avatar = '/img/' . $orig_name;
+            $user->avatar = "/img/avatar/$id/" . $orig_name;
             $user->save();
-            $id = $user->id;
+
             return Redirect::action('UsersController@show', array($id));
         }
     }
