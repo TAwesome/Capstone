@@ -28,6 +28,9 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
+                <div class="navbar-brand">
+                    <img src="/img/skylanguageLogo.png" alt="SkyLanguage">
+                </div>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -76,18 +79,23 @@
                     {{ Form::close() }}
                 @endif
                 <!-- Search Row -->
-<!--                 <div class="form-group">
+                <!-- <div class="form-group">
                     <div class="col-md-3">
                         <div class="input-group">
                             <div class="input-group-addon glyphicon glyphicon-search"></div>
                             <input type="text" class="form-control" name="email" placeholder="Search">
-                        </div>/input-group
+                        </div>
                     </div>
                 </div> -->
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
 
             </div><!--/.nav-collapse -->
         </div>
-        <img class="logo" src="img/skylanguageLogo.png" alt="Sky Language Logo">
     </div>
     
     @yield('content')
