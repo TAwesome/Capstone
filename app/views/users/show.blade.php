@@ -2,33 +2,8 @@
 
 @section('header')
 
-    <title>{{ $user->first_name }}</title>
+    <title>{{ $user->first_name }} {{ $user->last_name }}'s Profile</title>
 
-<script>
-    // $(document).ready(function() 
-    // {
-        
-        
-    //     function translate()
-    //     {
-    //         $.get("https://www.googleapis.com/language/translate/v2",
-    //         {
-    //             key:"AIzaSyDgydXTWspIfKggxymxfDh0VcyvdEMrGAc",
-    //             source:"en",
-    //             target:$("#target").val(),
-    //             q:$("#text").val()
-    //         },
-    //         function(response)
-    //         {
-    //             $("#translated").html(response.data.translations[0].translatedText);
- 
-    //         },"json") .fail(function(jqXHR, textStatus, errorThrown) 
-    //         {
-    //             alert( "error :"+errorThrown );
-    //         });
-    //     }
-    // }); 
-</script>
      
 @stop
 
@@ -41,8 +16,8 @@
             <h1> {{$user->first_name}} {{$user->last_name}} </h1>
             <div class="default-img img-circle carousel profile-img"></div>
             @if(Auth::user()->id == $user->id)
-            <a href=# id="about"class="btn btn-primary btn-lg fa fa-camera-retro user-pic" role="button"> &raquo;</a>
-            <p id="about-style"><a href=# id="about"class="btn btn-primary btn-lg fa fa-image" role="button"> &raquo;</a></p>
+            <button data-toggle="modal" type="button" data-target="#modal-avatar" id="about" class="btn btn-primary btn-lg fa fa-camera-retro user-pic"> &raquo;</button>
+            <p id="about-style"><button data-toggle="modal" type="button" data-target="#modal-cover" id="about" class="btn btn-primary btn-lg fa fa-image"> &raquo;</button></p>
             @endif
 
             @if(!(Auth::user()->id == $user->id))
@@ -53,6 +28,69 @@
             @endif
         </div>
     </div>
+    
+<!-- --------------------- Modal for avatar upload --------------------- -->
+
+<div class="container">
+    <div id="modal-avatar" class="modal fade lg" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                {{ Form::open(array('action' => 'UsersController@uploadAvatar', 'class' => 'form-inline', 'role' => 'form', 'files' => 'true')) }}
+
+                <div class="modal-body">
+                    {{ Form::label('image', 'Choose a new avatar!', ['class' => 'uploader']) }}
+                    {{ Form::file('image', Input::file('image'), ['class' => 'uploader']) }}
+                </div>
+
+                <div class="modal-footer">
+
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                        {{ Form::submit('Upload', array('class' => 'btn btn-primary')) }}
+                        {{ Form::close() }}
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+    </div><!-- /.modal -->
+</div>
+        
+        
+<!-- --------------------- Modal for cover upload --------------------- -->
+
+<div class="container">
+    <div id="modal-cover" class="modal fade lg" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                {{ Form::open(array('action' => 'UsersController@uploadCover', 'class' => 'form-inline', 'role' => 'form', 'files' => 'true')) }}
+
+                <div class="modal-body">
+                    {{ Form::label('image', 'Choose a new cover photo!', ['class' => 'uploader']) }}
+                    {{ Form::file('image', Input::file('image'), ['class' => 'uploader']) }}
+                </div>
+
+                <div class="modal-footer">
+
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                        {{ Form::submit('Upload', array('class' => 'btn btn-primary')) }}
+                        {{ Form::close() }}
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+    </div><!-- /.modal -->
+</div>
+
+
 
 
 
