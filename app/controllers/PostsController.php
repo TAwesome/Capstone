@@ -179,7 +179,12 @@ class PostsController extends \BaseController {
         $id = $post->id;
         return Redirect::action('HomeController@showHome');
     }
-    
+    public function like($id)
+    {
+        $user = Auth::user();
+        $user->likes()->attach($id);
+        return Redirect::back();
+    }
     public function unlike($id)
     {
         $user = Auth::user();
