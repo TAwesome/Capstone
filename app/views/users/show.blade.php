@@ -227,10 +227,10 @@
                 },
                 success: function(data) {
                     // maybe pop up a modal
-                    console.log(data);
+                    console.log(data.data.translations[0].translatedText);
                 },
                 error: function() {
-                    console.log("NOPE!");
+                    console.log("Could not translate");
                 }
             });
         });
