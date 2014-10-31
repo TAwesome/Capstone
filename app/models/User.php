@@ -54,6 +54,20 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
         return $this->belongsToMany('Language');
     }
 
+    public function geti18nAttribute()
+    {
+        switch($this->native_language) {
+            case 'English':
+                return 'en';
+            case 'Spanish':
+                return 'es';
+            case 'French':
+                return 'fr';
+            default:
+                return $this->native_language;
+        }
+    }
+
 	/**
 	 * The database table used by the model.
 	 *
