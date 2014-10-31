@@ -149,6 +149,8 @@ class PostsController extends \BaseController {
      */
     public function destroy($id)
     {
+        $user = Auth::user();
+        $id = $user->id;
         $post = Post::find($id);
         if(!$post) {
             App::abort(404);
@@ -157,7 +159,7 @@ class PostsController extends \BaseController {
   
         Log::info("$post->$id has been deleted");
         
-        return Redirect::action('UsersController@show');
+        return Redirect::action('UsersController@show', $id);
     }
     
     public function postHome()
