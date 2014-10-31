@@ -40,10 +40,14 @@
         <div class="content text-center">
             <h1> Welcome {{$user->first_name}}!</h1>
             <p>This is a place where you can place your favorite quote/song title/bio.</p>
-            <a href=# id="about"class="btn btn-primary btn-lg fa fa-pencil user-quote" role="button"> &raquo;</a>
+            @if(Auth::user()->id == $user->id)
+                <a href=# id="about"class="btn btn-primary btn-lg fa fa-pencil user-quote" role="button"> &raquo;</a>
+            @endif
             <img src="/img/Logo-user-default.png" alt="SkyLanguage" class="img-circle carousel profile-img">
-            <a href=# id="about"class="btn btn-primary btn-lg fa fa-camera-retro user-pic" role="button"> &raquo;</a>
-            <p id="about-style"><a href=# id="about"class="btn btn-primary btn-lg fa fa-image" role="button"> &raquo;</a></p>
+            @if(Auth::user()->id == $user->id)
+                <a href=# id="about"class="btn btn-primary btn-lg fa fa-camera-retro user-pic" role="button"> &raquo;</a>
+                <p id="about-style"><a href=# id="about"class="btn btn-primary btn-lg fa fa-image" role="button"> &raquo;</a></p>
+            @endif    
         </div>
     </div>
 

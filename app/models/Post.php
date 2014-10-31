@@ -34,6 +34,20 @@ class Post extends BaseModel {
     {
         return $this->hasMany('Comment');
     }
+    
+    public function setTagListAttribute($value)
+    {
+        $tags = explode(',', $value);
+        
+        $tagIds = [];
+        
+        foreach($tags as $tag)
+        { 
+            $insert = Tag::firstOrCreate([ 'tag' => $tag]); 
+            $tagIds[] = $insert->id; 
+        }
+        $this->tags()->sync($tagIds);
+    }
     // Add your validation rules here
 
 	// Don't forget to fill this array
