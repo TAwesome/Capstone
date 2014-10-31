@@ -61,18 +61,18 @@
             <div class="row">
                 <div class="posts col-md-12">
                     <div class="pull-left">
-                    @forelse($user->posts as $post)
+                    @forelse($posts as $post)
                               
                         <img src="/img/Logo-user-default.png" alt="SkyLanguage" class="img-circle post-pic">
                         
                         <br>
                         <br>
-                        <h4 class="text-center"> {{ $user->first_name }} {{ $user->last_name }}</h4>
+                        <h4 class="text-center"> {{ $post->user->first_name }} {{ $post->user->last_name }}</h4>
                     </div>
                         <h4> {{ $post->content }}</h4>
                         <br>
                         
-                        @forelse($user->comments as $comment)
+                        @forelse($post->comments as $comment)
                         <p>{{ $comment->content }}</p>
                         @empty
                         @endforelse
@@ -85,7 +85,7 @@
                         @endif
                         <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
 
-                        @forelse($user->comments as $comment)
+                        @forelse($post->comments as $comment)
                         <p>{{ $comment->content }}</p>
                             
                         @empty
