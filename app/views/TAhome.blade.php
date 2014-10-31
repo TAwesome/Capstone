@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h4>Write A New Post</h4>
-                    {{ Form::open(array('action' => 'HomeController@showHome', 'role' => 'form')) }}
+                    {{ Form::open(array('action' => 'PostsController@postHome', 'role' => 'form')) }}
                         <div class="form-group">
                             {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
                         </div>
@@ -84,6 +84,14 @@
                             <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs likes">like</button>
                         @endif
                         <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
+
+                        @forelse($user->comments as $comment)
+                        <p>{{ $comment->content }}</p>
+                            
+                        @empty
+                        @endforelse
+                        
+
                         <br>
                         </div>
                         <div class="container">
@@ -94,16 +102,20 @@
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                 <h4 class="modal-title">Leave Your Comment</h4>
                                             </div>
-                                            {{ Form::open(array('action' => 'PostsController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
+                                            {{ Form::open(array('action' => 'HomeController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
                                             <div class="modal-body" >
                                                 {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5', 'width' => '100%'))}}
                                             <div class="modal-footer">
-                                                
+                                                <div class='container'>
++                                                <div>
++                                                    <input id="tags" rows="5" placeholder="Create tags"></input>
++                                                </div>
++                                        </div>
                                                 <div class="btn-group">
                                                     <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
                                                     {{ Form::hidden('post_id', $post->id) }}
                                                     {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
-                                                    {{ Form::close() }}
+                                            {{ Form::close() }}
                                                 </div>
                                             </div>
                                         </div><!-- /.modal-content -->
