@@ -8,7 +8,7 @@ class PostsController extends \BaseController {
         parent::__construct();
 
         // run auth filter before all methods on this controller except index and show
-        $this->beforeFilter('auth.basic', array('except' => array('index', 'show')));
+        $this->beforeFilter('auth.basic', array('except' => array('index', 'show', 'TAhome')));
     }
     
     
@@ -122,6 +122,16 @@ class PostsController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
+    
+    public function indexHome($id)
+    {
+        
+        $post = Post::find($id);
+
+        return $this->savePost($post);
+    }
+    
+    
     public function update($id)
     {
         
@@ -151,11 +161,23 @@ class PostsController extends \BaseController {
         return Redirect::action('PostsController@index');
     }
     
-    public function like($id)
+    public function postHome()
     {
-        $user = Auth::user();
-        $user->likes()->attach($id);
-        return Redirect::back();
+        $post = new Post();
+        $validator = Validator::make($data = Input::all(), Post::$rules);
+
+        if ($validator->fails()) {
+            Log::info('No empty posts', Input::all());
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        else {
+            $post->content = Input::get('content');
+            $post->user_id = Auth::id();
+        }
+        
+        $post->save();
+        $id = $post->id;
+        return Redirect::action('HomeController@showHome');
     }
     
     public function unlike($id)
