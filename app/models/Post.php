@@ -48,6 +48,20 @@ class Post extends BaseModel {
         }
         $this->tags()->sync($tagIds);
     }
+    
+    public function geti18nAttribute()
+    {
+        switch($this->language) {
+            case 'english':
+                return 'en';
+            case 'spanish':
+                return 'es';
+            case 'french':
+                return 'fr';
+            default:
+                return $this->language;
+        }
+    }
 
     public function isLiked()
     {
