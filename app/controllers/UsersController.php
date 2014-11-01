@@ -233,9 +233,8 @@ class UsersController extends \BaseController {
         
         Log::info("$user->first_name $user->last_name has been deleted");
         
-        Session::flash('successMessage', 'User deleted!');
         
-        return Redirect::action('UsersController@index');
+        return Redirect::action('HomeController@showWelcome');
         
     }
 

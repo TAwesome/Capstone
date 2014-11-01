@@ -146,15 +146,18 @@ class PostsController extends \BaseController {
      */
     public function destroy($id)
     {
-        $user = Auth::user();
-        $id = $user->id;
+        
         $post = Post::find($id);
+        
         if(!$post) {
             App::abort(404);
         }
         $post->delete();
   
         Log::info("$post->$id has been deleted");
+        
+        $user = Auth::user();
+        $id = $user->id;
         
         return Redirect::action('UsersController@show', $id);
     }
