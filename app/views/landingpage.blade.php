@@ -24,30 +24,34 @@
 
             <div class="col-md-6">
                 <h2 class="labels-landing">Sign up!</h2>
-                <form method="POST" action="{{ action('UsersController@store') }}" class="form-horizontal" role="form">
+                {{ Form::open(array('action' => 'UsersController@store', 'class' => 'form-horizontal'))}}
                     <div class="form-group">
                         <div class="col-md-6">
                             <label class="sr-only" for="exampleInputFirstName2">First Name</label>
-                            <input type="text" class="form-control" name="first_name" id="exampleInputFirstName2" placeholder="First Name">
+                            <input type="text" class="form-control" name="first_name" id="exampleInputFirstName2" placeholder="First Name" value="{{{ Input::old('first_name') }}}">
                         </div>
+                        {{ $errors->first('first_name', '<span class="help-block">:message</span>')}}
                         <div class="col-md-6">
                             <label class="sr-only" for="exampleInputLast Name2">LastName</label>
-                            <input type="text" class="form-control" name="last_name" id="exampleInputLastName2" placeholder="Last Name">
+                            <input type="text" class="form-control" name="last_name" id="exampleInputLastName2" placeholder="Last Name" value="{{{ Input::old('last_name') }}}">
                         </div>
+                        {{ $errors->first('last_name', '<span class="help-block">:message</span>')}}
                     </div>
 
                     <div class="form-group">
                         <div class="col-md-12">
                             <label class="sr-only" for="exampleInputEmail2">Email</label>
-                            <input type="email" class="form-control" name="email" id="inputEmail3" placeholder="Email">
+                            <input type="email" class="form-conrol" name="email" id="inputEmail3" placeholder="Email" value="{{{ Input::old('email') }}}">
                         </div>
                     </div>
+                        {{ $errors->first('email', '<span class="help-block">:message</span>')}}
 
                     <div class="form-group">
                         <div class="col-md-12">
                             <label class="sr-only" for="exampleInputPassword2">Password</label>
-                            <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
+                            <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password" value="{{{ Input::old('password') }}}">
                         </div>
+                        {{ $errors->first('password', '<span class="help-block">:message</span>')}}
                     </div>
                     <h4>Birthday</h4>
                     <div class="form-group">
@@ -112,7 +116,7 @@
                           <button type="submit" class="btn btn-lg btn-success" id="sign-up_btn-landing">Sign Up</button>
                         </div>
                     </div>
-                </form>
+                {{ Form::close()}}
             </div>
         </div>
     </div>

@@ -9,10 +9,10 @@
     <div class="row top">
         <div class="col-md-3">
             <div class="list-group">
-                <a href="#" class="list-group-item active">Home</a>
-                <a href="#" class="list-group-item">English</a>
-                <a href="#" class="list-group-item">French</a>
-                <a href="#" class="list-group-item">Spanish</a>
+                <a href="/home" class="list-group-item active">Home</a>
+                <a href="?language=english" class="list-group-item">English</a>
+                <a href="?language=french" class="list-group-item">French</a>
+                <a href="?language=spanish" class="list-group-item">Spanish</a>
             </div>
         </div>
 

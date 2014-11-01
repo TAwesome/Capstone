@@ -25,7 +25,7 @@ class Post extends BaseModel {
         return $this->belongsToMany('User', 'likes', 'post_id', 'user_id')->withTimestamps();    
     }
     
-    public function languages()
+    public function language()
     {
         return $this->belongsTo('Language');
     }
@@ -51,7 +51,7 @@ class Post extends BaseModel {
     
     public function geti18nAttribute()
     {
-        switch($this->language) {
+        switch($this->language->language) {
             case 'english':
                 return 'en';
             case 'spanish':
@@ -59,7 +59,7 @@ class Post extends BaseModel {
             case 'french':
                 return 'fr';
             default:
-                return $this->language;
+                return $this->language->language;
         }
     }
 
