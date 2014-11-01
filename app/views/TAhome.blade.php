@@ -26,15 +26,15 @@
                             {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
                         </div>
                         <div class="form-group">
-                        <div class="col-md-12">
-                            <select class="form-control" id="language" name="language">
-                                <option selected>Language</option>
-                                <option value="1" >English</option>
-                                <option value="2" >French</option>
-                                <option value="3" >Spanish</option>
-                            </select>
-                        </div>
-                    </div> 
+                            <div class="col-md-12">
+                                <select class="form-control" id="language" name="language">
+                                    <option selected>Language</option>
+                                    <option value="1" >English</option>
+                                    <option value="2" >French</option>
+                                    <option value="3" >Spanish</option>
+                                </select>
+                            </div>
+                        </div> 
                         <div class="form-group">
                             {{Form::submit('Post', array('class' => 'btn btn-default'))}}
                         </div>
@@ -59,13 +59,13 @@
                             <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow hide btn-group-xs likes">unlike</button>
                             <button type="button" href="/like/{{$post->id}}" class="btn btn-info follow btn-group-xs likes">like</button>
                         @endif
-                        <button data-toggle="modal" type="button" data-target="#modal-1" class="btn btn-primary btn-group-xs comments">Comment</button>
+                        <button data-toggle="modal" type="button" data-target="#modal-{{{ $post->id }}}" class="btn btn-primary btn-group-xs comments">Comment</button>
 
                         @foreach($post->comments as $comment)
                             <p>{{ $comment->content }}</p>
                         @endforeach
                         
-                        <div id="modal-1" class="modal fade lg" tabindex="-1" role="dialog">
+                        <div id="modal-{{{ $post->id }}}" class="modal fade lg" tabindex="-1" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

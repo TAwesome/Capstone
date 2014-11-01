@@ -40,16 +40,13 @@ class PostsController extends \BaseController {
      */
     public function createComment()
     {
-            $id = Auth::user()->id;
-            $user = User::find($id);
-            if (Input::has('comment')) {
-                $comment = new Comment();
-                $comment->user_id = $id;
-                $comment->post_id = Input::get('post_id');
-                $comment->content = Input::get('comment');
-                $comment->save();
-            }
-        return View::make('users.show', compact('user'));
+        $comment = new Comment();
+        $comment->user_id = Auth::id();
+        $comment->post_id = Input::get('post_id');
+        $comment->content = Input::get('comment');
+        $comment->save();
+        
+        return Redirect::back();
     }
 
     protected function savePost($post)
@@ -69,7 +66,7 @@ class PostsController extends \BaseController {
         
         $post->save();
         $id = $post->id;
-        return Redirect::action('PostsController@show', $id);
+        return Redirect::back()->with($id);
     }
     
     /**
@@ -162,25 +159,6 @@ class PostsController extends \BaseController {
         return Redirect::action('UsersController@show', $id);
     }
     
-    public function postHome()
-    {
-        $post = new Post();
-        $validator = Validator::make($data = Input::all(), Post::$rules);
-
-        if ($validator->fails()) {
-            Log::info('No empty posts', Input::all());
-            return Redirect::back()->withErrors($validator)->withInput();
-        }
-        else {
-            $post->language_id = Input::get('language');
-            $post->content = Input::get('content');
-            $post->user_id = Auth::id();
-        }
-        
-        $post->save();
-        $id = $post->id;
-        return Redirect::action('HomeController@showHome');
-    }
     public function like($id)
     {
         $user = Auth::user();

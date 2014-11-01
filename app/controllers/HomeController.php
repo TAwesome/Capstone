@@ -96,21 +96,6 @@ class HomeController extends BaseController {
         }
     }
     
-    public function createComment()
-    {
-            $id = Auth::user()->id;
-            $user = User::find($id);
-            if (Input::has('comment')) {
-                $comment = new Comment();
-                $comment->user_id = $id;
-                $comment->post_id = Input::get('post_id');
-                $comment->content = Input::get('comment');
-                $comment->save();
-            }
-        return View::make('TAhome', compact('user', 'comment', 'posts'));
-    }
-    
-    
     public function doLogout()
     {
         Auth::logout();

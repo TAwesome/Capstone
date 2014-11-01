@@ -141,8 +141,15 @@
                     <div class="col-md-8 post-content"> 
                         <h4 data-lang="{{{ $post->i18n }}}" id="post-{{{ $post->id }}}">{{{ $post->content }}}</h4>
                     </div>
+                    <button type="button" class="btn btn-danger follow btn-sm {{{ $post->isLiked() ? '' : 'hide' }}} likes comments">unlike</button>
+                    <button type="button" class="btn btn-info follow btn-sm {{{ $post->isLiked() ? 'hide' : '' }}} likes comments">like</button>
+
+                    <button data-toggle="modal" type="button" data-target="#modal-{{{ $post->id }}}" class="btn btn-primary btn-sm comments">Comment</button>
+
+                    <button type="button" class="btn btn-success btn-sm translate-btn" data-post-id="{{{ $post->id }}}">Translate with Google</button>
+
                     @if(Auth::user()->id == $user->id)
-                        {{link_to_action('PostsController@update','Edit', array($post->id))}}
+                        <button type="submit" data-toggle="modal" type="button" data-target="#modaledit-{{{ $post->id }}}" class="btn btn-primary btn-sm comments">Edit</button>
                         
                         {{Form::open(['method' => 'Delete', 'action' => ['PostsController@destroy', $post->id], 'id' => 'delete-form'])}}
                             <button type="submit" class="btn btn-link">Delete</button>
@@ -161,13 +168,7 @@
 
                 @endforeach
 
-                <button type="button" class="btn btn-danger follow btn-sm {{{ $post->isLiked() ? '' : 'hide' }}} likes comments">unlike</button>
-                <button type="button" class="btn btn-info follow btn-sm {{{ $post->isLiked() ? 'hide' : '' }}} likes comments">like</button>
-
-                <button data-toggle="modal" type="button" data-target="#modal-{{{ $post->id }}}" class="btn btn-primary btn-sm comments">Comment</button>
-
-                <button type="button" class="btn btn-success btn-sm translate-btn" data-post-id="{{{ $post->id }}}">Translate with Google</button>
-
+                
             </div>
         </div>
 
@@ -182,7 +183,7 @@
 
                         {{ Form::open(array('action' => 'PostsController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
 
-                        <div class="modal-body" value=""autofocus>
+                        <div class="modal-body">
                             {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5'))}}
                         </div>
 
@@ -198,6 +199,62 @@
                 </div><!-- /.modal-dalog -->
             </div><!-- /.modal -->
         </div>
+        
+        
+        <div class="container">
+            <div id="modaledit-{{{ $post->id }}}" class="modal fade lg" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Update Your Post</h4>
+                        </div>
+
+                        {{ Form::open(array('action' => ['PostsController@update', $post->id], 'class' => 'form-inline', 'role' => 'form', 'method' => 'put')) }}
+
+                        <div class="modal-body">
+                            {{ Form::textarea('content', null , array('class' => 'span12 form-control', 'placeholder' => 'Update post here', 'rows' => '5'))}}
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                                {{ Form::hidden('post_id', $post->id) }}
+                                {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
+                            </div>
+                        </div>
+                        {{ Form::close() }}
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dalog -->
+            </div><!-- /.modal -->
+        </div>
+        
+
+<!-- --------------------- Modal for translate --------------------- -->
+
+        <div class="container">
+            <div id="modal-translate" class="modal fade lg" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="translated"></p>
+                        </div>
+                            
+                        <div class="modal-footer">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                            </div>
+                        </div>
+                        {{ Form::close() }}
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dalog -->
+            </div><!-- /.modal -->
+        </div>
+        
+        
     @endforeach
     </div>
 </div>
@@ -227,9 +284,11 @@
                 },
                 success: function(data) {
                     // maybe pop up a modal
+                    $('.translated').text(data);
                     console.log(data);
                 },
                 error: function() {
+                    $('.translated').text("Nothing to translate");
                     console.log("NOPE!");
                 }
             });
