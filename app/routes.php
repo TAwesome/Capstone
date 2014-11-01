@@ -41,7 +41,13 @@ Route::get('/jill', 'HomeController@showJill');
 
 Route::get('/jacob', 'HomeController@showJacob');
 
+//Fix routes by just redirecting back in controllers
+
 Route::post('/post/comment', 'PostsController@createComment');
+
+Route::post('/home/comment', 'HomeController@createComment');
+
+Route::post('/home/post', 'PostsController@postHome');
 
 Route::resource('posts', 'PostsController');
 

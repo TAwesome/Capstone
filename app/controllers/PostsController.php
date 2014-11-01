@@ -66,7 +66,7 @@ class PostsController extends \BaseController {
         
         $post->save();
         $id = $post->id;
-        return Redirect::action('PostsController@show', $id);
+        return Redirect::back()->with($id);
     }
     
     /**
@@ -159,25 +159,6 @@ class PostsController extends \BaseController {
         return Redirect::action('UsersController@show', $id);
     }
     
-    public function postHome()
-    {
-        $post = new Post();
-        $validator = Validator::make($data = Input::all(), Post::$rules);
-
-        if ($validator->fails()) {
-            Log::info('No empty posts', Input::all());
-            return Redirect::back()->withErrors($validator)->withInput();
-        }
-        else {
-            $post->language_id = Input::get('language');
-            $post->content = Input::get('content');
-            $post->user_id = Auth::id();
-        }
-        
-        $post->save();
-        $id = $post->id;
-        return Redirect::action('HomeController@showHome');
-    }
     public function like($id)
     {
         $user = Auth::user();
