@@ -262,7 +262,6 @@
 @stop
 @section('bottom-script')
 <script src="/js/following.js"></script>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -284,13 +283,14 @@
                 },
                 success: function(data) {
                     // maybe pop up a modal
-                    console.log(data.data.translations[0].translatedText);
+                    $('.translated').html(data.data.translations[0].translatedText);
+                    $('#modal-translate').modal();
                 },
                 error: function() {
-                    console.log("Could not translate");
-                    console.log(data);
+                    $('.translated').html("Could not translate");
+                    $('#modal-translate').modal();
                 }
-                }
+                
             });
         });
     });
