@@ -355,7 +355,6 @@
 @stop
 @section('bottom-script')
 <script src="/js/following.js"></script>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -377,13 +376,14 @@
                 },
                 success: function(data) {
                     // maybe pop up a modal
-                    $('.translated').text(data);
-                    console.log(data);
+                    $('.translated').html(data.data.translations[0].translatedText);
+                    $('#modal-translate').modal();
                 },
                 error: function() {
-                    $('.translated').text("Nothing to translate");
-                    console.log("NOPE!");
+                    $('.translated').html("Could not translate");
+                    $('#modal-translate').modal();
                 }
+                
             });
         });
     });
