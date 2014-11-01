@@ -41,11 +41,7 @@ Route::get('/jill', 'HomeController@showJill');
 
 Route::get('/jacob', 'HomeController@showJacob');
 
-Route::post('/profile/comment', 'PostsController@createComment');
-
-Route::post('/home/comment', 'HomeController@createComment');
-
-Route::post('/home/post', 'PostsController@postHome');
+Route::post('/post/comment', 'PostsController@createComment');
 
 Route::resource('posts', 'PostsController');
 
