@@ -228,6 +228,7 @@ class UsersController extends \BaseController {
     public function destroy($id)
     {
         User::destroy($id);
+        $user = Auth::user();
         
         if(!$user) {
             App::abort(404);

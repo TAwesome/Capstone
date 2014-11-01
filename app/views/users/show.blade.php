@@ -144,12 +144,12 @@
                     <h3>Write A New Post</h3>
                     {{ Form::open(array('action' => 'PostsController@store', 'role' => 'form')) }}
                     <div class="form-group">
-                        {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
+                        {{ Form::textarea('content', null , array('class' => 'form-control', 'required' => 'required','placeholder' => 'Write a new post', 'rows' => '5'))}}
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <select class="form-control" id="language" name="language">
-                                <option selected>Language</option>
+                            <select required="required" class="form-control" id="language" name="language" >
+                                <option value="">Language</option>
                                 <option value="1" >English</option>
                                 <option value="2" >French</option>
                                 <option value="3" >Spanish</option>
@@ -231,7 +231,7 @@
                 </div>
                 <div class="modal-body">
                     <h3>Are you sure you want to delete your profile?</h3>
-                    {{Form::open(['method' => 'Delete', 'action' => ['UsersController@destroy', $user->id], 'id' => 'delete-form'])}}
+                    {{Form::open(['method' => 'Delete', 'action' => ['UsersController@destroy', Auth::user()->id], 'id' => 'delete-form'])}}
                 </div>
                 <div class="modal-footer">
                     <div class="btn-group">
