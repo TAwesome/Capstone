@@ -228,6 +228,7 @@ class UsersController extends \BaseController {
     public function destroy($id)
     {
         User::destroy($id);
+        $user = Auth::user();
         
         if(!$user) {
             App::abort(404);
@@ -236,9 +237,8 @@ class UsersController extends \BaseController {
         
         Log::info("$user->first_name $user->last_name has been deleted");
         
-        Session::flash('successMessage', 'User deleted!');
         
-        return Redirect::action('UsersController@index');
+        return Redirect::action('HomeController@showWelcome');
         
     }
 
