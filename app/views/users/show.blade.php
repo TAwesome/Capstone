@@ -124,9 +124,9 @@
                 <a href="#" data-toggle="modal" type="button" data-target="#modal-delete" style="text-align:left" id="about" class="btn btn-danger btn-lg list-group-item">Delete Profile</a>
                 @endif
                 <a href="/home" class="list-group-item active">View Posts</a>
-                <a href="/home?language=english" class="list-group-item">English</a>
-                <a href="/home?language=spanish" class="list-group-item">Spanish</a>
-                <a href="/home?language=french" class="list-group-item">French</a>
+                <a href="/home?language=english" class="list-group-item"><img src="/img/flag-american.png" class="img-responsive"></a>
+                <a href="/home?language=spanish" class="list-group-item"><img src="/img/flag-canadia.png" class="img-responsive"></a>
+                <a href="/home?language=french" class="list-group-item"><img src="/img/flag-mexico.png" class="img-responsive"></a>
             </div>
         </div>
 
@@ -148,6 +148,15 @@
                         {{ Form::textarea('content', null , array('class' => 'form-control', 'required' => 'required','placeholder' => 'Write a new post', 'rows' => '5'))}}
                     </div>
                     <div class="form-group">
+<<<<<<< HEAD
+                        <select class="form-control" id="language" name="language">
+                            <option selected>Language</option>
+                            <option value="1" >English</option>
+                            <option value="2" >French</option>
+                            <option value="3" >Spanish</option>
+                        </select>
+                    </div> 
+=======
                         <div class="col-md-12">
                             <select required="required" class="form-control" id="language" name="language" >
                                 <option value="">Language</option>
@@ -159,6 +168,7 @@
                     </div>
                 </div> 
                 <div class="modal-footer">
+>>>>>>> master
                     <div class="form-group">
                         {{Form::submit('Post', array('class' => 'btn btn-default'))}}
                     </div>
