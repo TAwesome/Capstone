@@ -44,6 +44,15 @@
                     </div>
                     <div class="col-md-9">
                         <h4>{{ $post->content }}</h4>
+                        <ul class="nav nav-pills">
+                        @foreach ($post->tags as $tag)
+                            <li>
+                                <a href="{{{ action('HomeController@showHome', ['tag' => $tag->tag]) }}}">
+                                <i class="fa fa-tag"></i> {{{ $tag->tag }}}
+                                </a>
+                            </li>
+                        @endforeach
+                        </ul>
                         
                         @if(Auth::user()->likes->contains($post->id))
                             <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs likes">unlike</button>
@@ -110,13 +119,12 @@
                 </div> 
                 <div class="modal-footer">
                         <h5 class="tags">Create Tags</h5>
-                        <input id="tags" class="tags" rows="5" placeholder="Create tags"></input>
+                        <input id="tags" class="tags" rows="5" name='tags' placeholder="Create tags"></input>
                         {{Form::submit('Post', array('class' => 'btn btn-default'))}}
                     
                     {{ Form::close() }}
 
                 </div>
-                {{ Form::close() }}
 
             </div>
         </div><!-- /.modal-content -->
