@@ -56,7 +56,7 @@
                     <h4>Birthday</h4>
                     <div class="form-group">
                         <div class="col-xs-4">
-                            <select class="form-control" id="bday-year" name="b_year">
+                            <select class="form-control" id="bday-year" name="b_year" required>
                                 <option selected>Year</option>
                                 @for ($i=2010; $i >= 1950; $i--)
                                     <option>{{{ $i }}}</option>
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="col-xs-4">
-                            <select class="form-control" id="bday-month" name="b_month">
+                            <select class="form-control" id="bday-month" name="b_month" required>
                                 <option>Month</option>
                                 @for ($i=1; $i <= 12; $i++) 
                                     <option>{{{ $i }}}</option>
@@ -74,7 +74,7 @@
                         </div>
 
                         <div class="col-xs-4">
-                            <select class="form-control" id="bday-day" name="b_date">
+                            <select class="form-control" id="bday-day" name="b_date" required>
                                 <option>Day</option>
                                 @for ($i=1; $i <= 31; $i++) 
                                     <option>{{{ $i }}}</option>
@@ -86,7 +86,7 @@
                     <h4>Language</h4>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <select class="form-control" id="language" name="language">
+                            <select class="form-control" id="language" name="language" required>
                                 <option selected>Language</option>
                                 <option value="English" >English</option>
                                 <option value="French" >French</option>
@@ -96,7 +96,7 @@
                     </div> 
 
                     <h4>Gender</h4>
-                    <div class="form-group">
+                    <div class="form-group" required>
                         <div class="col-md-2 col-xs-6">
                             <label>
                                 <input type="radio" name="gender" id="inlineRadio1" value="F"> Female
