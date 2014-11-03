@@ -59,7 +59,9 @@ class PostsController extends \BaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         }
         else {
-            $post->language_id = Input::get('language');
+            if (Input::has('language')) {
+                $post->language_id = Input::get('language');
+            }
             $post->content = Input::get('content');
             $post->user_id = Auth::id();
         }

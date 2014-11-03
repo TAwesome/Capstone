@@ -32,7 +32,8 @@
                 <div class="row posts">
                     <div class="col-md-3">
                         <div class="default-img img-circle post-img"></div>
-                        <h4 class="text-center"> {{ $post->user->first_name }} {{ $post->user->last_name }}</h4>
+                        <h4 class="text-center"><a href="/users/{{{ $post->user->id}}}">{{ $post->user->first_name }} {{ $post->user->last_name }}</a></h4>
+                        
                     </div>
                     <div class="col-md-9">
                         <h4>{{ $post->content }}</h4>
@@ -113,7 +114,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dalog -->
     </div><!-- /.modal -->
-
+<div class="text-center">{{ $posts->links() }}</div>
 
 @stop
 

@@ -19,6 +19,7 @@
     @endif
         <div class="content text-center">
             <h1> {{$user->first_name}} {{$user->last_name}} </h1>
+            <h1>Speaks: {{$user->native_language}}</h1>
             @if ($user->avatar)
             <div class="img-circle carousel profile-img">
                 <img class="img-circle carousel profile-img" src="{{ $user->avatar }}" >
@@ -122,10 +123,10 @@
                 @if(Auth::user()->id == $user->id)
                 <a href="#" data-toggle="modal" type="button" data-target="#modal-delete" style="text-align:left" id="about" class="btn btn-danger btn-lg list-group-item">Delete Profile</a>
                 @endif
-                <a href="#" class="list-group-item active">View Posts</a>
-                <a href="#" class="list-group-item">English</a>
-                <a href="#" class="list-group-item">Spanish</a>
-                <a href="#" class="list-group-item">French</a>
+                <a href="/home" class="list-group-item active">View Posts</a>
+                <a href="/home?language=english" class="list-group-item">English</a>
+                <a href="/home?language=spanish" class="list-group-item">Spanish</a>
+                <a href="/home?language=french" class="list-group-item">French</a>
             </div>
         </div>
 
