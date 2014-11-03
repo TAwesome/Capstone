@@ -19,7 +19,7 @@
     @endif
         <div class="content text-center">
             <h1> {{$user->first_name}} {{$user->last_name}} </h1>
-            <h1>Speaks: {{$user->native_language}}</h1>
+            <h3>Speaks: {{$user->native_language}}</h3>
             @if ($user->avatar)
             <div class="img-circle carousel profile-img">
                 <img class="img-circle carousel profile-img" src="{{ $user->avatar }}" >

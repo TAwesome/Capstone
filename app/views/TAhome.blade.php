@@ -31,7 +31,14 @@
             @foreach($posts as $post)
                 <div class="row posts">
                     <div class="col-md-3">
+                        @if ($post->user->avatar)
+                        <div class="img-circle carousel profile-img">
+                            <img class="img-circle post-img" src="{{ $post->user->avatar }}" >
+                        </div>
+                        @else
                         <div class="default-img img-circle post-img"></div>
+                        @endif
+                        
                         <h4 class="text-center"><a href="/users/{{{ $post->user->id}}}">{{ $post->user->first_name }} {{ $post->user->last_name }}</a></h4>
                         
                     </div>
