@@ -66,12 +66,9 @@
                                         <h4 class="modal-title">Leave Your Comment</h4>
                                     </div>
                                         
-                                    {{ Form::open(array('action' => 'HomeController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
+                                    {{ Form::open(array('action' => 'PostsController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
                                         <div class="modal-body" >
                                             {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5', 'width' => '100%'))}}
-                                            <div class="modal-footer">
-                                                <input id="tags" rows="5" placeholder="Create tags"></input>
-                                            </div>
                                             <div class="btn-group">
                                                 <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
                                                 {{ Form::hidden('post_id', $post->id) }}
@@ -113,8 +110,9 @@
                 </div> 
                 <div class="modal-footer">
                     <div class="form-group">
-                            {{Form::submit('Post', array('class' => 'btn btn-default'))}}
-                        </div>
+                        <input id="tags" rows="5" placeholder="Create tags"></input>
+                        {{Form::submit('Post', array('class' => 'btn btn-default'))}}
+                    </div>
                     {{ Form::close() }}
 
                 </div>
