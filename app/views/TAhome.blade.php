@@ -29,7 +29,7 @@
                 <div class="row posts">
                     <div class="col-md-3">
                         @if ($post->user->avatar)
-                        <div class="img-circle carousel profile-img">
+                        <div class="img-circle profile-img">
                             <img class="img-circle post-img" src="{{ $post->user->avatar }}" >
                         </div>
                         @else
@@ -71,12 +71,7 @@
                                                 {{ Form::hidden('post_id', $post->id) }}
                                                 {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
                                             </div>
-                                        <div class="btn-group">
-                                            <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
-                                            {{ Form::hidden('post_id', $post->id) }}
-                                            {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
                                         </div>
-                                    </div>
                                 {{ Form::close() }}
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dalog -->
