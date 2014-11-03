@@ -106,10 +106,10 @@
                     </div>
                 </div> 
                 <div class="modal-footer">
-                    <div class="form-group">
+                        <h5>Create Tags</h5>
                         <input id="tags" rows="5" placeholder="Create tags"></input>
                         {{Form::submit('Post', array('class' => 'btn btn-default'))}}
-                    </div>
+                    
                     {{ Form::close() }}
 
                 </div>
