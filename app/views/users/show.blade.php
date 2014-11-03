@@ -381,7 +381,7 @@
                     $('#modal-translate').modal();
                 },
                 error: function() {
-                    $('.translated').html("Could not translate");
+                    $('.translated').html("Text already in native language");
                     $('#modal-translate').modal();
                 }
                 
