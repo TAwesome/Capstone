@@ -41,7 +41,9 @@ Route::get('/jill', 'HomeController@showJill');
 
 Route::get('/jacob', 'HomeController@showJacob');
 
-Route::post('/profile/comment', 'PostsController@createComment');
+//Fix routes by just redirecting back in controllers
+
+Route::post('/post/comment', 'PostsController@createComment');
 
 Route::post('/home/comment', 'HomeController@createComment');
 

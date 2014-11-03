@@ -87,13 +87,14 @@
                         </div>
                     </div>
                 </div> -->
-                <form class="navbar-form navbar-left" role="search">
+                @if (Auth::check())
+                <form class="navbar-form navbar-left" role="search" method='GET' action="{{ action('UsersController@index')}}">
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Search">
+                      <input type="text" id='search' class="form-control" name='search' placeholder="Search">
                     </div>
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>
-
+                @endif
             </div><!--/.nav-collapse -->
         </div>
     </div>

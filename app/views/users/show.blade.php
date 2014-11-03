@@ -12,10 +12,22 @@
 
 <div class="container theme-showcase" role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron-profile">
+    @if ($user->cover)
+    <div class="jumbotron-profile" style="background-image: url('{{ $user->cover }}')">
+    @else
+    <div class="jumbotron-profile cover">
+    @endif
         <div class="content text-center">
             <h1> {{$user->first_name}} {{$user->last_name}} </h1>
-            <div class="default-img img-circle carousel profile-img"></div>
+            <h1>Speaks: {{$user->native_language}}</h1>
+            @if ($user->avatar)
+            <div class="img-circle carousel profile-img">
+                <img class="img-circle carousel profile-img" src="{{ $user->avatar }}" >
+            </div>
+            @else
+            <div class="default-img img-circle carousel profile-img">
+            </div>
+            @endif
             @if(Auth::user()->id == $user->id)
             <button data-toggle="modal" type="button" data-target="#modal-avatar" id="about" class="btn btn-primary btn-lg fa fa-camera-retro user-pic"> &raquo;</button>
             <p id="about-style"><button data-toggle="modal" type="button" data-target="#modal-cover" id="about" class="btn btn-primary btn-lg fa fa-image"> &raquo;</button></p>
@@ -59,6 +71,11 @@
         </div><!-- /.modal-dalog -->
     </div><!-- /.modal -->
 </div>
+
+<!-- --------------------- Modal End --------------------- -->
+
+
+
         
         
 <!-- --------------------- Modal for cover upload --------------------- -->
@@ -91,30 +108,47 @@
     </div><!-- /.modal -->
 </div>
 
+<!-- --------------------- Modal End --------------------- -->
 
+<div class="container">
+    <button data-toggle="modal" type="button" data-target="#modal-newpost" id="about" class="btn btn-primary btn-lg"> Write A New Post!</button>
+</div>
 
 
 
   <!-- User Posting ability -->
     <div class="row">
         <div class="col-md-3">
-            <div class="list-group">
-                <a href="#" class="list-group-item active">Home</a>
-                <a href="#" class="list-group-item"><img src="/img/flag-american.png" class="img-responsive"></a>
-                <a href="#" class="list-group-item"><img src="/img/flag-canadia.png" class="img-responsive"></a>
-                <a href="#" class="list-group-item"><img src="/img/flag-mexico.png" class="img-responsive"></a>
+            <div class="guidebar-profile list-group">
+                @if(Auth::user()->id == $user->id)
+                <a href="#" data-toggle="modal" type="button" data-target="#modal-delete" style="text-align:left" id="about" class="btn btn-danger btn-lg list-group-item">Delete Profile</a>
+                @endif
+                <a href="/home" class="list-group-item active">View Posts</a>
+                <a href="/home?language=english" class="list-group-item"><img src="/img/flag-american.png" class="img-responsive"></a>
+                <a href="/home?language=spanish" class="list-group-item"><img src="/img/flag-canadia.png" class="img-responsive"></a>
+                <a href="/home?language=french" class="list-group-item"><img src="/img/flag-mexico.png" class="img-responsive"></a>
             </div>
         </div>
 
 
-        <div class="row">
-            <div class="col-md-8">
-                <h3>Write A New Post</h3>
-                {{ Form::open(array('action' => 'PostsController@store', 'role' => 'form')) }}
+
+<!-- --------------------- Modal for new post --------------------- -->
+
+<div class="container">
+    <div id="modal-newpost" class="modal fade lg" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h3>Write A New Post</h3>
+                    {{ Form::open(array('action' => 'PostsController@store', 'role' => 'form')) }}
                     <div class="form-group">
-                        {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
+                        {{ Form::textarea('content', null , array('class' => 'form-control', 'required' => 'required','placeholder' => 'Write a new post', 'rows' => '5'))}}
                     </div>
                     <div class="form-group">
+<<<<<<< HEAD
                         <select class="form-control" id="language" name="language">
                             <option selected>Language</option>
                             <option value="1" >English</option>
@@ -122,12 +156,36 @@
                             <option value="3" >Spanish</option>
                         </select>
                     </div> 
+=======
+                        <div class="col-md-12">
+                            <select required="required" class="form-control" id="language" name="language" >
+                                <option value="">Language</option>
+                                <option value="1" >English</option>
+                                <option value="2" >French</option>
+                                <option value="3" >Spanish</option>
+                            </select>
+                        </div>
+                    </div>
+                </div> 
+                <div class="modal-footer">
+>>>>>>> master
                     <div class="form-group">
                         {{Form::submit('Post', array('class' => 'btn btn-default'))}}
                     </div>
                 {{ Form::close() }}
-            </div>
-        </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+    </div><!-- /.modal -->
+</div>
+<!-- --------------------- Modal end --------------------- -->
+
+
+
+
+
+<!-- --------------------- Displaying Posts and Comments --------------------- -->
+
     @foreach($user->posts as $post)
         <div class="row">
             <div class="posts col-md-offset-3 col-md-8">
@@ -139,11 +197,19 @@
                     <div class="col-md-8 post-content"> 
                         <h4 data-lang="{{{ $post->i18n }}}" id="post-{{{ $post->id }}}">{{{ $post->content }}}</h4>
                     </div>
+                    <button type="button" class="btn btn-danger follow btn-sm {{{ $post->isLiked() ? '' : 'hide' }}} likes comments">unlike</button>
+                    <button type="button" class="btn btn-info follow btn-sm {{{ $post->isLiked() ? 'hide' : '' }}} likes comments">like</button>
+
+                    <button data-toggle="modal" type="button" data-target="#modal-{{{ $post->id }}}" class="btn btn-primary btn-sm comments">Comment</button>
+
+                    <button type="button" class="btn btn-success btn-sm translate-btn" data-post-id="{{{ $post->id }}}">Translate with Google</button>
+
                     @if(Auth::user()->id == $user->id)
-                        {{link_to_action('PostsController@update','Edit', array($post->id))}}
+                    
+                        <button type="submit" data-toggle="modal" type="button" data-target="#modaledit-{{{ $post->id }}}" class="btn btn-primary btn-sm comments">Edit</button>
                         
                         {{Form::open(['method' => 'Delete', 'action' => ['PostsController@destroy', $post->id], 'id' => 'delete-form'])}}
-                            <button type="submit" class="btn btn-link">Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm comments">Delete</button>
                         {{Form::close()}}
                     @endif
                 </div>
@@ -159,15 +225,44 @@
 
                 @endforeach
 
-                <button type="button" class="btn btn-danger follow btn-sm {{{ $post->isLiked() ? '' : 'hide' }}} likes comments">unlike</button>
-                <button type="button" class="btn btn-info follow btn-sm {{{ $post->isLiked() ? 'hide' : '' }}} likes comments">like</button>
-
-                <button data-toggle="modal" type="button" data-target="#modal-{{{ $post->id }}}" class="btn btn-primary btn-sm comments">Comment</button>
-
-                <button type="button" class="btn btn-success btn-sm translate-btn" data-post-id="{{{ $post->id }}}">Translate with Google</button>
-
+                
             </div>
         </div>
+<!-- --------------------- End --------------------- -->
+
+
+
+<!-- --------------------- Modal For Deleting User --------------------- -->
+<div class="container">
+    <div id="modal-delete" class="modal fade lg" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure you want to delete your profile?</h3>
+                    {{Form::open(['method' => 'Delete', 'action' => ['UsersController@destroy', Auth::user()->id], 'id' => 'delete-form'])}}
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-warning" data-dismiss="modal">Close</a>
+                        <button type="submit" class="btn btn-danger btn-md">Delete</button>
+                    {{Form::close()}}
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+    </div><!-- /.modal -->
+</div>
+                        
+<!-- --------------------- End --------------------- -->
+
+
+
+
+
+<!-- --------------------- Modal For Creating Comments --------------------- -->
 
         <div class="container">
             <div id="modal-{{{ $post->id }}}" class="modal fade lg" tabindex="-1" role="dialog">
@@ -180,7 +275,7 @@
 
                         {{ Form::open(array('action' => 'PostsController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
 
-                        <div class="modal-body" value=""autofocus>
+                        <div class="modal-body">
                             {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5'))}}
                         </div>
 
@@ -196,14 +291,81 @@
                 </div><!-- /.modal-dalog -->
             </div><!-- /.modal -->
         </div>
+
+<!-- --------------------- Modal End --------------------- -->
+
+
+
+
+<!-- --------------------- Modal for Editing Post --------------------- -->
+
+        <div class="container">
+            <div id="modaledit-{{{ $post->id }}}" class="modal fade lg" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Update Your Post</h4>
+                        </div>
+
+                        {{ Form::open(array('action' => ['PostsController@update', $post->id], 'class' => 'form-inline', 'role' => 'form', 'method' => 'put')) }}
+
+                        <div class="modal-body">
+                            {{ Form::textarea('content', null , array('class' => 'span12 form-control', 'placeholder' => 'Update post here', 'rows' => '5'))}}
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                                {{ Form::hidden('post_id', $post->id) }}
+                                {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
+                            </div>
+                        </div>
+                        {{ Form::close() }}
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dalog -->
+            </div><!-- /.modal -->
+        </div>
+<!-- --------------------- Modal End --------------------- -->
+
+
+
+
+
+<!-- --------------------- Modal for translate --------------------- -->
+
+        <div class="container">
+            <div id="modal-translate" class="modal fade lg" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="translated"></p>
+                        </div>
+                            
+                        <div class="modal-footer">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                            </div>
+                        </div>
+                        {{ Form::close() }}
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dalog -->
+            </div><!-- /.modal -->
+        </div>
+<!-- --------------------- Modal End --------------------- -->
+
     @endforeach
     </div>
 </div>
 
+
+
 @stop
 @section('bottom-script')
 <script src="/js/following.js"></script>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -225,11 +387,14 @@
                 },
                 success: function(data) {
                     // maybe pop up a modal
-                    console.log(data);
+                    $('.translated').html(data.data.translations[0].translatedText);
+                    $('#modal-translate').modal();
                 },
                 error: function() {
-                    console.log("NOPE!");
+                    $('.translated').html("Could not translate");
+                    $('#modal-translate').modal();
                 }
+                
             });
         });
     });
