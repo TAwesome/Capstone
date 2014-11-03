@@ -32,6 +32,8 @@ body {
 }
 .post-img {
 	width: 150px;
+    height: 130px;
+    padding-top: 10%;
 }
 .post-img img {
 	max-width: 100%;
@@ -145,7 +147,8 @@ body {
 		bottom: -50px;
     }	
 	.profile-img {
-		width: 250px;
+		width: 200px;
+        height: 150px;
 		position: absolute;
 		left: 30px;
 	}
