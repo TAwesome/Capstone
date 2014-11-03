@@ -5,11 +5,11 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
+		"fzaninotto/faker": "~1.4",
 		"intervention/image": "~2.0"
 	},
 	"require-dev":  {
 		"way/generators": "~2.6",
-		"fzaninotto/faker": "~1.4",
 		"barryvdh/laravel-debugbar": "1.*"
 	},
 	"autoload": {
