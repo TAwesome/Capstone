@@ -30,9 +30,9 @@
                 <div class="row posts">
                     <div class="col-md-3">
                         @if ($post->user->avatar)
-                        <div class="img-circle profile-img">
+                        
                             <img class="img-circle post-img" src="{{ $post->user->avatar }}" >
-                        </div>
+                       
                         @else
                         <div class="default-img img-circle post-img"></div>
                         @endif
