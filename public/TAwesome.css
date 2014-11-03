@@ -88,10 +88,10 @@ body {
         border-radius: 6px;
         margin-bottom: 20px;  
     }
-    .posts-btn {
-        border: 1px solid rgba(0, 41, 252, 0.35);
-        border-radius: 100px;
-        background-color: rgba(240, 248, 255, 0);
+    .PostButton {
+        padding-left: 0px;
+		padding-bottom: 15px;
+}
     }
 	.pull-left {
 		margin-right: 20px;

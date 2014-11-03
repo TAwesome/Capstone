@@ -10,22 +10,19 @@
         <div class="col-md-3">
             <div class="list-group">
                 <a href="/home" class="list-group-item active">Home</a>
-                <a href="?language=english" class="list-group-item">English</a>
-                <a href="?language=french" class="list-group-item">French</a>
-                <a href="?language=spanish" class="list-group-item">Spanish</a>
+                <a href="?language=english" class="list-group-item"><img src="/img/flag-american.png" class="img-responsive"></a>
+                <a href="?language=french" class="list-group-item"><img src="/img/flag-canadia.png" class="img-responsive"></a>
+                <a href="?language=spanish" class="list-group-item"><img src="/img/flag-mexico.png" class="img-responsive"></a>
             </div>
         </div>
 
         <div class="col-md-offset-1 col-md-8">
             <!-- Post Form Row -->
             <div class="row">
-                <div class="col-xs-12">
-                    <div class="container">
-                        <button data-toggle="modal" type="button" data-target="#modal-newpost" id="about" class="btn btn-primary btn-lg"> Write A New Post!</button>
-                    </div>
+                <div class="col-xs-12 PostButton">
+                    <button data-toggle="modal" type="button" data-target="#modal-newpost" id="about" class="btn btn-primary btn-lg"> Write A New Post!</button>
                 </div>
             </div>
-        </div>
 
             <!-- News Feed Row(s) -->
             @foreach($posts as $post)
@@ -74,39 +71,44 @@
                                                 {{ Form::hidden('post_id', $post->id) }}
                                                 {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
                                             </div>
+                                        <div class="btn-group">
+                                            <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                                            {{ Form::hidden('post_id', $post->id) }}
+                                            {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
                                         </div>
-                                    {{ Form::close() }}
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dalog -->
-                        </div><!-- /.modal -->
-                    </div>
+                                    </div>
+                                {{ Form::close() }}
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dalog -->
+                    </div><!-- /.modal -->
                 </div>
-            @endforeach
-        </div><!-- /.col-lg-8 -->
-    </div><!-- /.row -->
-    </div>
-    <div id="modal-newpost" class="modal fade lg" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        @endforeach
+        </div>
+    </div><!-- /.col-lg-8 -->
+</div><!-- /.row -->
+
+<div id="modal-newpost" class="modal fade lg" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>Write A New Post</h4>
+                {{ Form::open(array('action' => 'PostsController@store', 'role' => 'form')) }}
+                <div class="form-group">
+                    {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
                 </div>
-                <div class="modal-body">
-                    <h4>Write A New Post</h4>
-                    {{ Form::open(array('action' => 'PostsController@store', 'role' => 'form')) }}
-                    <div class="form-group">
-                        {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <select required="required" class="form-control" id="language" name="language">
+                            <option value="">Language</option>
+                            <option value="1" >English</option>
+                            <option value="2" >French</option>
+                            <option value="3" >Spanish</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <select required="required" class="form-control" id="language" name="language">
-                                <option value="">Language</option>
-                                <option value="1" >English</option>
-                                <option value="2" >French</option>
-                                <option value="3" >Spanish</option>
-                            </select>
-                        </div>
-                    </div> 
                 </div> 
                 <div class="modal-footer">
                     <div class="form-group">
@@ -116,9 +118,13 @@
                     {{ Form::close() }}
 
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dalog -->
-    </div><!-- /.modal -->
+                {{ Form::close() }}
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dalog -->
+</div><!-- /.modal -->
+
 <div class="text-center">{{ $posts->links() }}</div>
 
 @stop
