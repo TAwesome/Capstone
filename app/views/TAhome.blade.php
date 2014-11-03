@@ -4,6 +4,9 @@
     <title>Home</title>
 @stop
 
+<style type="text/css">
+</style>
+
 @section('content')
 <div class="container" role="main">
     <div class="row top">
@@ -83,7 +86,7 @@
     </div><!-- /.col-lg-8 -->
 </div><!-- /.row -->
 
-<div id="modal-newpost" class="modal fade lg" tabindex="-1" role="dialog">
+<div id="modal-newpost" class="modal fade sm" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -106,8 +109,8 @@
                     </div>
                 </div> 
                 <div class="modal-footer">
-                        <h5>Create Tags</h5>
-                        <input id="tags" rows="5" placeholder="Create tags"></input>
+                        <h5 class="tags">Create Tags</h5>
+                        <input id="tags" class="tags" rows="5" placeholder="Create tags"></input>
                         {{Form::submit('Post', array('class' => 'btn btn-default'))}}
                     
                     {{ Form::close() }}
