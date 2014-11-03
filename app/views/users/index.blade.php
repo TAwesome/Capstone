@@ -18,16 +18,11 @@
     <h1>Nothing here</h1>
 @endforelse
 
-{{ $users->appends(array('search' => Input::get('search')))->links()}}
+<div class="text-center">
 
-<form class="navbar-form navbar-left" role="search" method='GET' action="{{ action('UsersController@index')}}">
-    <input type="text" id='search' name='search'class="form-control" placeholder="Search">
-    <div class="form-group">
-        <span>
-            <button class='btn btn-default'><i class='fa fa-search'></i></button>
-        </span>
-    </div>
-</form>
+    {{ $users->appends(array('search' => Input::get('search')))->links()}}
+
+</div>
 
 @stop
 
