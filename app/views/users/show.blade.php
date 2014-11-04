@@ -258,6 +258,8 @@
                         </div> 
                         <div class="modal-footer">
                             <div class="form-group">
+                                <h5 class="tags">Create Tags</h5>
+                                <input id="tags" class="tags" rows="5" name='tags' placeholder="Create tags">
                                 {{Form::submit('Post', array('class' => 'btn btn-default'))}}
                             </div>
                         {{ Form::close() }}
@@ -335,8 +337,18 @@
 @stop
 @section('bottom-script')
 <script src="/js/following.js"></script>
+<script src="/js/jquery.tagsinput.js"></script>
 
 <script type="text/javascript">
+            $('#tags').tagsInput({
+                    "width": "75%",
+                    "height": "70px",
+                    'defaultText':''
+            }); 
+</script>
+
+<script type="text/javascript">
+    
     $(document).ready(function() {
         $('.translate-btn').click(function() {
             var userLang = "{{{ Auth::user()->i18n }}}";
