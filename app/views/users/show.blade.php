@@ -9,6 +9,14 @@
 @stop
 
 @section('content')
+<style type="text/css">
+    .nav-pills>li>a {
+        border-radius: 4px;
+        background-color: rgba(210, 233, 253, 0.61);
+        padding: 3px 6px;
+        margin: 2px;
+    }
+</style>
 
 <div class="container theme-showcase" role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -66,6 +74,15 @@
                     <div class="col-md-4">
                         <div class="default-img img-circle post-img"></div>
                         <h4>{{{ $post->user->first_name }}} {{{ $post->user->last_name }}}</h4>
+                        <ul class="nav nav-pills">
+                        @foreach ($post->tags as $tag)
+                            <li>
+                                <a href="{{{ action('HomeController@showHome', ['tag' => $tag->tag]) }}}">
+                                <i class="fa fa-tag"></i> {{{ $tag->tag }}}
+                                </a>
+                            </li>
+                        @endforeach
+                        </ul>
                     </div>
                     <div class="col-md-8 post-content"> 
                         <h4 data-lang="{{{ $post->i18n }}}" id="post-{{{ $post->id }}}">{{{ $post->content }}}</h4>
@@ -258,6 +275,8 @@
                         </div> 
                         <div class="modal-footer">
                             <div class="form-group">
+                                <h5 class="tags">Create Tags</h5>
+                                <input id="tags" class="tags" rows="5" name='tags' placeholder="Create tags">
                                 {{Form::submit('Post', array('class' => 'btn btn-default'))}}
                             </div>
                         {{ Form::close() }}
@@ -335,8 +354,18 @@
 @stop
 @section('bottom-script')
 <script src="/js/following.js"></script>
+<script src="/js/jquery.tagsinput.js"></script>
 
 <script type="text/javascript">
+            $('#tags').tagsInput({
+                    "width": "75%",
+                    "height": "70px",
+                    'defaultText':''
+            }); 
+</script>
+
+<script type="text/javascript">
+    
     $(document).ready(function() {
         $('.translate-btn').click(function() {
             var userLang = "{{{ Auth::user()->i18n }}}";
