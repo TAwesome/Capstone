@@ -101,6 +101,7 @@ class UsersController extends \BaseController {
     {
         $user = User::with('posts')->find($id);
         
+        
         if (!$user) {
             Log::info('User encountered 404 error', Input::all());
             App::abort(404);
