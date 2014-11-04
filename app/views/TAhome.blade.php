@@ -6,6 +6,14 @@
 
 
 @section('content')
+<style type="text/css">
+    .nav-pills>li>a {
+        border-radius: 4px;
+        background-color: rgba(210, 233, 253, 0.61);
+        padding: 3px 6px;
+        margin: 2px;
+    }
+</style>
 <div class="container" role="main">
     <div class="row top">
         <div class="col-md-3">
