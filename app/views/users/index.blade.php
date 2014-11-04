@@ -4,6 +4,13 @@
 
 <title>Index</title>
 
+<style>
+    body {
+        padding-top:70px;
+    }
+    
+</style>
+
 @stop
 
 @section('content')
