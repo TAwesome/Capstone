@@ -67,6 +67,9 @@ class PostsController extends \BaseController {
         }
         
         $post->save();
+        if (Input::has('tags')) {
+            $post->tag_list = Input::get('tags');
+        }
         $id = $post->id;
         return Redirect::back()->with($id);
     }

@@ -58,7 +58,7 @@
                 <button href="/home" class="list-group-item active">View Posts</button>
             </div>
         </div>
-
+        
         <!-- --------------------- Displaying Posts and Comments --------------------- -->
         <div class="col-md-9">
             @foreach($user->posts as $post)
@@ -96,6 +96,72 @@
                         </div>
                     </div>
                 @endforeach
+                
+
+<!-- --------------------- Modal For Creating Comments --------------------- -->
+    
+        <div class="container">
+            <div id="modal-{{{ $post->id }}}" class="modal fade lg" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Leave Your Comment</h4>
+                        </div>
+
+                        {{ Form::open(array('action' => 'PostsController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
+
+                        <div class="modal-body">
+                            {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5'))}}
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                                {{ Form::hidden('post_id', $post->id) }}
+                                {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
+                            </div>
+                        </div>
+                        {{ Form::close() }}
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dalog -->
+            </div><!-- /.modal -->
+        </div>
+<!-- --------------------- Modal End --------------------- -->
+
+
+
+
+<!-- --------------------- Modal for Editing Post --------------------- -->
+
+        <div class="container">
+            <div id="modaledit-{{{ $post->id }}}" class="modal fade lg" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Update Your Post</h4>
+                        </div>
+
+                        {{ Form::open(array('action' => ['PostsController@update', $post->id], 'class' => 'form-inline', 'role' => 'form', 'method' => 'put')) }}
+
+                        <div class="modal-body">
+                            {{ Form::textarea('content', null , array('class' => 'span12 form-control', 'placeholder' => 'Update post here', 'rows' => '5'))}}
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
+                                {{ Form::hidden('post_id', $post->id) }}
+                                {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
+                            </div>
+                        </div>
+                        {{ Form::close() }}
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dalog -->
+            </div><!-- /.modal -->
+        </div>
+<!-- --------------------- Modal End --------------------- -->
             @endforeach
         </div>
     </div>
@@ -233,74 +299,6 @@
 <!-- --------------------- End --------------------- -->
 
 
-
-
-
-<!-- --------------------- Modal For Creating Comments --------------------- -->
-
-        <div class="container">
-            <div id="modal-{{{ $post->id }}}" class="modal fade lg" tabindex="-1" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Leave Your Comment</h4>
-                        </div>
-
-                        {{ Form::open(array('action' => 'PostsController@createComment', 'class' => 'form-inline', 'role' => 'form')) }}
-
-                        <div class="modal-body">
-                            {{ Form::textarea('comment', null , array('class' => 'span12 form-control', 'placeholder' => 'Insert comment here', 'rows' => '5'))}}
-                        </div>
-
-                        <div class="modal-footer">
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
-                                {{ Form::hidden('post_id', $post->id) }}
-                                {{ Form::submit('Comment', array('class' => 'btn btn-primary')) }}
-                            </div>
-                        </div>
-                        {{ Form::close() }}
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dalog -->
-            </div><!-- /.modal -->
-        </div>
-
-<!-- --------------------- Modal End --------------------- -->
-
-
-
-
-<!-- --------------------- Modal for Editing Post --------------------- -->
-
-        <div class="container">
-            <div id="modaledit-{{{ $post->id }}}" class="modal fade lg" tabindex="-1" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Update Your Post</h4>
-                        </div>
-
-                        {{ Form::open(array('action' => ['PostsController@update', $post->id], 'class' => 'form-inline', 'role' => 'form', 'method' => 'put')) }}
-
-                        <div class="modal-body">
-                            {{ Form::textarea('content', null , array('class' => 'span12 form-control', 'placeholder' => 'Update post here', 'rows' => '5'))}}
-                        </div>
-
-                        <div class="modal-footer">
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-danger" data-dismiss="modal">Close</a>
-                                {{ Form::hidden('post_id', $post->id) }}
-                                {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
-                            </div>
-                        </div>
-                        {{ Form::close() }}
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dalog -->
-            </div><!-- /.modal -->
-        </div>
-<!-- --------------------- Modal End --------------------- -->
 
 
 

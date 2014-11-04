@@ -101,6 +101,7 @@ class UsersController extends \BaseController {
     {
         $user = User::with('posts')->find($id);
         
+        
         if (!$user) {
             Log::info('User encountered 404 error', Input::all());
             App::abort(404);
@@ -176,7 +177,7 @@ class UsersController extends \BaseController {
         $id = $user->id;
         if (Input::hasFile('image')) {
             $file = Input::file('image');
-            $orig_name = $file->getClientOriginalName() . str_random(6);
+            $orig_name = str_random(6) . $file->getClientOriginalName();
             $dest_path = public_path() . "/img/cover/$id/";
             $upload = $file->move($dest_path, $orig_name);
             $user->cover = "/img/cover/$id/" . $orig_name;
@@ -193,7 +194,7 @@ class UsersController extends \BaseController {
         $id = $user->id;
         if (Input::hasFile('image')) {
             $file = Input::file('image');
-            $orig_name = $file->getClientOriginalName() . str_random(6);
+            $orig_name = str_random(6) . $file->getClientOriginalName();
             $dest_path = public_path() . "/img/avatar/$id/";
             $upload = $file->move($dest_path, $orig_name);
             $user->avatar = "/img/avatar/$id/" . $orig_name;
