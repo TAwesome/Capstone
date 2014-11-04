@@ -46,7 +46,7 @@ class UsersController extends \BaseController {
             $query->orWhereIn('last_name_meta', $meta);
         }
         
-        $users = $query->orderBy('last_name', 'ASC')->paginate(3);
+        $users = $query->orderBy('last_name', 'ASC')->paginate(4);
 
         return View::make('users.index')->with('users', $users);
     }
