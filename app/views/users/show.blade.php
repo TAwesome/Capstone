@@ -15,7 +15,9 @@
     <div {{ ($user->cover) ? "class=\"jumbotron-profile\" style=\"background-image: url('$user->cover')\"" : 'class="jumbotron-profile cover"' }}>
         <div class="content text-center">
             <h1> {{$user->first_name}} {{$user->last_name}} </h1>
+
             <h3>Language: {{$user->native_language}}</h3>
+
             @if ($user->avatar)
                 <div class="img-circle carousel profile-img">
                     <img class="img-circle carousel profile-img" src="{{ $user->avatar }}" >
@@ -360,7 +362,7 @@
                     $('#modal-translate').modal();
                 },
                 error: function() {
-                    $('.translated').html("Could not translate");
+                    $('.translated').html("Text already in native language");
                     $('#modal-translate').modal();
                 }
                 

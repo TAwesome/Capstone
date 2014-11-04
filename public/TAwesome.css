@@ -32,6 +32,8 @@ body {
 }
 .post-img {
 	width: 150px;
+    height: 130px;
+    padding-top: 10%;
 }
 .post-img img {
 	max-width: 100%;
