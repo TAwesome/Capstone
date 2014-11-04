@@ -1,4 +1,4 @@
-#dropdown-nav {
+#dropdown-nav
 	left: 400px;
 }
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav>li>a {
@@ -91,7 +91,6 @@ body {
     .PostButton {
         padding-left: 0px;
 		padding-bottom: 15px;
-}
     }
 	.pull-left {
 		margin-right: 20px;
@@ -113,15 +112,10 @@ body {
 	    padding-bottom: 130px;
 	    margin-bottom: 75px;
 	    height: 230px;
-/*		padding-top: 15px;
-		padding-bottom: 50px;
-		margin-top: 51px;*/
 	}
-    
     .cover {
         background-image: url('/img/FancyfbBG.jpg');
     }
-    
 	.jumbotron-profile {
 		position: relative;
 	}
@@ -130,7 +124,6 @@ body {
 	}
 	#about {
 		color: #fff;
-		background-color: #1F88F1;
 		border-color: #357ebd;
 	}
 	#about-style {
@@ -141,11 +134,12 @@ body {
 	}
     .user-pic {
     	position: absolute;
-		left: 250px;
+		left: 200px;
 		bottom: -50px;
     }	
 	.profile-img {
-		width: 250px;
+		width: 150px;
+		height: 150px;
 		position: absolute;
 		left: 30px;
 	}
@@ -156,7 +150,6 @@ body {
 		text-shadow: 2px 2px 2px #FFFFFF;
 	}
 	.posts-container-profile {
-	/*	border: 1px solid black;*/
 		float: right;
 		position: relative;
 		margin-left: 0px;
@@ -172,7 +165,7 @@ body {
         margin: 5px;
         background-color: rgba(240, 248, 255, 0);
     }
-    
+
     .ggl {
         margin: 5px;
         margin-bottom: 7px;

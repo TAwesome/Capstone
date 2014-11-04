@@ -12,7 +12,7 @@
 
 <div class="container theme-showcase" role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div {{ ($user->cover) ? 'class="jumbotron-profile" style="background-image: url(\'$user->cover\')"' : 'class="jumbotron-profile cover"' }}>
+    <div {{ ($user->cover) ? "class=\"jumbotron-profile\" style=\"background-image: url('$user->cover')\"" : 'class="jumbotron-profile cover"' }}>
         <div class="content text-center">
             <h1> {{$user->first_name}} {{$user->last_name}} </h1>
             <h3>Language: {{$user->native_language}}</h3>
