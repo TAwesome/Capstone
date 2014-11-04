@@ -4,8 +4,6 @@
     <title>Home</title>
 @stop
 
-<style type="text/css">
-</style>
 
 @section('content')
 <div class="container" role="main">
@@ -32,9 +30,9 @@
                 <div class="row posts">
                     <div class="col-md-3">
                         @if ($post->user->avatar)
-                        <div class="img-circle profile-img">
+                        
                             <img class="img-circle post-img" src="{{ $post->user->avatar }}" >
-                        </div>
+                       
                         @else
                         <div class="default-img img-circle post-img"></div>
                         @endif
@@ -95,41 +93,47 @@
     </div><!-- /.col-lg-8 -->
 </div><!-- /.row -->
 
-<div id="modal-newpost" class="modal fade sm" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <h4>Write A New Post</h4>
-                {{ Form::open(array('action' => 'PostsController@store', 'role' => 'form')) }}
-                <div class="form-group">
-                    {{ Form::textarea('content', null , array('class' => 'form-control', 'placeholder' => 'Write a new post', 'rows' => '5'))}}
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <select required="required" class="form-control" id="language" name="language">
-                            <option value="">Language</option>
-                            <option value="1" >English</option>
-                            <option value="2" >French</option>
-                            <option value="3" >Spanish</option>
-                        </select>
-                    </div>
-                </div> 
-                <div class="modal-footer">
-                        <h5 class="tags">Create Tags</h5>
-                        <input id="tags" class="tags" rows="5" name='tags' placeholder="Create tags"></input>
-                        {{Form::submit('Post', array('class' => 'btn btn-default'))}}
-                    
-                    {{ Form::close() }}
+<!-- --------------------- Modal for new post --------------------- -->
 
-                </div>
+        <div class="container">
+            <div id="modal-newpost" class="modal fade lg" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <h3>Write A New Post</h3>
+                            {{ Form::open(array('action' => 'PostsController@store', 'role' => 'form')) }}
+                            <div class="form-group">
+                                {{ Form::textarea('content', null , array('class' => 'form-control', 'required' => 'required','placeholder' => 'Write a new post', 'rows' => '5'))}}
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <select required="required" class="form-control" id="language" name="language" >
+                                        <option value="">Language</option>
+                                        <option value="1" >English</option>
+                                        <option value="2" >French</option>
+                                        <option value="3" >Spanish</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="modal-footer">
+                            <div class="form-group" class="tags">
+                                
+                                <h5 class="tags">Create Tags</h5>
+                                <input id="tags" class="tags" rows="5" name='tags' placeholder="Create tags">
 
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dalog -->
-</div><!-- /.modal -->
+                                {{Form::submit('Post', array('class' => 'btn btn-default'))}}
+                            </div>
+                        {{ Form::close() }}
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dalog -->
+            </div><!-- /.modal -->
+        </div>
+<!-- --------------------- Modal end --------------------- -->
 
 <div class="text-center">{{ $posts->links() }}</div>
 
