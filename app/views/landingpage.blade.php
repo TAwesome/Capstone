@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <label class="sr-only" for="exampleInputEmail2">Email</label>
-                            <input type="email" class="form-conrol" name="email" id="inputEmail3" placeholder="Email" value="{{{ Input::old('email') }}}">
+                            <input type="email" class="form-control" name="email" id="inputEmail3" placeholder="Email" value="{{{ Input::old('email') }}}">
                         </div>
                     </div>
                         {{ $errors->first('email', '<span class="help-block">:message</span>')}}
