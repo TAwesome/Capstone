@@ -6,6 +6,14 @@
 
 
 @section('content')
+<style type="text/css">
+    .nav-pills>li>a {
+        border-radius: 4px;
+        background-color: rgba(210, 233, 253, 0.61);
+        padding: 3px 6px;
+        margin: 2px;
+    }
+</style>
 <div class="container" role="main">
     <div class="row top">
         <div class="col-md-3">
@@ -42,6 +50,15 @@
                     </div>
                     <div class="col-md-9">
                         <h4>{{ $post->content }}</h4>
+                        <ul class="nav nav-pills">
+                        @foreach ($post->tags as $tag)
+                            <li>
+                                <a href="{{{ action('HomeController@showHome', ['tag' => $tag->tag]) }}}">
+                                <i class="fa fa-tag"></i> {{{ $tag->tag }}}
+                                </a>
+                            </li>
+                        @endforeach
+                        </ul>
                         
                         @if(Auth::user()->likes->contains($post->id))
                             <button type="button" href="/unlike/{{$post->id}}" class="btn btn-danger follow btn-group-xs likes">unlike</button>
@@ -113,7 +130,8 @@
                         <div class="modal-footer">
                             <div class="form-group" class="tags">
                                 
-                                <input rows="5" placeholder="Create tags"></input>
+                                <h5 class="tags">Create Tags</h5>
+                                <input id="tags" class="tags" rows="5" name='tags' placeholder="Create tags">
 
                                 {{Form::submit('Post', array('class' => 'btn btn-default'))}}
                             </div>
@@ -124,9 +142,6 @@
             </div><!-- /.modal -->
         </div>
 <!-- --------------------- Modal end --------------------- -->
-
-
-
 
 <div class="text-center">{{ $posts->links() }}</div>
 

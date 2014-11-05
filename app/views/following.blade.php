@@ -18,15 +18,6 @@
                 <h1>Not following anyone</h1>
             </div>
         @endforelse
-    <!--     <div class='container'>
-            <div>
-                <input id="tags"/>
-                
-            </div>
-        </div> -->
-        <!-- <div class="col-md-5">
-            {{ $data->links() }}
-        </div> -->
     </div>
     <div class="text-center">{{ $data->links() }}</div>
 @stop
