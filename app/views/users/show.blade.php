@@ -53,8 +53,15 @@
         <div class="col-md-3">
             <div class="guidebar-profile list-group">
                 <a href="/home?language=english" class="list-group-item"><img src="/img/flag-american.png" class="img-responsive"></a>
-                <a href="/home?language=spanish" class="list-group-item"><img src="/img/flag-canadia.png" class="img-responsive"></a>
-                <a href="/home?language=french" class="list-group-item"><img src="/img/flag-mexico.png" class="img-responsive"></a>
+                <a href="/home?language=french" class="list-group-item"><img src="/img/flag-canadia.png" class="img-responsive"></a>
+                <a href="/home?language=spanish" class="list-group-item"><img src="/img/flag-mexico.png" class="img-responsive"></a>
+            
+             <!-- This keeps the user on the profile page but not sure how to iterate through the language on the posts  
+                <a href="/users/{{{$user->id}}}?language=english" class="list-group-item"><img src="/img/flag-american.png" class="img-responsive"></a>
+                <a href="/users/{{{$user->id}}}?language=french" class="list-group-item"><img src="/img/flag-canadia.png" class="img-responsive"></a>
+                <a href="/users/{{{$user->id}}}?language=spanish" class="list-group-item"><img src="/img/flag-mexico.png" class="img-responsive"></a>
+             -->
+            
             </div>
                 <div class="PostButton">
                 <button data-toggle="modal" type="button" data-target="#modal-newpost" class="btn btn-primary btn-lg"> Write A New Post!</button>
@@ -63,7 +70,6 @@
                     <button href="#" data-toggle="modal" type="button" data-target="#modal-delete" style="text-align:left" class="btn btn-danger btn-lg list-group-item">Delete Profile</button>
                 @endif
                 
-                <button href="/home" class="list-group-item active">View Posts</button>
             </div>
         </div>
         
@@ -72,7 +78,14 @@
             @foreach($user->posts as $post)
                 <div class="row posts">
                     <div class="col-md-4">
-                        <div class="default-img img-circle post-img"></div>
+                        @if ($user->avatar)
+                            <div>
+                                <img class="img-circle carousel post-img" src="{{ $user->avatar }}" >
+                            </div>
+                        @else
+                            <div class="default-img img-circle post-img"></div>
+                        @endif
+                        
                         <h4>{{{ $post->user->first_name }}} {{{ $post->user->last_name }}}</h4>
                         <ul class="nav nav-pills">
                         @foreach ($post->tags as $tag)
