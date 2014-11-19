@@ -72,7 +72,14 @@
             @foreach($user->posts as $post)
                 <div class="row posts">
                     <div class="col-md-4">
-                        <div class="default-img img-circle post-img"></div>
+                        @if ($user->avatar)
+                            <div>
+                                <img class="img-circle carousel post-img" src="{{ $user->avatar }}" >
+                            </div>
+                        @else
+                            <div class="default-img img-circle post-img"></div>
+                        @endif
+                        
                         <h4>{{{ $post->user->first_name }}} {{{ $post->user->last_name }}}</h4>
                         <ul class="nav nav-pills">
                         @foreach ($post->tags as $tag)
