@@ -2,7 +2,7 @@
 
 @section('header')
 
-<title>Index</title>
+<title>Search Results</title>
 
 <style>
     body {
